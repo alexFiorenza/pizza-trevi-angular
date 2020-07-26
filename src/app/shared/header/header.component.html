@@ -1,0 +1,33 @@
+<header>
+  <div class="w-full bg-black h-20 flex items-center justify-between px-4">
+    <div class="pl-4">
+      <img class="w-12" src="../../../assets/brand.png" alt="" />
+    </div>
+    <div class="text-white sm:hidden">
+      <fa-icon class="text-3xl" [icon]="faBars"></fa-icon>
+    </div>
+    <ul class="text-white hidden sm:flex">
+      <li
+        class="px-4 focus:outline-none cursor-pointer font-Poppins font-semibold text-lg"
+        routerLinkActive="text-primary"
+        routerLink="/home"
+      >
+        inicio
+      </li>
+      <li
+        class="px-4 focus:outline-none cursor-pointer font-Poppins font-light text-lg"
+        routerLinkActive="text-primary"
+        routerLink="/footer"
+      >
+        menu
+      </li>
+      <li
+        class="px-4 focus:outline-none cursor-pointer font-Poppins font-light text-lg"
+        routerLinkActive="text-primary"
+        routerLink="/contact"
+      >
+        contacto
+      </li>
+    </ul>
+  </div>
+</header>
