@@ -4,7 +4,18 @@
       <img class="w-12" src="../../../assets/brand.png" alt="" />
     </div>
     <div class="text-white sm:hidden">
-      <fa-icon class="text-3xl" [icon]="faBars"></fa-icon>
+      <fa-icon
+        id="hamburgerMenu"
+        (click)="openMenu()"
+        class="text-3xl block"
+        [icon]="faBars"
+      ></fa-icon>
+      <fa-icon
+        id="crossMenu"
+        (click)="openMenu()"
+        class="text-3xl hidden"
+        [icon]="faTimes"
+      ></fa-icon>
     </div>
     <ul class="text-white hidden sm:flex">
       <li
@@ -23,6 +34,36 @@
       </li>
       <li
         class="px-4 focus:outline-none cursor-pointer font-Poppins font-light text-lg"
+        routerLinkActive="text-primary"
+        routerLink="/contact"
+      >
+        contacto
+      </li>
+    </ul>
+  </div>
+  <div
+    id="mobileMenu"
+    class="bg-black w-full h-24 absolute z-30 hidden slide-in-top"
+  >
+    <ul
+      class="text-xl flex flex-col text-white font-Poppins font-semibold justify-center items-center"
+    >
+      <li
+        class="outline-none"
+        routerLinkActive="text-primary"
+        routerLink="/home"
+      >
+        Inicio
+      </li>
+      <li
+        class="outline-none"
+        routerLinkActive="text-primary"
+        routerLink="/footer"
+      >
+        menu
+      </li>
+      <li
+        class="outline-none"
         routerLinkActive="text-primary"
         routerLink="/contact"
       >
