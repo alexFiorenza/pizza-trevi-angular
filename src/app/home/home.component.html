@@ -1,56 +1,48 @@
 <div class="w-full">
   <div class="w-full flex justify-center">
     <h1
-      class="mt-16 text-3xl md:text-5xl z-20 text-white font-Poppins font-bold uppercase absolute"
+      class="mt-12 text-3xl md:text-5xl z-20 text-white font-Poppins font-bold uppercase absolute"
     >
       Pizza in Trevi
     </h1>
 
     <p
-      class="xl:w-4/12 absolute mt-32 z-20 text-white w-1/2 text-center hidden md:block"
+      class="xl:text-xl w-5/6 md:text-lg text-sm mt-24 xl:w-2/5 absolute md:mt-32 z-20 text-white md:w-1/2 text-center block"
     >
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium ut
       ante ac convallis. Nunc magna massa, dignissim a hendrerit eu, laoreet et
       libero.
     </p>
-    <button
-      class="xl:mt-56 focus:outline-none mt-32 md:mt-56 rounded-md absolute z-20 text-white bg-red-600 px-3 py-2 font-bold uppercase"
-    >
-      Ordenar
-    </button>
   </div>
-
   <div
-    class="bg-cover changeHeight bg-center"
+    class="bg-cover changeHeight bg-center grayScale"
     style="
       background-image: url(https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80);
     "
-  >
-    <div class="w-full bg-black h-full opacity-50"></div>
-  </div>
+  ></div>
 </div>
 <div class="w-full bg-black h-40">
   <div
-    class="w-full md:w-1/2 md:mx-auto flex justify-center items-center h-full"
+    class="w-full lg:w-1/2 md:mx-auto flex justify-evenly items-center h-full"
   >
-    <div class="flex flex-col justify-center w-1/5 items-center">
-      <img class="w-20 mb-4" src="../../assets/logo1.png" alt="" />
+    <div class="flex flex-col justify-center md:w-1/5 items-center">
+      <img class="w-16 md:w-20 mb-4" src="../../assets/logo1.png" alt="" />
       <button
         class="px-2 py-1 w-24 text-white rounded-sm bg-red-600 focus:outline-none"
       >
         Ver más
       </button>
     </div>
-    <div class="flex flex-col justify-center ml-12 w-1/5 items-center">
-      <img class="w-20 mb-3" src="../../assets/logo2.png" alt="" />
+    <div class="flex flex-col justify-center md:w-1/5 items-center">
+      <img class="w-16 md:w-20 mb-3" src="../../assets/logo2.png" alt="" />
       <button
         class="px-2 py-1 w-24 text-white rounded-sm bg-red-600 focus:outline-none"
       >
         Ver más
       </button>
     </div>
-    <div class="flex flex-col justify-center ml-12 w-1/5 items-center">
-      <img class="w-20 mb-3" src="../../assets/logo3.png" alt="" />
+    <div class="flex flex-col justify-center md:w-1/5 items-center">
+      <img class="w-16 md:w-20 mb-3" src="../../assets/logo3.png" alt="" />
       <button
         class="px-2 py-1 w-24 text-white rounded-sm bg-red-600 focus:outline-none"
       >
@@ -59,8 +51,24 @@
     </div>
   </div>
 </div>
-<div
-  class="w-full bg-gray-400 h-56 flex items-center justify-center text-white font-bold text-3xl"
->
-  Start hot sales cards...
+<div class="w-full md:h-64 h-auto bg-gray-100">
+  <h1 class="text-xl text-center darkRed">Las mas vendidas</h1>
+  <div id="cards" class="sm:flex w-10/12 mx-auto mt-4 justify-evenly">
+    <div
+      class="w-full mb-8 lg:w-40 sm:w-32 mr-4 lg:w-40rounded shadow-2xl h-48 flex flex-col justify-evenly items-center px-2 relative"
+    >
+      <img class="w-24" src="../../assets/pizza1.png" alt="" />
+      <div
+        class="w-10 h-10 bg-green-600 absolute priceTag flex flex-col justify-center items-center"
+      >
+        <span class="text-white text-sm font-bold">$360</span>
+      </div>
+      <h4 class="text-gray-800 text-center">Jamon y morrones</h4>
+      <button
+        class="w-10/12 px-2 py-1 text-white rounded sm:w-full bg-red-600 focus:outline-none"
+      >
+        Ordenar
+      </button>
+    </div>
+  </div>
 </div>
