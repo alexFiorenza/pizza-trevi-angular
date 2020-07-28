@@ -1,0 +1,23 @@
+<div class="w-full flex items-center shadow-md py-2 justify-between sm:hidden">
+  <div class="flex items-center w-8/12">
+    <h3 class="font-Poppins font-semibold px-2 text-lg text-gray-700">
+      Filtros
+    </h3>
+    <div class="pr-2">
+      <fa-icon class="text-gray-700" [icon]="faAngleDown"></fa-icon>
+    </div>
+    <div class="border border-gray-700 mt h-5"></div>
+    <div class="font-Poppins font-medium px-2 resultText">
+      <span class="text-xs w-2/12">52 resultados</span>
+    </div>
+  </div>
+  <div class="flex items-center justify-evenly">
+    <input
+      class="text-sm border-b rounded w-8/12 px-2 text-gray-700 leading-tight focus:outline-none input"
+      type="text"
+      placeholder="Buscar..."
+    />
+    <fa-icon class="text-gray-700" [icon]="faSearch"></fa-icon>
+  </div>
+</div>
+<app-products></app-products>

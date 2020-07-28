@@ -8,6 +8,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './home/home.component';
+import { MenuComponent } from './menu/menu.component';
+import { ProductsComponent } from './products/products.component';
+
+
+
 
 
 
@@ -16,6 +21,8 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     HomeComponent,
+    MenuComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

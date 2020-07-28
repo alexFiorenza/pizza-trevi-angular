@@ -1,3 +1,4 @@
+import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
@@ -14,6 +15,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'menu',
+    component: MenuComponent
   }
 ];
 
