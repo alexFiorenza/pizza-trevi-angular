@@ -32,21 +32,21 @@
         routerLinkActive="text-primary font-semibold"
         routerLink="/home"
       >
-        inicio
+        Inicio
       </li>
       <li
         class="px-4 focus:outline-none cursor-pointer font-Poppins font-light text-lg"
         routerLinkActive="text-primary font-semibold"
         routerLink="/menu"
       >
-        menu
+        Menu
       </li>
       <li
         class="px-4 focus:outline-none cursor-pointer font-Poppins font-light text-lg"
         routerLinkActive="text-primary font-semibold"
         routerLink="/contact"
       >
-        contacto
+        Contacto
       </li>
       <div class="text-white px-4 cursor-pointer relative">
         <div
@@ -63,31 +63,34 @@
   </div>
   <div
     id="mobileMenu"
-    class="bg-black w-full h-24 absolute z-30 hidden slide-in-top"
+    class="bg-black w-full h-auto absolute z-30 hidden slide-in-top"
   >
     <ul
-      class="text-xl flex flex-col text-white font-Poppins justify-center items-center cursor-pointer"
+      class="px-4 text-xl flex flex-col text-white font-Poppins justify-center items-start cursor-pointer"
     >
       <li
-        class="outline-none"
+        class="outline-none my-px"
         routerLinkActive="text-primary font-semibold"
         routerLink="/home"
       >
+        <fa-icon class="text-lg pr-2" [icon]="faHome"></fa-icon>
         Inicio
       </li>
       <li
-        class="outline-none"
+        class="outline-none my-px"
         routerLinkActive="text-primary font-semibold"
         routerLink="/menu"
       >
-        menu
+        <fa-icon class="text-lg pr-2" [icon]="faPizzaSlice"></fa-icon>
+        Menu
       </li>
       <li
-        class="outline-none"
+        class="outline-none mt-px pb-3"
         routerLinkActive="text-primary font-semibold"
         routerLink="/contact"
       >
-        contacto
+        <fa-icon class="text-lg pr-2" [icon]="faAddressCard"></fa-icon>
+        Contacto
       </li>
     </ul>
   </div>

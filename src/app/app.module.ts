@@ -11,8 +11,6 @@ import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
-import { CartComponent } from './cart/cart.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,8 +18,7 @@ import { CartComponent } from './cart/cart.component';
     MenuComponent,
     ProductsComponent,
     AdminComponent,
-    LoginComponent,
-    CartComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

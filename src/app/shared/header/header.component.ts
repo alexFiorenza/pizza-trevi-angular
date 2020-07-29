@@ -1,7 +1,4 @@
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faAd, faPizzaSlice, faTimes, faHome, faShoppingCart, faAddressCard, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
@@ -14,6 +11,9 @@ export class HeaderComponent implements OnInit {
   faBars = faBars;
   faTimes = faTimes;
   faUser = faUser;
+  faHome = faHome;
+  faPizzaSlice = faPizzaSlice;
+  faAddressCard = faAddressCard;
   faShoppingCart = faShoppingCart;
   constructor() { }
 

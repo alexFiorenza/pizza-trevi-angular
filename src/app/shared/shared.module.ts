@@ -1,3 +1,4 @@
+import { CartComponent } from './cart/cart.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
   declarations: [
     FooterComponent,
     HeaderComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { CommonModule } from '@angular/common';
   ],
   exports: [
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    CartComponent
   ]
 })
 export class SharedModule { }
