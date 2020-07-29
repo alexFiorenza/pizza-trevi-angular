@@ -1,5 +1,7 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
@@ -11,6 +13,8 @@ import { DOCUMENT } from '@angular/common';
 export class HeaderComponent implements OnInit {
   faBars = faBars;
   faTimes = faTimes;
+  faUser = faUser;
+  faShoppingCart = faShoppingCart;
   constructor() { }
 
   ngOnInit(): void {

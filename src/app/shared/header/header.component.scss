@@ -15,3 +15,13 @@
     opacity: 1;
   }
 }
+.cartTag {
+  top: -10px;
+  right: -10px;
+  border-radius: 99%;
+  &lg {
+    top: -8px;
+    right: 2px;
+    border-radius: 99%;
+  }
+}

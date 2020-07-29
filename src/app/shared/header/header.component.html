@@ -1,9 +1,17 @@
 <header>
   <div class="w-full bg-black h-20 flex items-center justify-between px-4">
+    <div class="text-white sm:hidden relative">
+      <div
+        class="w-6 h-6 bg-green-600 cartTag absolute flex flex-col justify-center items-center"
+      >
+        <span class="text-white text-xs font-bold">2</span>
+      </div>
+      <fa-icon [icon]="faShoppingCart" class="text-3xl"></fa-icon>
+    </div>
     <div class="pl-4">
       <img class="w-12" src="../../../assets/brand.png" alt="" />
     </div>
-    <div class="text-white sm:hidden">
+    <div class="text-white sm:hidden cursor-pointer">
       <fa-icon
         id="hamburgerMenu"
         (click)="openMenu()"
@@ -17,7 +25,8 @@
         [icon]="faTimes"
       ></fa-icon>
     </div>
-    <ul class="text-white hidden sm:flex">
+
+    <ul class="text-white hidden sm:flex items-center">
       <li
         class="px-4 focus:outline-none cursor-pointer font-Poppins text-lg"
         routerLinkActive="text-primary font-semibold"
@@ -39,6 +48,17 @@
       >
         contacto
       </li>
+      <div class="text-white px-4 cursor-pointer relative">
+        <div
+          class="w-5 h-5 bg-green-600 cartTaglg absolute flex flex-col justify-center items-center"
+        >
+          <span class="text-white text-xs font-bold">1</span>
+        </div>
+        <fa-icon [icon]="faShoppingCart" class="text-xl"></fa-icon>
+      </div>
+      <div class="cursor-pointer text-white px-4">
+        <fa-icon class="text-xl" [icon]="faUser"></fa-icon>
+      </div>
     </ul>
   </div>
   <div
@@ -46,7 +66,7 @@
     class="bg-black w-full h-24 absolute z-30 hidden slide-in-top"
   >
     <ul
-      class="text-xl flex flex-col text-white font-Poppins justify-center items-center"
+      class="text-xl flex flex-col text-white font-Poppins justify-center items-center cursor-pointer"
     >
       <li
         class="outline-none"
