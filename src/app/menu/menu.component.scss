@@ -4,3 +4,13 @@
 .input::placeholder {
   color: #4a5568;
 }
+.gridLayout {
+  grid-template-columns: 30% 60% 10%;
+  justify-items: center;
+}
+.filtersSquare {
+  width: 280px;
+}
+.tagsText {
+  font-size: 0.6rem;
+}

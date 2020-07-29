@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faSearch, faTimesCircle, faCircle } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-menu',
@@ -10,6 +10,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 export class MenuComponent implements OnInit {
   faAngleDown = faAngleDown;
   faSearch = faSearch;
+  faCircle = faCircle;
+  faTimesCircle = faTimesCircle;
   constructor() { }
 
   ngOnInit(): void {

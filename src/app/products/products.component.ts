@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-products',
@@ -7,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
   @Input() products;
+  faDollarSign = faDollarSign;
   constructor() { }
   ngOnInit(): void {
   }
