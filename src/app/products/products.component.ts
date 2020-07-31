@@ -7,10 +7,10 @@ import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  @Input() products;
+  @Input() products: any[];
+  @Input() filter: string;
   faDollarSign = faDollarSign;
   constructor() { }
   ngOnInit(): void {
   }
-
 }

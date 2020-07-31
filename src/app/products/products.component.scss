@@ -1,3 +1,9 @@
 .descriptionText {
   color: #bababa;
 }
+.bigger {
+  transition: 0.2s ease-in-out;
+}
+.bigger:hover {
+  transform: scale(1.05);
+}

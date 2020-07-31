@@ -93,10 +93,7 @@
               "src/assets",
               "src/manifest.webmanifest"
             ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },

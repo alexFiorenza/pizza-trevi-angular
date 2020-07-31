@@ -1,10 +1,12 @@
 <div
-  class="flex xl:w-1/2 lg:w-9/12 w-11/12 shadow-lg h-auto rounded-lg mt-8 mb-3"
+  class="flex xl:w-1/2 lg:w-9/12 bigger w-11/12 shadow-lg h-auto rounded-lg mt-8 mb-3 cursor-pointer"
+  *ngFor="let product of products"
 >
-  <div
-    class="bg-cover w-4/12 bg-gray-800 rounded-l-lg rounded"
-    style="background-image: url(../../../assets/cheddar.jpeg);"
-  ></div>
+  <img
+    class="w-4/12 rounded rounded-l-lg object-cover"
+    src="../../assets/cheddar.jpeg"
+    alt=""
+  />
   <div id="info" class="flex flex-col items-start w-8/12">
     <div class="lg:flex lg:items-end">
       <h2 class="font-Poppins font-medium text-gray-700 text-lg px-2 pt-3">
@@ -26,7 +28,7 @@
         class="cursor-default rounded-sm px-2 py-1 bg-green-500 text-white font-Poppins font-semibold focus:outline-none"
       >
         <fa-icon class="text-white" [icon]="faDollarSign"></fa-icon>
-        290
+        {{ product.price }}
       </button>
     </div>
   </div>

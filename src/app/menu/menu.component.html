@@ -4,7 +4,11 @@
       Filtros
     </h3>
     <div class="pr-2">
-      <fa-icon class="text-gray-700" [icon]="faAngleDown"></fa-icon>
+      <fa-icon
+        class="text-gray-700 cursor-pointer"
+        [icon]="faAngleDownIcon"
+        (click)="openFilters()"
+      ></fa-icon>
     </div>
     <div class="border border-gray-700 mt h-5"></div>
     <div class="font-Poppins font-medium px-2 resultText">
@@ -20,104 +24,116 @@
     <fa-icon class="text-gray-700" [icon]="faSearch"></fa-icon>
   </div>
 </div>
-<div class="w-full">
-  <div id="tags" class="lg:hidden flex items-center mx-3 mt-2 flex-wrap">
-    <div
-      class="bg-green-500 flex justify-between mb-2 pl-2 rounded-lg py-px mr-2"
-    >
-      <span class="text-white font-Poppins tagsText px-1 font-bold"
-        >Helados</span
-      >
-      <fa-icon
-        class="text-white tagsText px-1"
-        [icon]="faTimesCircle"
-      ></fa-icon>
-    </div>
-  </div>
-</div>
+
 <div class="w-full lg:flex">
-  <div class="hidden lg:flex lg:w-2/6 justify-center">
-    <div class="xl:w-5/12 w-10/12 shadow-xl flex flex-col px-5 py-5 my-4">
+  <div
+    #filters
+    class="mx-2 my-1 absolute w-full h-80 hidden lg:static lg:flex lg:w-2/6 justify-center"
+  >
+    <div
+      class="xl:w-5/12 bg-white shadow-xl w-10/12 flex flex-col px-5 py-5 my-4"
+    >
       <span class="font-Poppins font-semibold text-xl text-gray-800"
         >Filtros</span
       >
       <span class="text-xs resultText font-Poppins font-medium"
         >52 resultados</span
       >
-      <div id="tags" class="flex items-center my-1 flex-wrap">
-        <div
-          class="bg-green-500 flex justify-between mb-2 pl-2 rounded-lg py-px mr-2"
-        >
-          <span class="text-white font-Poppins tagsText px-1 font-bold"
+
+      <ul class="text-sm">
+        <div class="flex items-center my-1">
+          <div #icon1 class="text-gray-400 px-1 tagsText">
+            <fa-icon [icon]="faCircle"></fa-icon>
+          </div>
+
+          <span
+            class="cursor-pointer"
+            #lessprice
+            (click)="clickedTag(lessprice, icon1)"
+            >Menor precio</span
+          >
+        </div>
+        <div class="flex items-center my-1">
+          <div #icon2 class="text-gray-400 px-1 tagsText">
+            <fa-icon [icon]="faCircle"></fa-icon>
+          </div>
+          <span
+            class="cursor-pointer"
+            #maxprice
+            (click)="clickedTag(maxprice, icon2)"
+          >
+            Mayor precio</span
+          >
+        </div>
+        <div class="flex items-center my-1">
+          <div #icon3 class="text-gray-400 px-1 tagsText">
+            <fa-icon [icon]="faCircle"></fa-icon>
+          </div>
+          <span
+            class="cursor-pointer"
+            #hotsale
+            (click)="clickedTag(hotsale, icon3)"
+            >Más vendidas</span
+          >
+        </div>
+        <div class="flex items-center my-1">
+          <div #icon4 class="text-gray-400 px-1 tagsText">
+            <fa-icon [icon]="faCircle"></fa-icon>
+          </div>
+          <span
+            class="cursor-pointer"
+            #icecream
+            (click)="clickedTag(icecream, icon4)"
             >Helados</span
           >
-          <fa-icon
-            class="text-white tagsText px-1"
-            [icon]="faTimesCircle"
-          ></fa-icon>
         </div>
-      </div>
-      <ul class="text-sm">
-        <div class="flex items-center my-1 cursor-pointer">
-          <fa-icon
-            class="text-gray-400 px-1 tagsText opacity-"
-            [icon]="faCircle"
-          ></fa-icon>
-          Menor precio
+        <div class="flex items-center my-1">
+          <div #icon5 class="text-gray-400 px-1 tagsText">
+            <fa-icon [icon]="faCircle"></fa-icon>
+          </div>
+          <span
+            class="cursor-pointer"
+            #empanadas
+            (click)="clickedTag(empanadas, icon5)"
+            >Empanadas</span
+          >
         </div>
-        <div class="flex items-center my-1 cursor-pointer">
-          <fa-icon
-            class="text-gray-400 px-1 tagsText opacity-"
-            [icon]="faCircle"
-          ></fa-icon>
-          Mayor precio
+        <div class="flex items-center my-1">
+          <div #icon6 class="text-gray-400 px-1 tagsText">
+            <fa-icon [icon]="faCircle"></fa-icon>
+          </div>
+          <span
+            class="cursor-pointer"
+            #calzones
+            (click)="clickedTag(calzones, icon6)"
+            >Calzones</span
+          >
         </div>
-        <div class="flex items-center my-1 cursor-pointer">
-          <fa-icon
-            class="text-gray-400 px-1 tagsText opacity-"
-            [icon]="faCircle"
-          ></fa-icon>
-          Más vendidas
+        <div class="flex items-center my-1">
+          <div #icon7 class="text-gray-400 px-1 tagsText">
+            <fa-icon [icon]="faCircle"></fa-icon>
+          </div>
+          <span class="cursor-pointer" #pizza (click)="clickedTag(pizza, icon7)"
+            >Pizzas</span
+          >
         </div>
-        <div class="flex items-center my-1 cursor-pointer">
-          <fa-icon
-            class="text-gray-400 px-1 tagsText opacity-"
-            [icon]="faCircle"
-          ></fa-icon>
-          Helados
-        </div>
-        <div class="flex items-center my-1 cursor-pointer">
-          <fa-icon
-            class="text-gray-400 px-1 tagsText opacity-"
-            [icon]="faCircle"
-          ></fa-icon>
-          Empanadas
-        </div>
-        <div class="flex items-center my-1 cursor-pointer">
-          <fa-icon
-            class="text-gray-400 px-1 tagsText opacity-"
-            [icon]="faCircle"
-          ></fa-icon>
-          Calzones
-        </div>
-        <div class="flex items-center my-1 cursor-pointer">
-          <fa-icon
-            class="text-gray-400 px-1 tagsText opacity-"
-            [icon]="faCircle"
-          ></fa-icon>
-          Pizzas
-        </div>
-        <div class="flex items-center my-1 cursor-pointer">
-          <fa-icon
-            class="text-gray-400 px-1 tagsText opacity-"
-            [icon]="faCircle"
-          ></fa-icon>
-          Disponibles
+        <div class="flex items-center my-1">
+          <div #icon8 class="text-gray-400 px-1 tagsText">
+            <fa-icon [icon]="faCircle"></fa-icon>
+          </div>
+          <span
+            class="cursor-pointer"
+            #available
+            (click)="clickedTag(available, icon8)"
+            >Disponibles</span
+          >
         </div>
       </ul>
     </div>
   </div>
   <app-products
+    [products]="products"
+    [filter]="filter"
     class="flex flex-col items-center md:w-11/12 w-full lg:items-start lg:w-4/6"
   ></app-products>
 </div>
