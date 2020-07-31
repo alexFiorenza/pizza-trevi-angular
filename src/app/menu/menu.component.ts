@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { faAngleDown, faSearch, faTimesCircle, faCircle, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
@@ -14,28 +14,48 @@ export class MenuComponent implements OnInit {
   faCircle = faCircle;
   faTimesCircle = faTimesCircle;
   products: any[];
-  filter: string;
+  filtersArray: string[] = [];
   @ViewChild('filters') filtersPanel: ElementRef;
+  @ViewChild('maxprice') maxSpan: ElementRef;
+  @ViewChild('lessprice') lessSpan: ElementRef;
+  @ViewChild('icon1') iconLess: ElementRef;
+  @ViewChild('icon2') iconMax: ElementRef;
   constructor() { }
 
   ngOnInit(): void {
     this.products = [
       {
         price: 400,
+        type: 'Pizza'
       },
       {
         price: 290,
+        type: 'Helados'
       },
       {
         price: 100,
+        type: 'Helados'
       },
       {
         price: 600,
+        type: 'Calzones'
       },
     ];
   }
   clickedTag(tagName: HTMLElement, icon: HTMLElement) {
+    const maxSpanClass = this.maxSpan.nativeElement.classList.contains('font-bold');
+    const LessSpanClass = this.lessSpan.nativeElement.classList.contains('font-bold');
+
+    if (maxSpanClass && !LessSpanClass && tagName.textContent === 'Menor precio') {
+      this.maxSpan.nativeElement.className = 'cursor-pointer';
+      this.iconMax.nativeElement.className = 'text-gray-400 px-1 tagsText';
+    }
+    if (LessSpanClass && !maxSpanClass && tagName.textContent === 'Mayor precio') {
+      this.lessSpan.nativeElement.className = 'cursor-pointer';
+      this.iconLess.nativeElement.className = 'text-gray-400 px-1 tagsText';
+    }
     if (tagName.classList.contains('font-bold')) {
+      this.manageFilters(tagName.textContent);
       tagName.className = 'cursor-pointer';
       icon.className = 'text-gray-400 px-1 tagsText';
       return;
@@ -46,7 +66,7 @@ export class MenuComponent implements OnInit {
   }
   openFilters() {
     if (this.filtersPanel.nativeElement.classList.contains('block')) {
-      console.log('entered');
+
       this.filtersPanel.nativeElement.classList.remove('block');
       this.filtersPanel.nativeElement.classList.add('hidden');
       this.faAngleDownIcon = faAngleDown;
@@ -57,26 +77,40 @@ export class MenuComponent implements OnInit {
     this.filtersPanel.nativeElement.classList.add('block');
   }
   manageFilters(filter: string) {
-    this.filter = filter;
-    if (filter === 'Menor precio') {
-      const priceArray = [];
-      this.products.forEach(product => {
-        priceArray.push(product.price);
-      });
-      priceArray.sort((a, b) => {
-        return a - b;
-      });
-      return console.log(priceArray);
+    if (filter === 'Menor precio' && this.filtersArray.includes('Mayor precio')) {
+      const index = this.filtersArray.indexOf('Mayor precio');
+      this.filtersArray.splice(index, 1);
     }
-    if (filter === ' Mayor precio') {
-      const priceArray = [];
-      this.products.forEach(product => {
-        priceArray.push(product.price);
+    if (filter === 'Mayor precio' && this.filtersArray.includes('Menor precio')) {
+      const index = this.filtersArray.indexOf('Menor precio');
+      this.filtersArray.splice(index, 1);
+    }
+    if (this.filtersArray.includes(filter)) {
+      const index = this.filtersArray.indexOf(filter);
+      this.filtersArray.splice(index, 1);
+      this.applyChecks(filter);
+      return;
+    } else {
+      this.filtersArray.push(filter);
+      this.applyChecks(filter);
+      return this.filtersArray;
+    }
+  }
+
+  /*TODO  Start filters*/
+  applyChecks(filterText) {
+    if (filterText !== 'Menor precio' || filterText !== 'Mayor precio') {
+      // this.products = this.products.filter(p => {
+      //   if (p.type === filterText) {
+      //     return p;
+      //   }
+      // });
+      const ProductFiltered = this.products.filter(p => {
+        if (p.type === filterText) {
+          return p;
+        }
       });
-      priceArray.sort((a, b) => {
-        return b - a;
-      });
-      return console.log(priceArray);
+      console.log(ProductFiltered);
     }
   }
 }

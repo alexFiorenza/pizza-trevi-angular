@@ -1,6 +1,6 @@
 <header>
   <div class="w-full bg-black h-20 flex items-center justify-between px-4">
-    <div class="text-white sm:hidden relative">
+    <div class="text-white md:hidden relative">
       <div
         class="w-6 h-6 bg-green-600 cartTag absolute flex flex-col justify-center items-center"
       >
@@ -11,7 +11,7 @@
     <div class="pl-4">
       <img class="w-12" src="../../../assets/brand.png" alt="" />
     </div>
-    <div class="text-white sm:hidden cursor-pointer">
+    <div class="text-white md:hidden cursor-pointer">
       <fa-icon
         id="hamburgerMenu"
         (click)="openMenu()"
@@ -26,7 +26,7 @@
       ></fa-icon>
     </div>
 
-    <ul class="text-white hidden sm:flex items-center">
+    <ul class="text-white hidden md:flex items-center">
       <li
         class="px-4 focus:outline-none cursor-pointer font-Poppins text-lg"
         routerLinkActive="text-primary font-semibold"
@@ -57,7 +57,11 @@
         <fa-icon [icon]="faShoppingCart" class="text-xl"></fa-icon>
       </div>
       <div class="cursor-pointer text-white px-4">
-        <fa-icon class="text-xl" [icon]="faUser"></fa-icon>
+        <fa-icon
+          routerLink="panel/login"
+          class="text-xl outline-none"
+          [icon]="faUser"
+        ></fa-icon>
       </div>
     </ul>
   </div>

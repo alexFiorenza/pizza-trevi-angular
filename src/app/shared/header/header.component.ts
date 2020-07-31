@@ -37,7 +37,6 @@ export class HeaderComponent implements OnInit {
       menuBar.classList.add('block');
       menuBar.classList.remove('hidden');
       crossBar.classList.remove('hidden')
-
     }
   }
 }

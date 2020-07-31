@@ -1,7 +1,6 @@
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -19,6 +18,10 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent
+  },
+  {
+    path: 'panel',
+    loadChildren: () => import('./users-panel/users-panel.module').then(m => m.UsersPanelModule)
   }
 ];
 
