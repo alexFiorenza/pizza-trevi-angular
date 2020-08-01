@@ -1,57 +1,90 @@
-<div class="w-full h-full flex justify-center items-center">
+<div
+  class="w-full flex justify-center items-center flex-col md:flex-row md:my-0 md:h-screen"
+>
   <img
-    class="imgSize rounded-lg bg-gray-700 h-80 object-cover hidden md:block"
+    class="imgSize rounded-lg bg-gray-700 h-80 object-cover hidden md:block z-20 fade-in-fwd"
     src="../../assets/login-pizza.jpg"
     alt=""
   />
-  <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-    <div class="bg-white shadow-md rounded py-6 px-8 my-40 h-auto md:-ml-12">
-      <div class="mb-5">
-        <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-        <input
-          formControlName="email"
-          type="email"
-          placeholder="Escribe tu email "
-          class="text-gray-700 focus:outline-none w-full shadow border rounded py-2 px-3 focus:shadow-outline"
-        />
-        <p
-          class="text-red-500 text-xs italic mt-2"
-          *ngIf="
-            this.form.get('email').touched && this.form.get('email').invalid
-          "
-        >
-          Escribi un email validó
-        </p>
-      </div>
-      <div class="mb-5">
-        <label class="block text-gray-700 text-sm font-bold mb-2"
-          >Contraseña</label
-        >
-        <input
-          formControlName="password"
-          type="password"
-          placeholder="Escribe tu contraseña "
-          class="text-gray-700 focus:outline-none w-full shadow border rounded py-2 px-3 focus:shadow-outline"
-        />
-        <p
-          class="text-red-500 text-xs italic mt-2"
-          *ngIf="
-            this.form.get('password').touched &&
-            this.form.get('password').invalid
-          "
-        >
-          Escribi una contraseña valida
-        </p>
-      </div>
 
-      <button
-        [disabled]="!this.form.valid"
-        [ngClass]="{ 'opacity-50': !this.form.valid }"
-        class="focus:outline-none w-full rounded-md font-semibold text-center bg-blue-500 text-white py-2"
-        type="submit"
+  <div
+    class="flex flex-col -my-12 md:my-40 z-30 w-10/12 md:w-auto mt-40 md:h-auto h-screen fade-in-fwd"
+  >
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+      <div class="bg-white shadow-md rounded py-6 px-8 h-auto md:-ml-12">
+        <div class="mb-5">
+          <label class="block text-gray-700 text-sm font-bold mb-2"
+            >Email</label
+          >
+          <input
+            [ngClass]="{
+              'border-red-500':
+                this.form.get('email').touched && this.form.get('email').invalid
+            }"
+            formControlName="email"
+            type="email"
+            placeholder="Escribe tu email "
+            class="text-sm text-gray-700 focus:outline-none w-full shadow border rounded py-2 px-3 focus:shadow-outlineGreen"
+          />
+          <p
+            class="text-red-500 text-xs italic mt-2"
+            *ngIf="
+              this.form.get('email').touched && this.form.get('email').invalid
+            "
+          >
+            Escribí un email valido
+          </p>
+        </div>
+        <div class="mb-5">
+          <label class="block text-gray-700 text-sm font-bold mb-2"
+            >Contraseña</label
+          >
+          <input
+            [ngClass]="{
+              'border-red-500':
+                this.form.get('password').touched &&
+                this.form.get('password').invalid
+            }"
+            formControlName="password"
+            type="password"
+            placeholder="Escribe tu contraseña "
+            class="text-sm text-gray-700 focus:outline-none w-full shadow border rounded py-2 px-3 focus:shadow-outlineGreen"
+          />
+          <p
+            class="text-red-500 text-xs italic mt-2"
+            *ngIf="
+              this.form.get('password').touched &&
+              this.form.get('password').invalid
+            "
+          >
+            Escribí una contraseña valida
+          </p>
+        </div>
+
+        <button
+          [disabled]="!this.form.valid"
+          [ngClass]="{ 'opacity-50': !this.form.valid }"
+          class="focus:outline-none w-full rounded-md font-semibold text-center bg-green-500 text-white py-2"
+          type="submit"
+        >
+          Iniciar sesion
+        </button>
+      </div>
+    </form>
+    <div
+      class="flex bg-white shadow-md rounded justify-center md:py-6 py-4 px-8 h-auto md:-ml-12 mt-4"
+    >
+      <span class="text-gray-600 px-2 hidden md:block"
+        >¿No tenes una cuenta?</span
       >
-        Iniciar sesion
-      </button>
+      <a class="text-green-500 font-bold md:font-normal" routerLink="/register"
+        >Registrate</a
+      >
     </div>
-  </form>
+  </div>
+  <img
+    class="block absolute w-full h-full object-cover grayScale"
+    src="../../../assets/hemant-latawa-IfQlwNqJqV8-unsplash.jpg"
+    alt=""
+  />
 </div>
