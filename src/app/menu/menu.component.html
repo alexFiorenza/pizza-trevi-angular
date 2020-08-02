@@ -140,10 +140,17 @@
         placeholder="Busca una pizza"
       />
     </div>
-
-    <app-products
-      [products]="products"
-      class="flex flex-col items-center md:w-11/12 w-full lg:items-start"
-    ></app-products>
+    <div *ngIf="this.productsFiltered.length > 0">
+      <app-products
+        [products]="productsFiltered"
+        class="flex flex-col items-center md:w-11/12 w-full lg:items-start"
+      ></app-products>
+    </div>
+    <div *ngIf="this.productsFiltered.length === 0">
+      <app-products
+        [products]="products"
+        class="flex flex-col items-center md:w-11/12 w-full lg:items-start"
+      ></app-products>
+    </div>
   </div>
 </div>

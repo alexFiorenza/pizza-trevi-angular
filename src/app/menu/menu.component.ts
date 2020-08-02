@@ -14,6 +14,7 @@ export class MenuComponent implements OnInit {
   faCircle = faCircle;
   faTimesCircle = faTimesCircle;
   products: any[];
+  productsFiltered: any[] = [];
   filtersArray: string[] = [];
   @ViewChild('filters') filtersPanel: ElementRef;
   @ViewChild('maxprice') maxSpan: ElementRef;
@@ -23,24 +24,40 @@ export class MenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
     this.products = [
       {
         price: 400,
-        type: 'Pizza'
-      },
-      {
-        price: 290,
-        type: 'Helados'
-      },
-      {
-        price: 100,
-        type: 'Helados'
+        type: 'Pizzas',
+        name: 'Napolitana'
       },
       {
         price: 600,
-        type: 'Calzones'
+        type: 'Pizzas',
+        name: 'Muzarella'
       },
+      {
+        price: 290,
+        type: 'Helados',
+        name: 'Frutilla a la crema'
+      },
+      {
+        price: 100,
+        type: 'Helados',
+        name: 'Chocolate'
+      },
+      {
+        price: 600,
+        type: 'Calzones',
+        name: 'Primavera'
+      },
+      {
+        price: 300,
+        type: 'Empanadas',
+        name: 'Carne'
+      }
     ];
+
   }
   clickedTag(tagName: HTMLElement, icon: HTMLElement) {
     const maxSpanClass = this.maxSpan.nativeElement.classList.contains('font-bold');
@@ -77,18 +94,17 @@ export class MenuComponent implements OnInit {
     this.filtersPanel.nativeElement.classList.add('block');
   }
   manageFilters(filter: string) {
-    if (filter === 'Menor precio' && this.filtersArray.includes('Mayor precio')) {
-      const index = this.filtersArray.indexOf('Mayor precio');
-      this.filtersArray.splice(index, 1);
-    }
-    if (filter === 'Mayor precio' && this.filtersArray.includes('Menor precio')) {
-      const index = this.filtersArray.indexOf('Menor precio');
+    if (filter === 'Menor precio' || this.filtersArray.includes('Mayor precio')) {
+      const index = this.filtersArray.indexOf(filter);
       this.filtersArray.splice(index, 1);
     }
     if (this.filtersArray.includes(filter)) {
       const index = this.filtersArray.indexOf(filter);
       this.filtersArray.splice(index, 1);
-      this.applyChecks(filter);
+      this.productsFiltered = this.productsFiltered.filter(p => {
+        return p.type !== filter;
+      });
+      console.log(this.productsFiltered);
       return;
     } else {
       this.filtersArray.push(filter);
@@ -97,20 +113,24 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  /*TODO  Start filters*/
+  /*TODO  finish price  filters*/
   applyChecks(filterText) {
+
     if (filterText !== 'Menor precio' || filterText !== 'Mayor precio') {
-      // this.products = this.products.filter(p => {
-      //   if (p.type === filterText) {
-      //     return p;
-      //   }
-      // });
-      const ProductFiltered = this.products.filter(p => {
-        if (p.type === filterText) {
-          return p;
+      let tmpArray = [];
+      tmpArray = this.products.filter(p => {
+        if (filterText !== 'Más vendidas' || filterText !== 'Disponibles') {
+          return p.type === filterText;
         }
       });
-      console.log(ProductFiltered);
+      tmpArray.forEach(p => {
+        if (this.productsFiltered.includes(p)) {
+          const index = tmpArray.indexOf(p);
+          tmpArray.splice(index, 1);
+        }
+        this.productsFiltered.push(p);
+
+      });
     }
   }
 }
