@@ -25,3 +25,38 @@
     border-radius: 99%;
   }
 }
+.toggler {
+  width: 30px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 50;
+  opacity: 0;
+}
+.hamburgerMenu .line {
+  position: relative;
+  width: 30px;
+  height: 2px;
+  background-color: white;
+  transition: all 0.4s ease;
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    top: -10px;
+    background-color: inherit;
+  }
+  &::after {
+    top: 10px;
+  }
+}
+.toggler:checked + .hamburgerMenu > div {
+  transform: rotate(135deg);
+}
+.toggler:checked + .hamburgerMenu > div::before,
+.toggler:checked + .hamburgerMenu > div::after {
+  top: 0;
+  transform: rotate(90deg);
+}

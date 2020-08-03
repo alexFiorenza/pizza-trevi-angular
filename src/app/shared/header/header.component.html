@@ -1,31 +1,32 @@
 <header>
   <div
-    class="w-full bg-black h-20 flex items-center justify-between px-4 absolute z-50 top-0"
+    class="w-full bg-black h-20 flex items-center justify-between px-4 absolute z-40 top-0"
   >
-    <div class="text-white md:hidden relative">
+    <div class="text-white md:hidden relative mt-2">
       <div
         class="w-6 h-6 bg-green-600 cartTag absolute flex flex-col justify-center items-center"
       >
         <span class="text-white text-xs font-bold">2</span>
       </div>
-      <fa-icon [icon]="faShoppingCart" class="text-3xl"></fa-icon>
+      <fa-icon [icon]="faShoppingCart" class="text-3xl mt-2"></fa-icon>
     </div>
     <div class="pl-4">
       <img class="w-12" src="../../../assets/brand.png" alt="" />
     </div>
-    <div class="text-white md:hidden cursor-pointer">
-      <fa-icon
-        id="hamburgerMenu"
+    <div class="text-white md:hidden cursor-pointer h-8">
+      <input
+        type="checkbox"
+        class="h-full toggler cursor-pointer"
         (click)="openMenu()"
-        class="text-3xl block"
-        [icon]="faBars"
-      ></fa-icon>
-      <fa-icon
-        id="crossMenu"
-        (click)="openMenu()"
-        class="text-3xl hidden"
-        [icon]="faTimes"
-      ></fa-icon>
+        name=""
+        id=""
+      />
+      <div
+        id="hamburger"
+        class="hamburgerMenu flex flex-col justify-center items-center h-8"
+      >
+        <div class="line"></div>
+      </div>
     </div>
 
     <ul class="text-white hidden md:flex items-center">
@@ -69,7 +70,7 @@
   </div>
   <div
     id="mobileMenu"
-    class="bg-black absolute w-full h-auto hidden slide-in-top top-0 z-50 mt-20"
+    class="flex-col items-center bg-black absolute w-full h-auto hidden slide-in-top top-0 z-50 mt-20"
   >
     <ul
       class="px-4 text-xl flex flex-col text-white font-Poppins justify-center items-start cursor-pointer"

@@ -55,6 +55,11 @@ export class MenuComponent implements OnInit {
         price: 300,
         type: 'Empanadas',
         name: 'Carne'
+      },
+      {
+        price: 300,
+        type: 'Empanadas',
+        name: 'Jamon y queso'
       }
     ];
 
