@@ -1,3 +1,73 @@
-<div class="mt-20">
-  register works
+<div class="flex">
+  <!-- <div id="mapBox" class="w-full changeHeight bg-red-500 "></div> -->
+  <div class="w-1/2 h-screen">
+    <img
+      class="w-full h-full object-cover grayScale"
+      src="../../../assets/pizza-wallpaper.jpg"
+      alt=""
+    />
+  </div>
+  <div class="w-1/2 bg-gray-900 h-screen flex flex-col items-center">
+    <form
+      [formGroup]="form"
+      class="flex flex-col w-10/12 mt-48 items-start xl:ml-56"
+    >
+      <div #name class="flex flex-col w-11/12 mb-8 xl:w-6/12">
+        <label
+          class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
+          >Nombre</label
+        >
+        <input
+          type="text"
+          placeholder="Escribí tu nombre completo"
+          class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+        />
+        <div class="w-full lineHeight pr-2"></div>
+      </div>
+      <div #phone class="flex flex-col w-11/12 mb-8 xl:w-6/12">
+        <label
+          class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
+          >Numero de celular</label
+        >
+        <input
+          type="number"
+          placeholder="Numero de contacto"
+          class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+        />
+        <div class="w-full lineHeight pr-2"></div>
+      </div>
+      <div #email class="flex flex-col w-11/12 mb-8 xl:w-6/12">
+        <label
+          class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
+          >Email</label
+        >
+        <input
+          type="email"
+          placeholder="Escribí tu dirección de correo electronico"
+          class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+        />
+        <div class="w-full lineHeight pr-2"></div>
+      </div>
+      <div #password class="flex flex-col w-11/12 mb-8 xl:w-6/12">
+        <label
+          class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
+          >Contraseña</label
+        >
+        <input
+          type="password"
+          placeholder="*********************"
+          class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+        />
+        <div class="w-full lineHeight pr-2"></div>
+      </div>
+      <div class="flex w-11/12 xl:w-6/12 flex-row-reverse">
+        <button
+          class="px-3 py-2 bg-green-600 text-white font-medium rounded-sm focus:outline-none"
+        >
+          Siguiente
+          <fa-icon [icon]="faArrow" class="text-white text-sm px-1"></fa-icon>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

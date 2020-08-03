@@ -23,8 +23,8 @@ import { ProductsComponent } from './products/products.component';
     BrowserModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     FontAwesomeModule,
-    SharedModule,
     UsersPanelModule,
+    SharedModule,
     APP_ROUTES
   ],
   providers: [],
