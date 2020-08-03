@@ -21,11 +21,11 @@ export class HeaderComponent implements OnInit {
   }
   openMenu() {
     const menuBar = document.getElementById('mobileMenu');
-    if (menuBar.classList.contains('block')) {
-      menuBar.classList.remove('block');
+    if (menuBar.classList.contains('flex')) {
+      menuBar.classList.remove('flex');
       menuBar.classList.add('hidden');
     } else {
-      menuBar.classList.add('block');
+      menuBar.classList.add('flex');
       menuBar.classList.remove('hidden');
     }
   }
