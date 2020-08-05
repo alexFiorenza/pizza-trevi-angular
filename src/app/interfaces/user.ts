@@ -1,9 +1,10 @@
 export interface User {
-    name: String;
-    email: String;
-    direction: String;
-    extraInfo: String;
-    passsword: String;
-    role: String;
+    name: string;
+    email: string;
+    direction: string;
+    extraInfo: string;
+    passsword: string;
+    phone: number;
+    role: string;
     date: Date;
 }

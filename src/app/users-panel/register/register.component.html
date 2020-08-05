@@ -1,73 +1,283 @@
+<div #loading class="h-screen w-screen absolute hidden">
+  <div class="h-full w-full absolute flex justify-center items-center z-50">
+    <div class="loadingio-spinner-rolling-dhecfw4wr9b" *ngIf="!registerLoading">
+      <div class="ldio-umsaczpvz0f">
+        <div></div>
+      </div>
+    </div>
+
+    <svg
+      *ngIf="registerLoading && !registerError"
+      class="checkmark absolute"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 52 52"
+    >
+      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+      <path
+        class="checkmark__check"
+        fill="none"
+        d="M14.1 27.2l7.1 7.2 16.7-16.8"
+      />
+    </svg>
+    <svg
+      id="cross"
+      *ngIf="registerError"
+      class="absolute"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 130.2 130.2"
+    >
+      <circle
+        class="path circle"
+        fill="none"
+        stroke="#D06079"
+        stroke-width="6"
+        stroke-miterlimit="10"
+        cx="65.1"
+        cy="65.1"
+        r="62.1"
+      />
+      <line
+        class="path line"
+        fill="none"
+        stroke="#D06079"
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-miterlimit="10"
+        x1="34.4"
+        y1="37.9"
+        x2="95.8"
+        y2="92.3"
+      />
+      <line
+        class="path line"
+        fill="none"
+        stroke="#D06079"
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-miterlimit="10"
+        x1="95.8"
+        y1="38"
+        x2="34.4"
+        y2="92.2"
+      />
+    </svg>
+  </div>
+
+  <div class="bg-black opacity-50 h-screen w-screen absolute z-40"></div>
+</div>
+
 <div class="flex">
-  <!-- <div id="mapBox" class="w-full changeHeight bg-red-500 "></div> -->
-  <div class="w-1/2 h-screen">
+  <div class="w-1/2 h-screen object-cover hidden lg:block">
     <img
       class="w-full h-full object-cover grayScale"
       src="../../../assets/pizza-wallpaper.jpg"
       alt=""
     />
   </div>
-  <div class="w-1/2 bg-gray-900 h-screen flex flex-col items-center">
-    <form
-      [formGroup]="form"
-      class="flex flex-col w-10/12 mt-48 items-start xl:ml-56"
+  <img
+    class="w-full h-full object-cover grayScale absolute lg:hidden"
+    src="../../../assets/pizza-wallpaper.jpg"
+    alt=""
+  />
+  <div
+    class="h-screen w-11/12 mx-auto flex flex-col items-center justify-center lg:w-1/2 z-30"
+  >
+    <div
+      class="mt-20 lg:m-0 justify-center lg:justify-start w-full h-auto lg:rounded-none rounded-lg bg-gray-900 lg:h-screen flex flex-col items-center overflow-hidden"
     >
-      <div #name class="flex flex-col w-11/12 mb-8 xl:w-6/12">
-        <label
-          class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
-          >Nombre</label
+      <form
+        #registerForm
+        [formGroup]="form"
+        class="flex flex-col w-10/12 lg:mt-48 items-center lg:items-start xl:mr-32 xl:w-1/2 py-8"
+      >
+        <div #name class="flex flex-col w-11/12 mb-8 xl:w-full">
+          <label
+            class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
+            >Nombre</label
+          >
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="Escribí tu nombre completo"
+            class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+          />
+          <div
+            [ngClass]="{
+              lineHeightModified:
+                this.form.get('name').touched && this.form.get('name').invalid
+            }"
+            class="w-full lineHeight pr-2"
+          ></div>
+          <p
+            class="text-red-500 text-xs italic mt-2"
+            *ngIf="
+              this.form.get('name').touched && this.form.get('name').invalid
+            "
+          >
+            Escribí un nombre valido
+          </p>
+        </div>
+        <div #phone class="flex flex-col w-11/12 mb-8 xl:w-full">
+          <label
+            class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
+            >Número de celular</label
+          >
+          <input
+            type="number"
+            formControlName="phone"
+            placeholder="Numero de contacto"
+            class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+          />
+          <div
+            [ngClass]="{
+              lineHeightModified:
+                this.form.get('phone').touched && this.form.get('phone').invalid
+            }"
+            class="w-full lineHeight pr-2"
+          ></div>
+          <p
+            class="text-red-500 text-xs italic mt-2"
+            *ngIf="
+              this.form.get('phone').touched && this.form.get('phone').invalid
+            "
+          >
+            Necesitamos un número de contacto
+          </p>
+        </div>
+        <div #email class="flex flex-col w-11/12 mb-8 xl:w-full">
+          <label
+            class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
+            >Email</label
+          >
+
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Escribí tu dirección de correo electronico"
+            class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+          />
+          <div
+            [ngClass]="{
+              lineHeightModified:
+                this.form.get('email').touched && this.form.get('email').invalid
+            }"
+            class="w-full lineHeight pr-2"
+          ></div>
+          <p
+            class="text-red-500 text-xs italic mt-2"
+            *ngIf="
+              this.form.get('email').touched && this.form.get('email').invalid
+            "
+          >
+            Escribí un email valido
+          </p>
+        </div>
+
+        <div #password class="flex flex-col w-11/12 mb-8 xl:w-full">
+          <label
+            class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
+            >Contraseña</label
+          >
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="*********************"
+            class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+          />
+          <div
+            [ngClass]="{
+              lineHeightModified:
+                this.form.get('password').touched &&
+                this.form.get('password').invalid
+            }"
+            class="w-full lineHeight pr-2"
+          ></div>
+          <p
+            class="text-red-500 text-xs italic mt-2"
+            *ngIf="
+              this.form.get('password').touched &&
+              this.form.get('password').invalid
+            "
+          >
+            Escribí una contraseña valida
+          </p>
+        </div>
+        <div
+          [formGroup]="form"
+          #directions
+          class="flex lg:flex-no-wrap flex-wrap w-11/12 mb-4 xl:w-full"
         >
-        <input
-          type="text"
-          placeholder="Escribí tu nombre completo"
-          class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
-        />
-        <div class="w-full lineHeight pr-2"></div>
-      </div>
-      <div #phone class="flex flex-col w-11/12 mb-8 xl:w-6/12">
-        <label
-          class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
-          >Numero de celular</label
-        >
-        <input
-          type="number"
-          placeholder="Numero de contacto"
-          class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
-        />
-        <div class="w-full lineHeight pr-2"></div>
-      </div>
-      <div #email class="flex flex-col w-11/12 mb-8 xl:w-6/12">
-        <label
-          class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
-          >Email</label
-        >
-        <input
-          type="email"
-          placeholder="Escribí tu dirección de correo electronico"
-          class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
-        />
-        <div class="w-full lineHeight pr-2"></div>
-      </div>
-      <div #password class="flex flex-col w-11/12 mb-8 xl:w-6/12">
-        <label
-          class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
-          >Contraseña</label
-        >
-        <input
-          type="password"
-          placeholder="*********************"
-          class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
-        />
-        <div class="w-full lineHeight pr-2"></div>
-      </div>
-      <div class="flex w-11/12 xl:w-6/12 flex-row-reverse">
-        <button
-          class="px-3 py-2 bg-green-600 text-white font-medium rounded-sm focus:outline-none"
-        >
-          Siguiente
-          <fa-icon [icon]="faArrow" class="text-white text-sm px-1"></fa-icon>
-        </button>
-      </div>
-    </form>
+          <div class="flex flex-col w-full lg:w-1/2 mb-4">
+            <label
+              class="text-sm lg:text-xs text-white font-Poppins font-semibold uppercase tracking-widest"
+              >Dirección</label
+            >
+            <input
+              type="text"
+              formControlName="direction"
+              placeholder="Escribi tu direccion completa"
+              class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+            />
+            <div
+              [ngClass]="{
+                lineHeightModified:
+                  this.form.get('direction').touched &&
+                  this.form.get('direction').invalid
+              }"
+              class="w-full lineHeight pr-2"
+            ></div>
+            <p
+              class="text-red-500 text-xs italic mt-2"
+              *ngIf="
+                this.form.get('direction').touched &&
+                this.form.get('direction').invalid
+              "
+            >
+              Escribí una dirección valida
+            </p>
+          </div>
+          <div class="flex flex-col w-full lg:w-1/2 lg:ml-4 mb-4 lg:mb-0">
+            <label
+              class="text-sm lg:text-xs text-white font-Poppins font-semibold uppercase tracking-widest"
+              >Información extra</label
+            >
+            <input
+              type="text"
+              formControlName="extraInfo"
+              placeholder="Entrecalles, casa o departamento"
+              class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+            />
+            <div
+              [ngClass]="{
+                lineHeightModified:
+                  this.form.get('extraInfo').touched &&
+                  this.form.get('extraInfo').invalid
+              }"
+              class="w-full lineHeight pr-2"
+            ></div>
+            <p
+              class="text-red-500 text-xs italic mt-2"
+              *ngIf="
+                this.form.get('extraInfo').touched &&
+                this.form.get('extraInfo').invalid
+              "
+            >
+              Necesitamos datos validos
+            </p>
+          </div>
+        </div>
+
+        <div class="flex w-11/12 xl:w-full flex-row-reverse">
+          <button
+            id="next"
+            (click)="onSubmit(registerForm)"
+            class="w-full px-3 py-2 bg-green-600 text-white font-Poppins font-medium rounded-sm focus:outline-none"
+          >
+            Registrarse
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

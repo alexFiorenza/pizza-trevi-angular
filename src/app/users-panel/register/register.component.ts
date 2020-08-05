@@ -1,9 +1,11 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { UserService } from './../services/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 
 import * as mapboxgl from 'mapbox-gl';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,20 +13,51 @@ import * as mapboxgl from 'mapbox-gl';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  @ViewChild('registerForm') private form1: ElementRef;
+  @ViewChild('placeForm') private form2: ElementRef;
+  @ViewChild('loading') private loadingScreen: ElementRef;
+  registerLoading = false;
+  registerError = false;
   faArrow = faArrowCircleRight;
   map: mapboxgl.map;
   form: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({})
+  constructor(private formBuilder: FormBuilder, private route: Router, private userService: UserService) {
+    this.form = this.formBuilder.group({
+      name: ['', [Validators.maxLength(30), Validators.minLength(2), Validators.required]],
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.minLength(8), Validators.required]],
+      direction: ['', Validators.required],
+      extraInfo: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {
-    // mapboxgl.accessToken = 'pk.eyJ1IjoiYWxleC1maW9yZW56YSIsImEiOiJja2RldXV0cW0xbXVmMnhwOHltM25pdjJ5In0.bUtGd9k5KAAa0vbvGNDbJw';
-    // this.map = new mapboxgl.Map({
-    //   container: 'mapBox',
-    //   style: 'mapbox://styles/mapbox/streets-v11',
-    //   center: [-58.4224035, -34.7616737],
-    //   zoom: 20.25
-    // });
+
+  }
+  onSubmit(form) {
+    const userData = this.form.value;
+    console.log(form);
+    this.loadingScreen.nativeElement.classList.remove('hidden');
+    this.loadingScreen.nativeElement.classList.add('block');
+
+    return this.userService.registerUser(userData).subscribe((data: any) => {
+      if (data.ok) {
+        this.registerLoading = true;
+        this.registerError = false;
+        setTimeout(() => {
+          return this.route.navigate(['login']);
+        }, 1200);
+      }
+    }, err => {
+      if (!err.error.ok) {
+        this.registerLoading = true;
+        this.registerError = true;
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+        console.log(new Error('An error in the request had occured'));
+      }
+    });
   }
 }
