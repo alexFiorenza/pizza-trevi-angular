@@ -1,3 +1,71 @@
+<div #loading class="h-screen w-screen absolute hidden">
+  <div class="h-full w-full absolute flex justify-center items-center z-50">
+    <div class="loadingio-spinner-rolling-dhecfw4wr9b" *ngIf="!registerLoading">
+      <div class="ldio-umsaczpvz0f">
+        <div></div>
+      </div>
+    </div>
+
+    <svg
+      *ngIf="registerLoading && !registerError"
+      class="checkmark absolute"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 52 52"
+    >
+      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+      <path
+        class="checkmark__check"
+        fill="none"
+        d="M14.1 27.2l7.1 7.2 16.7-16.8"
+      />
+    </svg>
+    <svg
+      id="cross"
+      *ngIf="registerError"
+      class="absolute"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 130.2 130.2"
+    >
+      <circle
+        class="path circle"
+        fill="none"
+        stroke="#D06079"
+        stroke-width="6"
+        stroke-miterlimit="10"
+        cx="65.1"
+        cy="65.1"
+        r="62.1"
+      />
+      <line
+        class="path line"
+        fill="none"
+        stroke="#D06079"
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-miterlimit="10"
+        x1="34.4"
+        y1="37.9"
+        x2="95.8"
+        y2="92.3"
+      />
+      <line
+        class="path line"
+        fill="none"
+        stroke="#D06079"
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-miterlimit="10"
+        x1="95.8"
+        y1="38"
+        x2="34.4"
+        y2="92.2"
+      />
+    </svg>
+  </div>
+
+  <div class="bg-black opacity-75 h-screen w-screen absolute z-40"></div>
+</div>
 <div
   class="w-full flex justify-center items-center flex-col md:flex-row md:my-0 md:h-screen"
 >

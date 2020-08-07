@@ -20,7 +20,7 @@ const routes: Routes = [
     component: MenuComponent
   },
   {
-    path: 'panel',
+    path: '',
     loadChildren: () => import('./users-panel/users-panel.module').then(m => m.UsersPanelModule)
   }
 ];
