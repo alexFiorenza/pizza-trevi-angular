@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
@@ -21,6 +22,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     FontAwesomeModule,
     CommonModule,
     USER_ROUTES,
+    SharedModule,
     ReactiveFormsModule,
     HttpClientModule,
     JwtModule

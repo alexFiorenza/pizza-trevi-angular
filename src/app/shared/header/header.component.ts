@@ -1,6 +1,8 @@
-import { faBars, faAd, faPizzaSlice, faTimes, faHome, faShoppingCart, faAddressCard, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { faBars, faPizzaSlice, faTimes, faHome, faShoppingCart, faAddressCard, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit } from '@angular/core';
+
+
+
 
 @Component({
   selector: 'app-header',
@@ -15,10 +17,13 @@ export class HeaderComponent implements OnInit {
   faPizzaSlice = faPizzaSlice;
   faAddressCard = faAddressCard;
   faShoppingCart = faShoppingCart;
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
   openMenu() {
     const menuBar = document.getElementById('mobileMenu');
     if (menuBar.classList.contains('flex')) {

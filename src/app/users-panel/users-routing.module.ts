@@ -1,3 +1,4 @@
+import { AdminComponent } from './admin/admin.component';
 import { APP_ROUTES } from './../app-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'panel',
+    component: AdminComponent
   }
 ];
 
