@@ -271,6 +271,8 @@
         <div class="flex w-11/12 xl:w-full flex-row-reverse">
           <button
             id="next"
+            [disabled]="!this.form.valid"
+          [ngClass]="{ 'opacity-50': !this.form.valid }"
             (click)="onSubmit(registerForm)"
             class="w-full px-3 py-2 bg-green-600 text-white font-Poppins font-medium rounded-sm focus:outline-none"
           >
