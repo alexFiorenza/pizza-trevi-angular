@@ -63,7 +63,7 @@ export class MenuComponent implements OnInit {
         hot: true,
       },
       {
-        price: 300,
+        price: 320,
         type: 'Empanadas',
         name: 'Carne',
         available: false,
@@ -118,7 +118,7 @@ export class MenuComponent implements OnInit {
   }
   // tslint:disable-next-line: no-shadowed-variable
   manageFilters(filter: string) {
-    console.log(this.filtersArray);
+
     if (this.filtersArray.includes(filter)) {
       const index = this.filtersArray.indexOf(filter);
       this.filtersArray.splice(index, 1);
@@ -139,13 +139,11 @@ export class MenuComponent implements OnInit {
       return this.otherFilters(filter);
     } else {
       this.filtersArray.push(filter);
-      this.applyChecks(filter);
+      this.typeFilters(filter);
       return this.filtersArray;
     }
   }
-
-  /*TODO  finish price  filters*/
-  applyChecks(filterText) {
+  typeFilters(filterText) {
     let tmpArray = [];
     if (this.filtersArray.includes('Menor precio') || this.filtersArray.includes('Mayor precio')
       || this.filtersArray.includes('Disponibles') || this.filtersArray.includes('Más vendidas')) {
@@ -161,7 +159,8 @@ export class MenuComponent implements OnInit {
       }
       if (this.filtersArray.includes('Disponibles')) {
         filter = 'Disponibles';
-      } else {
+      }
+      if (this.filtersArray.includes('Mayor precio')) {
         filter = 'Mayor precio';
       }
       tmpArray = this.products.filter(p => {
@@ -190,7 +189,7 @@ export class MenuComponent implements OnInit {
       }
       this.productsFiltered.push(p);
     });
-    console.log(this.productsFiltered);
+
   }
   otherFilters(filterText) {
     let tmpArray = [];
