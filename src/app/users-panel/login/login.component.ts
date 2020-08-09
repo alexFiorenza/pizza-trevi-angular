@@ -28,8 +28,7 @@ export class LoginComponent implements OnInit {
     this.loadingScreen.nativeElement.classList.add('block');
     this.userService.logInUser(this.form.value).subscribe(data => {
       if (data.ok) {
-        console.log(data);
-        console.log(this.userService.decodeToken(data.token));
+        this.userService.saveToken(data.token);
         this.registerLoading = true;
         this.registerError = false;
         setTimeout(() => {
