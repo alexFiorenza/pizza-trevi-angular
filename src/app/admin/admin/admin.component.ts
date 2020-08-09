@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faPizzaSlice, faReceipt, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
+  faPizzaSlice = faPizzaSlice;
+  faReceipt = faReceipt;
+  faLeft = faArrowCircleLeft;
   constructor() { }
 
   ngOnInit(): void {

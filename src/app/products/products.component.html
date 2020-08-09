@@ -1,4 +1,7 @@
 <div
+  [ngClass]="{
+    'not-available': !product.available
+  }"
   class="flex xl:w-1/2 lg:w-9/12 bigger w-11/12 shadow-lg h-auto rounded-lg mt-8 mb-3 cursor-pointer"
   *ngFor="let product of products"
 >

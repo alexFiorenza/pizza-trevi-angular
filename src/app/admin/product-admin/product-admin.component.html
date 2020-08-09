@@ -1,0 +1,173 @@
+<app-admin></app-admin>
+<div #container>
+  <div class="flex w-full lg:w-1/2 lg:mx-auto flex-col">
+    <div class="flex justify-between items-center">
+      <h2 class="text-gray-800 font-semibold font-Poppins text-2xl px-2">
+        Pizzas
+      </h2>
+
+      <button
+        (click)="addProduct('pizza')"
+        class="text-white bg-green-600 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
+      >
+        Añadir
+        <fa-icon [icon]="faPlusSquare" class="text-white"></fa-icon>
+      </button>
+    </div>
+
+    <div class="w-full bg-gray-500 line-height"></div>
+    <div>
+      <div #productsContainer class="w-full mt-8">
+        <div
+          class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
+        >
+          <div id="info" class="flex items-center w-full justify-between">
+            <h2 class="font-Poppins font-medium text-gray-800 text-lg px-2">
+              Panceta y cheddar
+            </h2>
+            <div class="flex items-center">
+              <button
+                class="text-white bg-blue-500 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
+              >
+                Actualizar
+                <fa-icon [icon]="faEdit" class="text-white"></fa-icon>
+              </button>
+              <button
+                class="text-white bg-red-600 rounded-md px-2 py-1 font-semibold text-xs focus:outline-none"
+              >
+                Eliminar
+                <fa-icon [icon]="faMinusCircle" class="text-white"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-between items-center">
+      <h2 class="text-gray-800 font-semibold font-Poppins text-2xl px-2">
+        Empanadas
+      </h2>
+
+      <button
+        (click)="addProduct('empanada')"
+        class="text-white bg-green-600 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
+      >
+        Añadir
+        <fa-icon [icon]="faPlusSquare" class="text-white"></fa-icon>
+      </button>
+    </div>
+
+    <div class="w-full bg-gray-500 line-height"></div>
+    <div>
+      <div #productsContainer class="w-full mt-8">
+        <div
+          class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
+        >
+          <div id="info" class="flex items-center w-full justify-between">
+            <h2 class="font-Poppins font-medium text-gray-800 text-lg px-2">
+              Jamon y queso
+            </h2>
+            <div class="flex items-center">
+              <button
+                class="text-white bg-blue-500 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
+              >
+                Actualizar
+                <fa-icon [icon]="faEdit" class="text-white"></fa-icon>
+              </button>
+              <button
+                class="text-white bg-red-600 rounded-md px-2 py-1 font-semibold text-xs focus:outline-none"
+              >
+                Eliminar
+                <fa-icon [icon]="faMinusCircle" class="text-white"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-between items-center">
+      <h2 class="text-gray-800 font-semibold font-Poppins text-2xl px-2">
+        Helados
+      </h2>
+
+      <button
+        (click)="addProduct('helado')"
+        class="text-white bg-green-600 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
+      >
+        Añadir
+        <fa-icon [icon]="faPlusSquare" class="text-white"></fa-icon>
+      </button>
+    </div>
+
+    <div class="w-full bg-gray-500 line-height"></div>
+    <div>
+      <div #productsContainer class="w-full mt-8">
+        <div
+          class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
+        >
+          <div id="info" class="flex items-center w-full justify-between">
+            <h2 class="font-Poppins font-medium text-gray-800 text-lg px-2">
+              Frutilla a la crema
+            </h2>
+            <div class="flex items-center">
+              <button
+                class="text-white bg-blue-500 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
+              >
+                Actualizar
+                <fa-icon [icon]="faEdit" class="text-white"></fa-icon>
+              </button>
+              <button
+                class="text-white bg-red-600 rounded-md px-2 py-1 font-semibold text-xs focus:outline-none"
+              >
+                Eliminar
+                <fa-icon [icon]="faMinusCircle" class="text-white"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-between items-center">
+      <h2 class="text-gray-800 font-semibold font-Poppins text-2xl px-2">
+        Calzones
+      </h2>
+
+      <button
+        (click)="addProduct('calzon')"
+        class="text-white bg-green-600 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
+      >
+        Añadir
+        <fa-icon [icon]="faPlusSquare" class="text-white"></fa-icon>
+      </button>
+    </div>
+
+    <div class="w-full bg-gray-500 line-height"></div>
+    <div>
+      <div #productsContainer class="w-full mt-8">
+        <div
+          class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
+        >
+          <div id="info" class="flex items-center w-full justify-between">
+            <h2 class="font-Poppins font-medium text-gray-800 text-lg px-2">
+              Napolitano
+            </h2>
+            <div class="flex items-center">
+              <button
+                class="text-white bg-blue-500 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
+              >
+                Actualizar
+                <fa-icon [icon]="faEdit" class="text-white"></fa-icon>
+              </button>
+              <button
+                class="text-white bg-red-600 rounded-md px-2 py-1 font-semibold text-xs focus:outline-none"
+              >
+                Eliminar
+                <fa-icon [icon]="faMinusCircle" class="text-white"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

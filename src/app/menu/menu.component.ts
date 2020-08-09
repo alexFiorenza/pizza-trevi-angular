@@ -17,6 +17,7 @@ export class MenuComponent implements OnInit {
   products: any[];
   productsFiltered: any[] = [];
   filtersArray: string[] = [];
+  usedFilters: boolean = false;
   @ViewChild('filters') filtersPanel: ElementRef;
   @ViewChild('maxprice') maxSpan: ElementRef;
   @ViewChild('lessprice') lessSpan: ElementRef;
@@ -80,6 +81,7 @@ export class MenuComponent implements OnInit {
 
   }
   clickedTag(tagName: HTMLElement, icon: HTMLElement) {
+    this.usedFilters = true;
     const maxSpanClass = this.maxSpan.nativeElement.classList.contains('font-bold');
     const LessSpanClass = this.lessSpan.nativeElement.classList.contains('font-bold');
 
@@ -118,25 +120,19 @@ export class MenuComponent implements OnInit {
   }
   // tslint:disable-next-line: no-shadowed-variable
   manageFilters(filter: string) {
-
     if (this.filtersArray.includes(filter)) {
       const index = this.filtersArray.indexOf(filter);
       this.filtersArray.splice(index, 1);
 
       this.productsFiltered = this.productsFiltered.filter(p => {
-        if (filter === 'Disponibles') {
-          return p.available && !p.available;
-        }
-        if (filter === 'Más vendidas') {
-          return p.hot && !p.hot;
-        }
         return p.type !== filter;
       });
+
       return;
     }
-    if (filter === 'Menor precio' || filter === ('Mayor precio') || filter === 'Disponibles' || filter === 'Más vendidas') {
+    if (filter === 'Menor precio' || filter === ('Mayor precio')) {
       this.filtersArray.push(filter);
-      return this.otherFilters(filter);
+      return this.priceFilters(filter);
     } else {
       this.filtersArray.push(filter);
       this.typeFilters(filter);
@@ -145,8 +141,7 @@ export class MenuComponent implements OnInit {
   }
   typeFilters(filterText) {
     let tmpArray = [];
-    if (this.filtersArray.includes('Menor precio') || this.filtersArray.includes('Mayor precio')
-      || this.filtersArray.includes('Disponibles') || this.filtersArray.includes('Más vendidas')) {
+    if (this.filtersArray.includes('Menor precio') || this.filtersArray.includes('Mayor precio')) {
       if (this.productsFiltered === this.products) {
         this.productsFiltered = [];
       }
@@ -154,19 +149,11 @@ export class MenuComponent implements OnInit {
       if (this.filtersArray.includes('Menor precio')) {
         filter = 'Menor precio';
       }
-      if (this.filtersArray.includes('Más vendidas')) {
-        filter = 'Más vendidas';
-      }
-      if (this.filtersArray.includes('Disponibles')) {
-        filter = 'Disponibles';
-      }
       if (this.filtersArray.includes('Mayor precio')) {
         filter = 'Mayor precio';
       }
       tmpArray = this.products.filter(p => {
-        if (filterText !== 'Más vendidas' || filterText !== 'Disponibles') {
-          return p.type === filterText;
-        }
+        return p.type === filterText;
       });
       tmpArray.forEach(p => {
         if (this.productsFiltered.includes(p)) {
@@ -175,12 +162,10 @@ export class MenuComponent implements OnInit {
         }
         this.productsFiltered.push(p);
       });
-      return this.otherFilters(filter);
+      return this.priceFilters(filter);
     }
     tmpArray = this.products.filter(p => {
-      if (filterText !== 'Más vendidas' || filterText !== 'Disponibles') {
-        return p.type === filterText;
-      }
+      return p.type === filterText;
     });
     tmpArray.forEach(p => {
       if (this.productsFiltered.includes(p)) {
@@ -191,7 +176,7 @@ export class MenuComponent implements OnInit {
     });
 
   }
-  otherFilters(filterText) {
+  priceFilters(filterText) {
     let tmpArray = [];
     if (filterText === 'Menor precio') {
       if (this.productsFiltered.length === 0) {
@@ -202,9 +187,7 @@ export class MenuComponent implements OnInit {
       this.productsFiltered = tmpArray.sort((a, b) => {
         return a.price - b.price;
       });
-      return this.productsFiltered;
-    }
-    if (filterText === 'Mayor precio') {
+    } else {
       if (this.productsFiltered.length === 0) {
         tmpArray = this.products;
       } else {
@@ -213,28 +196,6 @@ export class MenuComponent implements OnInit {
       this.productsFiltered = tmpArray.sort((a, b) => {
         return b.price - a.price;
       });
-    }
-    if (filterText === 'Disponibles') {
-      if (this.productsFiltered.length === 0) {
-        tmpArray = this.products;
-      } else {
-        tmpArray = this.productsFiltered;
-      }
-      this.productsFiltered = tmpArray.filter(p => {
-        return p.available;
-      });
-      return this.productsFiltered;
-    }
-    if (filterText === 'Más vendidas') {
-      if (this.productsFiltered.length === 0) {
-        tmpArray = this.products;
-      } else {
-        tmpArray = this.productsFiltered;
-      }
-      this.productsFiltered = tmpArray.filter(p => {
-        return p.hot;
-      });
-      return this.productsFiltered;
     }
   }
 }

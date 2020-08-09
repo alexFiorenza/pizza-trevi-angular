@@ -1,8 +1,9 @@
+import { AddProductComponent } from './admin/add-product/add-product.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductAdminComponent } from './admin/product-admin/product-admin.component';
+import { AdminComponent } from './admin/admin/admin.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -20,9 +21,23 @@ const routes: Routes = [
     component: MenuComponent
   },
   {
-    path: '',
-    loadChildren: () => import('./users-panel/users-panel.module').then(m => m.UsersPanelModule)
-  }
+    path: 'panel',
+    children: [
+      {
+        path: '',
+        redirectTo: 'product',
+        pathMatch: 'full'
+      },
+      {
+        path: 'product',
+        component: ProductAdminComponent
+      },
+      {
+        path: 'product/add/:type',
+        component: AddProductComponent
+      }
+    ]
+  },
 ];
 
 

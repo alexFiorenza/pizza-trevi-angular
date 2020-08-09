@@ -150,6 +150,7 @@ module.exports = {
       "48": "12rem",
       "56": "14rem",
       "64": "16rem",
+      "70": "18rem",
       "80": "25rem",
     },
     backgroundColor: (theme) => theme("colors"),

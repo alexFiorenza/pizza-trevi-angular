@@ -7,3 +7,8 @@
 .bigger:hover {
   transform: scale(1.05);
 }
+.not-available {
+  filter: grayscale(90%);
+  opacity: 70%;
+  cursor: default;
+}

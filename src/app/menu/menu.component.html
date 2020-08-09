@@ -31,7 +31,7 @@
 <div class="w-full lg:flex lg:mt-20">
   <div
     #filters
-    class="mx-2 my-1 absolute w-full h-80 hidden lg:static lg:flex lg:w-2/6 justify-center"
+    class="mx-2 my-1 absolute w-full h-70 hidden lg:static lg:flex lg:w-2/6 justify-center z-40"
   >
     <div
       class="xl:w-5/12 bg-white shadow-xl w-10/12 flex flex-col px-5 py-5 my-4"
@@ -65,17 +65,6 @@
             #maxprice
             (click)="clickedTag(maxprice, icon2)"
             >Mayor precio</span
-          >
-        </div>
-        <div class="flex items-center my-1">
-          <div #icon3 class="text-gray-400 px-1 tagsText">
-            <fa-icon [icon]="faCircle"></fa-icon>
-          </div>
-          <span
-            class="cursor-pointer"
-            #hotsale
-            (click)="clickedTag(hotsale, icon3)"
-            >Más vendidas</span
           >
         </div>
         <div class="flex items-center my-1">
@@ -117,17 +106,6 @@
           </div>
           <span class="cursor-pointer" #pizza (click)="clickedTag(pizza, icon7)"
             >Pizzas</span
-          >
-        </div>
-        <div class="flex items-center my-1">
-          <div #icon8 class="text-gray-400 px-1 tagsText">
-            <fa-icon [icon]="faCircle"></fa-icon>
-          </div>
-          <span
-            class="cursor-pointer"
-            #available
-            (click)="clickedTag(available, icon8)"
-            >Disponibles</span
           >
         </div>
       </ul>

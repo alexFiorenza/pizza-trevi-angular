@@ -1,0 +1,30 @@
+<div id="container" class="flex">
+  <div class="flex justify-between items-center w-full bg-black py-2 px-4">
+    <div
+      class="text-white font-Poppins font-medium focus:outline-none cursor-pointer"
+      routerLink="/home"
+    >
+      <fa-icon [icon]="faLeft"></fa-icon>
+      Ir a la pagina
+    </div>
+    <div class="flex">
+      <div
+        class="text-white font-Poppins font-medium mx-4 focus:outline-none cursor-pointer"
+        routerLink="/panel/product"
+      >
+        Productos
+        <fa-icon
+          class="hidden md:inline-block px-2"
+          [icon]="faPizzaSlice"
+        ></fa-icon>
+      </div>
+      <div class="text-white font-Poppins font-medium mr-2">
+        Ordenes
+        <fa-icon
+          class="hidden md:inline-block px-2"
+          [icon]="faReceipt"
+        ></fa-icon>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+import { AdminModule } from './admin/admin.module';
+import { ProductsComponent } from './products/products.component';
 import { UsersPanelModule } from './users-panel/users-panel.module';
 import { SharedModule } from './shared/shared.module';
 import { APP_ROUTES } from './app-routing.module';
@@ -9,7 +11,6 @@ import { environment } from '../environments/environment';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
-import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { ProductsComponent } from './products/products.component';
     AppComponent,
     HomeComponent,
     MenuComponent,
-    ProductsComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,14 @@ import { ProductsComponent } from './products/products.component';
     FontAwesomeModule,
     UsersPanelModule,
     SharedModule,
+    AdminModule,
     APP_ROUTES
+  ],
+  exports: [
+    AppComponent,
+    HomeComponent,
+    MenuComponent,
+    ProductsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
