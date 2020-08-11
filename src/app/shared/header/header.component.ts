@@ -1,9 +1,6 @@
+import { UserService } from './../../users-panel/services/user.service';
 import { faBars, faPizzaSlice, faTimes, faHome, faShoppingCart, faAddressCard, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Component, OnInit } from '@angular/core';
-
-
-
-
+import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -17,11 +14,18 @@ export class HeaderComponent implements OnInit {
   faPizzaSlice = faPizzaSlice;
   faAddressCard = faAddressCard;
   faShoppingCart = faShoppingCart;
-
-  constructor() { }
+  receivedData = false;
+  userData: any = false;
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-
+    if (localStorage.getItem('dataUser')) {
+      this.receivedData = true;
+      const user = this.userService.getUserData();
+      this.userData = user;
+    } else {
+      this.receivedData = false;
+    }
   }
 
   openMenu() {
