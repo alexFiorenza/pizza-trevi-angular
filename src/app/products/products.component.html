@@ -2,7 +2,9 @@
   [ngClass]="{
     'not-available': !product.available
   }"
-  class="flex xl:w-1/2 lg:w-9/12 bigger w-11/12 shadow-lg h-auto rounded-lg mt-8 mb-3 cursor-pointer"
+  #productContainer
+  (click)="addToCart(product, productContainer)"
+  class="flex max-w-2xl bigger w-11/12 shadow-lg h-auto rounded-lg mt-8 mb-3 cursor-pointer relative"
   *ngFor="let product of products"
 >
   <img
@@ -33,19 +35,24 @@
       Salsa de tomate - muzzarella - cheddar - panceta crocante - orégano -
       aceitunas
     </p>
-    <div class="mx-2 mb-2 flex items-end lg:pb-3">
-      <button
+    <div class="w-full mx-2 mb-2 flex items-center lg:pb-3">
+      <span
         class="cursor-default rounded-sm px-2 py-1 bg-green-500 text-white font-Poppins font-semibold focus:outline-none"
       >
         <fa-icon class="text-white" [icon]="faDollarSign"></fa-icon>
         {{ product.price }}
-      </button>
+      </span>
       <div
         *ngIf="product.hot"
-        class="text-white bg-red-500 px-2 py-1 rounded-lg mx-2"
+        class="text-white bg-red-500 px-2 py-px rounded-lg mx-2"
       >
-        Más vendida
+        <span>Más vendida</span>
       </div>
     </div>
+  </div>
+  <div
+    class="absolute bg-green-500 px-2 py-1 rounded-sm mx-2 my-2 h-8 positionCart"
+  >
+    <fa-icon class="text-white" [icon]="faCartPlus"></fa-icon>
   </div>
 </div>

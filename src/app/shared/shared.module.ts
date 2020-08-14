@@ -12,17 +12,17 @@ import { CommonModule } from '@angular/common';
   declarations: [
     FooterComponent,
     HeaderComponent,
-    CartComponent
+    CartComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   exports: [
     FooterComponent,
     HeaderComponent,
-    CartComponent
+    CartComponent,
   ]
 })
 export class SharedModule { }

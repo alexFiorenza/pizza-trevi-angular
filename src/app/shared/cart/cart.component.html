@@ -1,1 +1,11 @@
-<p>cart works!</p>
+<app-header></app-header>
+<div class="mt-20">
+  <div
+    class="w-full flex flex-col items-center"
+    *ngFor="let product of this.receivedProducts"
+  >
+    <div #containerProduct class="w-11/12 shadow-md rounded mt-8">
+      {{ product.name }}
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
+import { CartComponent } from './shared/cart/cart.component';
+import { HeaderComponent } from './shared/header/header.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
-import { ProductsComponent } from './products/products.component';
 import { ProductAdminComponent } from './admin/product-admin/product-admin.component';
-import { AdminComponent } from './admin/admin/admin.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent
+  },
+  {
+    path: 'cart',
+    component: CartComponent
   },
   {
     path: 'panel',

@@ -2,11 +2,11 @@
   <div
     class="w-full bg-black h-20 flex items-center justify-between px-4 absolute z-40 top-0"
   >
-    <div class="text-white md:hidden relative mt-2">
+    <div class="text-white md:hidden relative mt-2" routerLink="/cart">
       <div
         class="w-6 h-6 bg-green-600 cartTag absolute flex flex-col justify-center items-center"
       >
-        <span class="text-white text-xs font-bold">2</span>
+        <span class="text-white text-xs font-bold">{{ $total | async }}</span>
       </div>
       <fa-icon [icon]="faShoppingCart" class="text-3xl mt-2"></fa-icon>
     </div>
@@ -51,11 +51,11 @@
       >
         Contacto
       </li>
-      <div class="text-white px-4 cursor-pointer relative">
+      <div class="text-white px-4 cursor-pointer relative" routerLink="/cart">
         <div
           class="w-5 h-5 bg-green-600 cartTaglg absolute flex flex-col justify-center items-center"
         >
-          <span class="text-white text-xs font-bold">1</span>
+          <span class="text-white text-xs font-bold">{{ $total | async }}</span>
         </div>
         <fa-icon [icon]="faShoppingCart" class="text-xl"></fa-icon>
       </div>
@@ -78,6 +78,21 @@
           class="text-xl outline-none"
           [icon]="faUser"
         ></fa-icon>
+      </div>
+      <div
+        #signOut
+        [ngClass]="{
+          hidden: !this.receivedData
+        }"
+        class="text-white px-4 cursor-pointer relative"
+        (click)="signOutIcon()"
+      >
+        <fa-icon
+          *ngIf="this.userData && this.receivedData"
+          class="text-xl outline-none"
+          [icon]="faSignOutAlt"
+        >
+        </fa-icon>
       </div>
     </ul>
   </div>
@@ -142,7 +157,10 @@
       <div class="lineMbl w-11/12"></div>
     </div>
     <div
-      class="w-full flex text-white font-Poppins px-2 py-2 items-center outline-none"
+      [ngClass]="{
+        'py-2': !this.receivedData
+      }"
+      class="cursor-pointer w-full flex text-white font-Poppins px-2 items-center outline-none"
     >
       <fa-icon
         class="text-lg pr-2"
@@ -170,6 +188,26 @@
         routerLinkActive="text-primary font-semibold"
         routerLink="/panel"
         >Panel de administrador</span
+      >
+    </div>
+    <div
+      #signOut
+      [ngClass]="{
+        hidden: !this.receivedData
+      }"
+      class="cursor-pointer w-full flex text-white font-Poppins px-2 py-2 items-center outline-none"
+      (click)="signOutIcon()"
+    >
+      <fa-icon
+        *ngIf="this.userData && this.receivedData"
+        class="text-lg pr-2"
+        [icon]="faSignOutAlt"
+      >
+      </fa-icon>
+      <span
+        *ngIf="this.userData && this.receivedData"
+        class="text-xl pl-1 outline-none"
+        >Cerrar sesión</span
       >
     </div>
   </div>

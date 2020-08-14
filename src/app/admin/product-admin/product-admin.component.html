@@ -15,14 +15,18 @@
     </div>
 
     <div class="w-full bg-gray-500 line-height"></div>
-    <div>
-      <div #productsContainer class="w-full mt-8">
+    <div *ngFor="let product of this.products">
+      <div
+        #productsContainer
+        class="w-full mt-8"
+        *ngIf="this.product.type === 'pizza'"
+      >
         <div
           class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
         >
           <div id="info" class="flex items-center w-full justify-between">
             <h2 class="font-Poppins font-medium text-gray-800 text-lg px-2">
-              Panceta y cheddar
+              {{ product.name }}
             </h2>
             <div class="flex items-center">
               <button
@@ -32,6 +36,7 @@
                 <fa-icon [icon]="faEdit" class="text-white"></fa-icon>
               </button>
               <button
+                (click)="deleteAProduct(product._id)"
                 class="text-white bg-red-600 rounded-md px-2 py-1 font-semibold text-xs focus:outline-none"
               >
                 Eliminar
@@ -57,14 +62,20 @@
     </div>
 
     <div class="w-full bg-gray-500 line-height"></div>
-    <div>
-      <div #productsContainer class="w-full mt-8">
+    <div *ngFor="let product of this.products">
+      <div
+        #productsContainer
+        class="w-full mt-8"
+        *ngIf="
+          this.product.type === 'empanada' || this.product.type === 'docena'
+        "
+      >
         <div
           class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
         >
           <div id="info" class="flex items-center w-full justify-between">
             <h2 class="font-Poppins font-medium text-gray-800 text-lg px-2">
-              Jamon y queso
+              {{ product.name }}
             </h2>
             <div class="flex items-center">
               <button
@@ -74,6 +85,7 @@
                 <fa-icon [icon]="faEdit" class="text-white"></fa-icon>
               </button>
               <button
+                (click)="deleteAProduct(product._id)"
                 class="text-white bg-red-600 rounded-md px-2 py-1 font-semibold text-xs focus:outline-none"
               >
                 Eliminar
@@ -99,14 +111,23 @@
     </div>
 
     <div class="w-full bg-gray-500 line-height"></div>
-    <div>
-      <div #productsContainer class="w-full mt-8">
+    <div *ngFor="let product of this.products">
+      <div
+        #productsContainer
+        class="w-full mt-8"
+        *ngIf="
+          this.product.type === 'helado' ||
+          this.product.type === '1kg' ||
+          this.product.type === '1/2kg' ||
+          this.product.type === '1/4kg'
+        "
+      >
         <div
           class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
         >
           <div id="info" class="flex items-center w-full justify-between">
             <h2 class="font-Poppins font-medium text-gray-800 text-lg px-2">
-              Frutilla a la crema
+              {{ product.name }}
             </h2>
             <div class="flex items-center">
               <button
@@ -116,6 +137,7 @@
                 <fa-icon [icon]="faEdit" class="text-white"></fa-icon>
               </button>
               <button
+                (click)="deleteAProduct(product._id)"
                 class="text-white bg-red-600 rounded-md px-2 py-1 font-semibold text-xs focus:outline-none"
               >
                 Eliminar
@@ -141,14 +163,18 @@
     </div>
 
     <div class="w-full bg-gray-500 line-height"></div>
-    <div>
-      <div #productsContainer class="w-full mt-8">
+    <div *ngFor="let product of this.products">
+      <div
+        #productsContainer
+        class="w-full mt-8"
+        *ngIf="this.product.type === 'calzon'"
+      >
         <div
           class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
         >
           <div id="info" class="flex items-center w-full justify-between">
             <h2 class="font-Poppins font-medium text-gray-800 text-lg px-2">
-              Napolitano
+              {{ product.name }}
             </h2>
             <div class="flex items-center">
               <button
@@ -158,6 +184,7 @@
                 <fa-icon [icon]="faEdit" class="text-white"></fa-icon>
               </button>
               <button
+                (click)="deleteAProduct(product._id)"
                 class="text-white bg-red-600 rounded-md px-2 py-1 font-semibold text-xs focus:outline-none"
               >
                 Eliminar

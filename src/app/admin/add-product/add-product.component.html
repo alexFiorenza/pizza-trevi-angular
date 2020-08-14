@@ -77,6 +77,34 @@
             <input formControlName="image" class="hidden" type="file" />
           </label>
         </div>
+        <div
+          class="w-full md:w-auto flex items-center mt-4 md:mt-0"
+          *ngIf="this.paramsType === 'helado'"
+        >
+          <select
+            formControlName="type"
+            class="uppercase tracking-wide text-gray-700 text-xs font-bold bg-gray-200 px-1 py-2 rounded cursor-pointer w-full md:w-auto text-center focus:outline-none"
+          >
+            Elegir una opcion
+            <option value="1kg">1kg</option>
+            <option value="1/2kg">1/2kg</option>
+            <option value="1/4kg">1/4kg</option>
+            <option value="helado">Helado</option>
+          </select>
+        </div>
+        <div
+          class="w-full md:w-auto flex items-center mt-4 md:mt-0"
+          *ngIf="this.paramsType === 'empanada'"
+        >
+          <select
+            formControlName="type"
+            class="uppercase tracking-wide text-gray-700 text-xs font-bold bg-gray-200 px-1 py-2 rounded cursor-pointer w-full md:w-auto text-center focus:outline-none"
+          >
+            Elegir una opcion
+            <option value="docena">Docena</option>
+            <option value="empanada">Empanada</option>
+          </select>
+        </div>
         <button
           type="submit"
           class="w-full rounded bg-green-500 text-white font-semibold py-1 mt-4"
