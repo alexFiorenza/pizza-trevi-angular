@@ -1,7 +1,8 @@
 import { ProductService } from './../service/product.service';
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { faMinusCircle, faEdit, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-product-admin',
@@ -36,5 +37,8 @@ export class ProductAdminComponent implements OnInit, AfterContentInit {
     this.productService.deleteProduct(id).subscribe((p) => {
       window.location.reload();
     });
+  }
+  updateProduct(type: string, product) {
+    this.route.navigate([`/panel/product/update/${type}/${product._id}`]);
   }
 }

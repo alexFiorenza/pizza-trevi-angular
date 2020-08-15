@@ -1,3 +1,4 @@
+import { ProductService } from './../admin/service/product.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { faAngleDown, faSearch, faTimesCircle, faCircle, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
@@ -23,61 +24,13 @@ export class MenuComponent implements OnInit {
   @ViewChild('lessprice') lessSpan: ElementRef;
   @ViewChild('icon1') iconLess: ElementRef;
   @ViewChild('icon2') iconMax: ElementRef;
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.productService.getAllProducts().subscribe((data: any) => {
+      this.products = data.message;
+    })
 
-    this.products = [
-      {
-        price: 400,
-        type: 'Pizzas',
-        name: 'Napolitana',
-        available: true,
-        hot: false,
-      },
-      {
-        price: 600,
-        type: 'Pizzas',
-        name: 'Muzarella',
-        available: false,
-        hot: false,
-      },
-      {
-        price: 290,
-        type: 'Helados',
-        name: 'Frutilla a la crema',
-        available: true,
-        hot: true,
-      },
-      {
-        price: 100,
-        type: 'Helados',
-        name: 'Chocolate',
-        available: true,
-        hot: true,
-      },
-      {
-        price: 600,
-        type: 'Calzones',
-        name: 'Primavera',
-        available: false,
-        hot: true,
-      },
-      {
-        price: 320,
-        type: 'Empanadas',
-        name: 'Carne',
-        available: false,
-        hot: true,
-      },
-      {
-        price: 300,
-        type: 'Empanadas',
-        name: 'Jamon y queso',
-        available: false,
-        hot: false,
-      }
-    ];
 
   }
   clickedTag(tagName: HTMLElement, icon: HTMLElement) {

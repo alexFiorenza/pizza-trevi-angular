@@ -1,6 +1,7 @@
 <app-header></app-header>
 <div
   class="w-full flex items-center shadow-md mt-20 py-2 justify-between lg:hidden"
+  *ngIf="this.products"
 >
   <div class="flex items-center w-8/12 lg:mt-0">
     <h3 class="font-Poppins font-semibold px-2 text-lg text-gray-700">
@@ -28,7 +29,7 @@
   </div>
 </div>
 
-<div class="w-full lg:flex lg:mt-20">
+<div class="w-full lg:flex lg:mt-20" *ngIf="this.products">
   <div
     #filters
     class="mx-2 my-1 absolute w-full h-70 hidden lg:static lg:flex lg:w-2/6 justify-center z-40"

@@ -2,6 +2,7 @@ import { CartService } from './../shared/cart.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { Component, OnInit, Input, OnChanges, ViewChild, ElementRef } from '@angular/core';
 import { faDollarSign, faPlusSquare, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class ProductsComponent implements OnInit {
   faDollarSign = faDollarSign;
   faPlusSquare = faPlusSquare;
   faCartPlus = faCartPlus;
+  urlAPi = environment.url;
   @Input() products: any[];
 
   constructor(private cartService: CartService) {

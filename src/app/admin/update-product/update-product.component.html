@@ -1,6 +1,6 @@
 <div class="bg-black-admin h-screen w-full">
   <app-admin></app-admin>
-  <div class="w-full flex justify-center">
+  <div class="w-full flex justify-center" *ngIf="form">
     <form
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
@@ -74,11 +74,7 @@
             class="uppercase tracking-wide text-gray-700 text-xs font-bold bg-gray-200 px-1 py-2 rounded cursor-pointer w-full md:w-auto text-center"
           >
             Carcar imagen
-            <input
-              class="hidden"
-              type="file"
-              (change)="handleFileInput($event.target.files)"
-            />
+            <input formControlName="image" class="hidden" type="file" />
           </label>
         </div>
         <div

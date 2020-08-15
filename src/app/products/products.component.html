@@ -8,8 +8,9 @@
   *ngFor="let product of products"
 >
   <img
+    *ngIf="product.image"
     class="w-4/12 rounded rounded-l-lg object-cover"
-    src="../../assets/cheddar.jpeg"
+    [src]="urlAPi + product.image"
     alt=""
   />
   <div id="info" class="flex flex-col items-start w-8/12">

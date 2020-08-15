@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-add-product',
@@ -12,28 +13,36 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class AddProductComponent implements OnInit {
   form: FormGroup;
   paramsType;
+  image;
+  dataToSend;
   constructor(private formBuilder: FormBuilder, private productService: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.paramsType = params.type;
+
     });
-    console.log(this.paramsType);
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
       description: ['', Validators.required],
       top: [false, Validators.required],
       available: [false, Validators.required],
-      image: [''],
+
       type: [this.paramsType]
     });
   }
   onSubmit() {
-    console.log(this.form.value)
-    this.productService.uploadProduct(this.form.value, '').subscribe(data => {
+    this.dataToSend = this.form.value;
+    Object.assign(this.dataToSend, { image: this.image });
+    console.log(this.dataToSend);
+
+    this.productService.uploadProduct(this.dataToSend).subscribe(data => {
       console.log(data);
     });
+  }
+  handleFileInput($event) {
+    this.image = $event[0];
   }
 }

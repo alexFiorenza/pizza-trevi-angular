@@ -6,7 +6,7 @@
         Pizzas
       </h2>
       <button
-        (click)="addProduct('pizza')"
+        (click)="addProduct('Pizzas')"
         class="text-white bg-green-600 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
       >
         Añadir
@@ -19,7 +19,7 @@
       <div
         #productsContainer
         class="w-full mt-8"
-        *ngIf="this.product.type === 'pizza'"
+        *ngIf="this.product.type === 'Pizzas'"
       >
         <div
           class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
@@ -30,6 +30,7 @@
             </h2>
             <div class="flex items-center">
               <button
+                (click)="updateProduct(this.product.type, product)"
                 class="text-white bg-blue-500 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
               >
                 Actualizar
@@ -53,7 +54,7 @@
       </h2>
 
       <button
-        (click)="addProduct('empanada')"
+        (click)="addProduct('Empanadas')"
         class="text-white bg-green-600 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
       >
         Añadir
@@ -67,7 +68,7 @@
         #productsContainer
         class="w-full mt-8"
         *ngIf="
-          this.product.type === 'empanada' || this.product.type === 'docena'
+          this.product.type === 'Empanadas' || this.product.type === 'Docena'
         "
       >
         <div
@@ -79,6 +80,7 @@
             </h2>
             <div class="flex items-center">
               <button
+                (click)="updateProduct(this.product.type, product)"
                 class="text-white bg-blue-500 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
               >
                 Actualizar
@@ -102,7 +104,7 @@
       </h2>
 
       <button
-        (click)="addProduct('helado')"
+        (click)="addProduct('Helados')"
         class="text-white bg-green-600 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
       >
         Añadir
@@ -116,7 +118,7 @@
         #productsContainer
         class="w-full mt-8"
         *ngIf="
-          this.product.type === 'helado' ||
+          this.product.type === 'Helados' ||
           this.product.type === '1kg' ||
           this.product.type === '1/2kg' ||
           this.product.type === '1/4kg'
@@ -131,6 +133,7 @@
             </h2>
             <div class="flex items-center">
               <button
+                (click)="updateProduct(this.product.type, product)"
                 class="text-white bg-blue-500 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
               >
                 Actualizar
@@ -154,7 +157,7 @@
       </h2>
 
       <button
-        (click)="addProduct('calzon')"
+        (click)="addProduct('Calzones')"
         class="text-white bg-green-600 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
       >
         Añadir
@@ -167,7 +170,7 @@
       <div
         #productsContainer
         class="w-full mt-8"
-        *ngIf="this.product.type === 'calzon'"
+        *ngIf="this.product.type === 'Calzones'"
       >
         <div
           class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
@@ -178,6 +181,7 @@
             </h2>
             <div class="flex items-center">
               <button
+                (click)="updateProduct(this.product.type, product)"
                 class="text-white bg-blue-500 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
               >
                 Actualizar

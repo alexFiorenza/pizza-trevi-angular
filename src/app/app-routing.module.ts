@@ -1,3 +1,4 @@
+import { UpdateProductComponent } from './admin/update-product/update-product.component';
 import { CartComponent } from './shared/cart/cart.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
@@ -39,6 +40,10 @@ const routes: Routes = [
       {
         path: 'product/add/:type',
         component: AddProductComponent
+      },
+      {
+        path: 'product/update/:type/:id',
+        component: UpdateProductComponent
       }
     ]
   },
