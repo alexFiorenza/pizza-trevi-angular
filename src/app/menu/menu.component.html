@@ -4,7 +4,9 @@
     class="absolute z-50 flex justify-center w-full mt-4"
     *ngIf="this.productSelected"
   >
-    <div class="relative w-11/12 md:w-5/12 bg-white rounded-sm px-4 py-6">
+    <div
+      class="relative max-w-xl w-11/12 md:w-5/12 bg-white rounded-lg px-4 py-6 scale-in-center"
+    >
       <div class="flex w-full justify-between font-Poppins">
         <span class="text-gray-900">{{ productSelected.name }}</span>
         <span class="text-gray-900">${{ productSelected.price }}</span>
@@ -13,26 +15,64 @@
       <p class="text-xs w-10/12 text-gray-700 font-sans mt-2">
         {{ productSelected.description }}
       </p>
+      <div class="w-10/12 h-40" *ngIf="this.productSelected.type === 'docena'">
+        <div class="w-1/2" *ngFor="let e of this.empanadasArray">
+          <div class="flex mt-2" *ngIf="e.available">
+            <select>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <label class="text-xs ml-2">{{ e.name }}</label>
+          </div>
+        </div>
+      </div>
       <div class="justify-between flex w-full mt-8">
-        <div class="flex">
+        <div
+          class="flex"
+          *ngIf="
+            this.productSelected.type === 'calzon' ||
+            this.productSelected.type === 'pizza' ||
+            this.productSelected.type === 'empanada'
+          "
+        >
           <fa-icon
-            class="text-2xl text-green-500"
+            (click)="changeQuantity('minus')"
+            class="text-2xl text-green-500 cursor-pointer"
             [icon]="faMinusSquare"
           ></fa-icon>
-          <input class="w-12 text-center" type="text" value="1" />
+          <input
+            (change)="inputChange()"
+            [(ngModel)]="quantityProduct"
+            class="w-12 text-center focus:outline-none"
+            type="number"
+            value="1"
+          />
           <fa-icon
-            class="text-2xl text-green-500"
+            (click)="changeQuantity('sum')"
+            class="text-2xl text-green-500 cursor-pointer"
             [icon]="faPlusSquare"
           ></fa-icon>
         </div>
         <button
-          class="px-2 py-1 bg-red-500 rounded-lg text-white font-Poppins font-semibold"
+          (click)="addToCart(productSelected)"
+          class="px-2 py-1 bg-red-500 rounded-lg text-white font-Poppins font-semibold focus:outline-none"
         >
           Agregar al pedido
         </button>
       </div>
       <fa-icon
-        class="absolute top-0 right-0 mx-2 my-1 text-gray-800"
+        (click)="closeMenu()"
+        class="absolute top-0 right-0 mx-2 my-1 text-gray-800 cursor-pointer"
         [icon]="faTimesCircle"
       ></fa-icon>
     </div>
@@ -118,7 +158,7 @@
             class="cursor-pointer"
             #icecream
             (click)="clickedTag(icecream, icon4)"
-            >Helados</span
+            >Helado</span
           >
         </div>
         <div class="flex items-center my-1">
@@ -129,7 +169,7 @@
             class="cursor-pointer"
             #empanadas
             (click)="clickedTag(empanadas, icon5)"
-            >Empanadas</span
+            >Empanada</span
           >
         </div>
         <div class="flex items-center my-1">
@@ -140,7 +180,7 @@
             class="cursor-pointer"
             #calzones
             (click)="clickedTag(calzones, icon6)"
-            >Calzones</span
+            >Calzon</span
           >
         </div>
         <div class="flex items-center my-1">
@@ -148,13 +188,13 @@
             <fa-icon [icon]="faCircle"></fa-icon>
           </div>
           <span class="cursor-pointer" #pizza (click)="clickedTag(pizza, icon7)"
-            >Pizzas</span
+            >Pizza</span
           >
         </div>
       </ul>
     </div>
   </div>
-  <div class="w-full lg:w-4/6">
+  <div class="w-full lg:w-4/6 h-full">
     <div class="md:w-11/12 max-w-2xl">
       <input
         [(ngModel)]="filterProduct"
@@ -166,7 +206,7 @@
     </div>
     <div *ngIf="this.productsFiltered.length > 0">
       <app-products
-        (clickedEvent)="addToCart($event)"
+        (clickedEvent)="alertMenu($event)"
         [filterProduct]="filterProduct"
         [products]="productsFiltered"
         class="flex flex-col items-center md:w-11/12 w-full lg:items-start"
@@ -174,7 +214,7 @@
     </div>
     <div *ngIf="this.productsFiltered.length === 0">
       <app-products
-        (clickedEvent)="addToCart($event)"
+        (clickedEvent)="alertMenu($event)"
         [filterProduct]="filterProduct"
         [products]="products"
         class="flex flex-col items-center md:w-11/12 w-full lg:items-start"

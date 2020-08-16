@@ -22,22 +22,23 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.paramsType = params.type;
-
     });
+    let typeTmp = this.paramsType;
+    if (this.paramsType === 'helado') {
+      typeTmp = '1kg';
+    }
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
       description: ['', Validators.required],
       top: [false, Validators.required],
       available: [false, Validators.required],
-      type: [this.paramsType]
+      type: [typeTmp, Validators.required]
     });
   }
   onSubmit() {
     this.dataToSend = this.form.value;
     Object.assign(this.dataToSend, { image: this.image });
-    console.log(this.dataToSend);
-
     this.productService.uploadProduct(this.dataToSend).subscribe(data => {
       this.router.navigate(['/panel/product']);
     });
