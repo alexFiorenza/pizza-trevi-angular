@@ -1,8 +1,12 @@
+import { CartService } from './../shared/cart.service';
 import { ProductService } from './../admin/service/product.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { faAngleDown, faSearch, faTimesCircle, faCircle, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleDown, faSearch, faTimesCircle,
+  faCircle, faAngleUp, faPlusSquare, faMinusSquare, faPlus
+} from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-
+import { Product } from '../interfaces/product';
 
 
 @Component({
@@ -11,27 +15,42 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  filterProduct = '';
   faAngleDownIcon = faAngleDown;
   faSearch = faSearch;
   faCircle = faCircle;
   faTimesCircle = faTimesCircle;
+  faPlusSquare = faPlusSquare;
+  faMinusSquare = faMinusSquare;
   products: any[];
+  productSelected: Partial<Product>;
   productsFiltered: any[] = [];
   filtersArray: string[] = [];
-  usedFilters: boolean = false;
+  usedFilters = false;
+  @ViewChild('alertContainer') alert: ElementRef;
   @ViewChild('filters') filtersPanel: ElementRef;
   @ViewChild('maxprice') maxSpan: ElementRef;
   @ViewChild('lessprice') lessSpan: ElementRef;
   @ViewChild('icon1') iconLess: ElementRef;
   @ViewChild('icon2') iconMax: ElementRef;
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((data: any) => {
       this.products = data.message;
     })
+  }
+  addToCart(product) {
+    console.log(product);
+    this.productSelected = product;
+    if (this.productSelected) {
 
-
+      this.alert.nativeElement.classList.remove('hidden');
+    }
+    // if (productContainer.classList.contains('not-available')) {
+    //   return;
+    // }
+    // this.cartService.addToCart(product);
   }
   clickedTag(tagName: HTMLElement, icon: HTMLElement) {
     this.usedFilters = true;

@@ -5,7 +5,7 @@
   #productContainer
   (click)="addToCart(product, productContainer)"
   class="flex max-w-2xl bigger w-11/12 shadow-lg h-auto rounded-lg mt-8 mb-3 cursor-pointer relative"
-  *ngFor="let product of products"
+  *ngFor="let product of products | search: filterProduct"
 >
   <img
     *ngIf="product.image"
@@ -33,8 +33,7 @@
     <p
       class="text-xs w-11/12 font-Poppins font-medium descriptionText px-2 py-2 lg:py-4"
     >
-      Salsa de tomate - muzzarella - cheddar - panceta crocante - orégano -
-      aceitunas
+      {{ product.description }}
     </p>
     <div class="w-full mx-2 mb-2 flex items-center lg:pb-3">
       <span
@@ -44,8 +43,8 @@
         {{ product.price }}
       </span>
       <div
-        *ngIf="product.hot"
-        class="text-white bg-red-500 px-2 py-px rounded-lg mx-2"
+        *ngIf="product.top"
+        class="text-white bg-red-500 px-2 py- rounded-sm mx-2"
       >
         <span>Más vendida</span>
       </div>

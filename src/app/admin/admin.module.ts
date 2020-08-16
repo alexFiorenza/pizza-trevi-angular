@@ -10,12 +10,13 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateProductComponent } from './update-product/update-product.component';
 
+
 @NgModule({
   declarations: [
     AdminComponent,
     ProductAdminComponent,
     AddProductComponent,
-    UpdateProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     CommonModule,

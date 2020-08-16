@@ -13,6 +13,8 @@ export class UpdateProductComponent implements OnInit {
   paramsId;
   paramsType;
   productData;
+  image;
+  dataToSend;
   constructor(private formBuilder: FormBuilder, private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -28,16 +30,22 @@ export class UpdateProductComponent implements OnInit {
         description: [this.productData.description, Validators.required],
         top: [this.productData.top, Validators.required],
         available: [this.productData.available, Validators.required],
-        image: [this.productData.image],
         type: [this.productData.type]
       });
     });
 
   }
   onSubmit() {
-    const formData = this.form.value;
-    this.productService.updateOneProduct(this.productData._id, formData).subscribe(p => {
-      console.log(p);
+    this.dataToSend = this.form.value;
+
+    Object.assign(this.dataToSend, { image: this.image });
+    console.log(this.dataToSend);
+
+    this.productService.updateOneProduct(this.paramsId, this.dataToSend).subscribe(data => {
+      console.log(data);
     });
+  }
+  handleFileInput($event) {
+    this.image = $event[0];
   }
 }

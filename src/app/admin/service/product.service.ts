@@ -36,8 +36,14 @@ export class ProductService {
   }
   updateOneProduct(id, data) {
     const token = this.userService.getToken();
-    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+    const formData = new FormData();
+    // tslint:disable-next-line: forin
+    for (const key in data) {
+      formData.append(key, data[key]);
+    }
+
+    const headers = new HttpHeaders()
       .set('Authorization', token);
-    return this._http.put(`${environment.api}product/${id}`, data, { headers });
+    return this._http.put(`${environment.api}product/${id}`, formData, { headers });
   }
 }

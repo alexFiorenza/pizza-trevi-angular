@@ -1,8 +1,9 @@
 import { CartService } from './../shared/cart.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { Component, OnInit, Input, OnChanges, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { faDollarSign, faPlusSquare, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
+
 
 
 @Component({
@@ -16,7 +17,8 @@ export class ProductsComponent implements OnInit {
   faCartPlus = faCartPlus;
   urlAPi = environment.url;
   @Input() products: any[];
-
+  @Input() filterProduct;
+  @Output() clickedEvent = new EventEmitter<any>();
   constructor(private cartService: CartService) {
 
   }
@@ -24,10 +26,6 @@ export class ProductsComponent implements OnInit {
 
   }
   addToCart(product, productContainer) {
-
-    if (productContainer.classList.contains('not-available')) {
-      return;
-    }
-    this.cartService.addToCart(product);
+    this.clickedEvent.emit(product);
   }
 }

@@ -3,7 +3,7 @@ export interface User {
     email: string;
     direction: string;
     extraInfo: string;
-    passsword: string;
+    password: string;
     phone: number;
     role: string;
     date: Date;

@@ -1,3 +1,4 @@
+import { SearchPipe } from './pipes/search.pipe';
 import { AdminModule } from './admin/admin.module';
 import { ProductsComponent } from './products/products.component';
 import { UsersPanelModule } from './users-panel/users-panel.module';
@@ -11,6 +12,7 @@ import { environment } from '../environments/environment';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +21,9 @@ import { MenuComponent } from './menu/menu.component';
     AppComponent,
     HomeComponent,
     MenuComponent,
-    ProductsComponent
+    ProductsComponent,
+    SearchPipe,
+
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,8 @@ import { MenuComponent } from './menu/menu.component';
     UsersPanelModule,
     SharedModule,
     AdminModule,
-    APP_ROUTES
+    APP_ROUTES,
+    FormsModule
   ],
   exports: [
     AppComponent,

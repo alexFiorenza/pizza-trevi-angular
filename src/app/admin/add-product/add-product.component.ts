@@ -15,7 +15,8 @@ export class AddProductComponent implements OnInit {
   paramsType;
   image;
   dataToSend;
-  constructor(private formBuilder: FormBuilder, private productService: ProductService, private route: ActivatedRoute) {
+  // tslint:disable-next-line: max-line-length
+  constructor(private router: Router, private formBuilder: FormBuilder, private productService: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -29,7 +30,6 @@ export class AddProductComponent implements OnInit {
       description: ['', Validators.required],
       top: [false, Validators.required],
       available: [false, Validators.required],
-
       type: [this.paramsType]
     });
   }
@@ -39,7 +39,7 @@ export class AddProductComponent implements OnInit {
     console.log(this.dataToSend);
 
     this.productService.uploadProduct(this.dataToSend).subscribe(data => {
-      console.log(data);
+      this.router.navigate(['/panel/product']);
     });
   }
   handleFileInput($event) {
