@@ -7,7 +7,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
-
 @NgModule({
   declarations: [
     FooterComponent,
@@ -17,7 +16,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     RouterModule,
-    FontAwesomeModule,
+    FontAwesomeModule
   ],
   exports: [
     FooterComponent,

@@ -114,7 +114,7 @@
 <div class="w-full lg:flex lg:mt-20" *ngIf="this.products">
   <div
     #filters
-    class="mx-2 my-1 absolute w-full h-70 hidden lg:static lg:flex lg:w-2/6 justify-center z-30"
+    class="mx-2 my-1 absolute w-full h-70 hidden lg:static lg:flex lg:w-2/6 justify-center z-30 slide-in-blurred-top"
   >
     <div
       class="xl:w-5/12 bg-white shadow-xl w-10/12 flex flex-col px-5 py-5 my-4"
@@ -194,7 +194,7 @@
       </ul>
     </div>
   </div>
-  <div class="w-full lg:w-4/6 h-full">
+  <div class="w-full lg:w-4/6">
     <div class="md:w-11/12 max-w-2xl">
       <input
         [(ngModel)]="filterProduct"
@@ -209,7 +209,7 @@
         (clickedEvent)="alertMenu($event)"
         [filterProduct]="filterProduct"
         [products]="productsFiltered"
-        class="flex flex-col items-center md:w-11/12 w-full lg:items-start"
+        class="flex flex-col items-center md:w-11/12 w-full lg:items-start changeHeight"
       ></app-products>
     </div>
     <div *ngIf="this.productsFiltered.length === 0">
@@ -217,7 +217,7 @@
         (clickedEvent)="alertMenu($event)"
         [filterProduct]="filterProduct"
         [products]="products"
-        class="flex flex-col items-center md:w-11/12 w-full lg:items-start"
+        class="flex flex-col items-center md:w-11/12 w-full lg:items-start changeHeight"
       ></app-products>
     </div>
   </div>

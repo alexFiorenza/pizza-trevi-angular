@@ -1,11 +1,36 @@
 <app-header></app-header>
+
 <div class="mt-20">
-  <div
-    class="w-full flex flex-col items-center"
-    *ngFor="let product of this.receivedProducts"
-  >
-    <div #containerProduct class="w-11/12 shadow-md rounded mt-8">
-      {{ product.name }}
+  <div class="w-full flex flex-col items-center" *ngIf="products">
+    <div
+      #containerProduct
+      class="w-11/12 shadow-md rounded mt-8 py-2 px-4 flex relative max-w-xl justify-between"
+      *ngFor="let product of products"
+    >
+      <div id="info" class="w-1/2">
+        <span id="title" class="font-Poppins">{{ product.name }}</span>
+        <p class="text-xs w-4/5">
+          {{ product.description }}
+        </p>
+      </div>
+      <div class="flex flex-col text-center justify-center">
+        <span class="mr-8 font-Poppins">${{ product.price }}</span>
+      </div>
     </div>
+  </div>
+  <div
+    class="flex-col flex justify-center items-center mt-12"
+    *ngIf="products.length <= 0"
+  >
+    <img class="w-56" src="../../../assets/svgCook.svg" alt="" />
+    <span class="text-gray-700 font-Poppins mt-4 text-sm">
+      Al parecer no se ha cargado ningun producto.
+    </span>
+    <button
+      class="px-2 py-1 mt-2 bg-green-500 text-white rounded-md font-Poppins font-semibold focus:outline-none"
+      routerLink="/menu"
+    >
+      Seguir comprando
+    </button>
   </div>
 </div>

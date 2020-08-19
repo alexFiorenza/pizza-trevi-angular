@@ -1,12 +1,13 @@
 import { CartService } from './../shared/cart.service';
 import { ProductService } from './../admin/service/product.service';
-import { Component, OnInit, ViewChild, ElementRef, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject, Renderer2 } from '@angular/core';
 import {
   faAngleDown, faSearch, faTimesCircle,
   faCircle, faAngleUp, faPlusSquare, faMinusSquare, faPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { Product } from '../interfaces/product';
+import { DOCUMENT } from '@angular/common';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Product } from '../interfaces/product';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit, DoCheck {
+export class MenuComponent implements OnInit {
   filterProduct = '';
   faAngleDownIcon = faAngleDown;
   faSearch = faSearch;
@@ -29,30 +30,33 @@ export class MenuComponent implements OnInit, DoCheck {
   filtersArray: string[] = [];
   usedFilters = false;
   quantityProduct = 1;
+  alertLaunched = false;
   @ViewChild('alertContainer') alert: ElementRef;
   @ViewChild('filters') filtersPanel: ElementRef;
   @ViewChild('maxprice') maxSpan: ElementRef;
   @ViewChild('lessprice') lessSpan: ElementRef;
   @ViewChild('icon1') iconLess: ElementRef;
   @ViewChild('icon2') iconMax: ElementRef;
-  constructor(private productService: ProductService, private cartService: CartService) { }
+  constructor(private productService: ProductService, private cartService: CartService,
+    @Inject(DOCUMENT) document, private r: Renderer2) { }
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((data: any) => {
       this.products = data.message;
       this.empanadasArray = this.products.filter(p => {
         return p.type === 'empanada';
-      })
+      });
     });
   }
   alertMenu(product) {
     this.productSelected = product;
+    this.alertLaunched = true;
+    window.scrollTo(0, 0);
+    this.r.addClass(document.body, 'overflow-y-hidden');
     if (this.productSelected) {
       this.alert.nativeElement.classList.remove('hidden');
     }
   }
-  ngDoCheck() {
-    // console.log(this.productsFiltered);
-  }
+
   addToCart(product) {
     for (let i = 0; i < this.quantityProduct; i++) {
       this.cartService.addToCart(product);
@@ -61,6 +65,9 @@ export class MenuComponent implements OnInit, DoCheck {
   }
   closeMenu() {
     this.alert.nativeElement.classList.add('hidden');
+    this.alertLaunched = false;
+    this.r.removeClass(document.body, 'overflow-y-hidden');
+
   }
   inputChange() {
     if (this.quantityProduct > 50) {
@@ -121,6 +128,7 @@ export class MenuComponent implements OnInit, DoCheck {
       return;
     }
     this.faAngleDownIcon = faAngleUp;
+    this.filtersPanel.nativeElement.classList.add('slide-in-top');
     this.filtersPanel.nativeElement.classList.remove('hidden');
     this.filtersPanel.nativeElement.classList.add('block');
   }
