@@ -36,6 +36,30 @@
           </div>
         </div>
       </div>
+      <div
+        class="w-10/12 h-70"
+        *ngIf="
+          this.productSelected.type === '1kg' ||
+          this.productSelected.type === '1/2kg' ||
+          this.productSelected.type === '1/4kg'
+        "
+      >
+        <div class="w-1/2" *ngFor="let e of this.iceCreamArray">
+          <div class="flex mt-2" *ngIf="e.available">
+            <input
+              [disabled]="
+                (!this.availableToBuy && this.counter > 0) ||
+                (!input.checked && this.maxSelection)
+              "
+              #input
+              class="iceCreamCheck"
+              type="checkbox"
+              (click)="quantityIceCream(input)"
+            />
+            <label class="text-xs ml-2">{{ e.name }}</label>
+          </div>
+        </div>
+      </div>
       <div class="justify-between flex w-full mt-8">
         <div
           class="flex"
@@ -64,6 +88,10 @@
           ></fa-icon>
         </div>
         <button
+          [ngClass]="{
+            'opacity-50': !this.availableToBuy || this.maxSelection
+          }"
+          [disabled]="!this.availableToBuy || this.maxSelection"
           (click)="addToCart(productSelected)"
           class="px-2 py-1 bg-red-500 rounded-lg text-white font-Poppins font-semibold focus:outline-none"
         >

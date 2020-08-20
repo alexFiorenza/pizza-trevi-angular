@@ -124,7 +124,8 @@
         "
       >
         <div
-          class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
+          *ngIf="this.product.type !== 'helado'"
+          class="cursor-pointer flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
         >
           <div id="info" class="flex items-center w-full justify-between">
             <h2 class="font-Poppins font-medium text-gray-800 text-lg px-2">
@@ -140,6 +141,32 @@
               </button>
               <button
                 (click)="deleteAProduct(product._id)"
+                class="text-white bg-red-600 rounded-md px-2 py-1 font-semibold text-xs focus:outline-none"
+              >
+                Eliminar
+                <fa-icon [icon]="faMinusCircle" class="text-white"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          *ngFor="let h of this.flavorsProducts"
+          class="cursor-pointer flex mx-auto w-4/5 lg:w-3/5 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
+        >
+          <div id="info" class="flex items-center w-full justify-between">
+            <h2 class="font-Poppins font-medium text-gray-800 text-lg px-2">
+              {{ h.name }}
+            </h2>
+            <div class="flex items-center">
+              <button
+                (click)="updateProduct(this.h.type, h)"
+                class="text-white bg-blue-500 rounded-md px-2 py-1 font-semibold text-xs mr-2 focus:outline-none"
+              >
+                Actualizar
+                <fa-icon [icon]="faEdit" class="text-white"></fa-icon>
+              </button>
+              <button
+                (click)="deleteAProduct(h._id)"
                 class="text-white bg-red-600 rounded-md px-2 py-1 font-semibold text-xs focus:outline-none"
               >
                 Eliminar

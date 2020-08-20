@@ -25,12 +25,16 @@ export class MenuComponent implements OnInit {
   faMinusSquare = faMinusSquare;
   products: any[];
   empanadasArray;
+  iceCreamArray;
+  availableToBuy = false;
   productSelected: Partial<Product>;
   productsFiltered: any[] = [];
   filtersArray: string[] = [];
   usedFilters = false;
   quantityProduct = 1;
   alertLaunched = false;
+  counter: number = 0;
+  maxSelection = false;
   @ViewChild('alertContainer') alert: ElementRef;
   @ViewChild('filters') filtersPanel: ElementRef;
   @ViewChild('maxprice') maxSpan: ElementRef;
@@ -45,10 +49,17 @@ export class MenuComponent implements OnInit {
       this.empanadasArray = this.products.filter(p => {
         return p.type === 'empanada';
       });
+      this.iceCreamArray = this.products.filter(p => {
+        return p.type === 'helado';
+      })
     });
   }
   alertMenu(product) {
     this.productSelected = product;
+    if (this.productSelected.type === 'pizza' || this.productSelected.type === 'calzon') {
+      this.availableToBuy = true;
+    }
+
     this.alertLaunched = true;
     window.scrollTo(0, 0);
     this.r.addClass(document.body, 'overflow-y-hidden');
@@ -56,14 +67,52 @@ export class MenuComponent implements OnInit {
       this.alert.nativeElement.classList.remove('hidden');
     }
   }
+  quantityIceCream(input) {
+    this.maxSelection = false;
+    if (input.checked) {
+      this.counter++;
+    }
+    if (!input.checked) {
+      this.counter--;
+    }
 
+    if ((this.counter <= 4 || this.counter > 0) && this.productSelected.type === '1kg') {
+      if (this.counter >= 4) {
+        this.maxSelection = true;
+      }
+      this.availableToBuy = true;
+    }
+    if ((this.counter <= 3 || this.counter > 0) && this.productSelected.type === '1/2kg') {
+      if (this.counter >= 3) {
+        this.maxSelection = true;
+      }
+      this.availableToBuy = true;
+    }
+    if ((this.counter <= 2 || this.counter > 0) && this.productSelected.type === '1/4kg') {
+      if (this.counter >= 2) {
+        this.maxSelection = true;
+      }
+      this.availableToBuy = true;
+    }
+  }
   addToCart(product) {
+    this.counter = 0;
+    this.availableToBuy = false;
+    this.maxSelection = false;
     for (let i = 0; i < this.quantityProduct; i++) {
       this.cartService.addToCart(product);
     }
     this.closeMenu();
   }
   closeMenu() {
+    const input: any = document.getElementsByClassName('iceCreamCheck');
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < input.length; i++) {
+      input[i].checked = false;
+    }
+    this.maxSelection = false;
+    this.counter = 0;
+    this.availableToBuy = false;
     this.alert.nativeElement.classList.add('hidden');
     this.alertLaunched = false;
     this.r.removeClass(document.body, 'overflow-y-hidden');
