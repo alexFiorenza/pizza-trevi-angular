@@ -1,23 +1,53 @@
 <app-header></app-header>
 
 <div class="mt-20">
-  <div class="w-full flex flex-col items-center" *ngIf="products">
+  <div class="w-full flex flex-col items-center" *ngIf="products.length > 0">
+    <div class="w-full flex justify-end">
+      <button
+        class="px-2 py-1 bg-green-500 text-white font-semibold rounded-lg mt-4 mr-4 focus:outline-none"
+      >
+        Siguiente
+      </button>
+    </div>
+
     <div
-      #containerProduct
-      class="w-11/12 shadow-md rounded mt-8 py-2 px-4 flex relative max-w-xl justify-between"
       *ngFor="let product of products"
+      class="w-full flex flex-col items-center"
     >
-      <div id="info" class="w-1/2">
-        <span id="title" class="font-Poppins">{{ product.name }}</span>
-        <p class="text-xs w-4/5">
-          {{ product.description }}
-        </p>
+      <div
+        #containerProduct
+        class="w-11/12 shadow-md rounded mt-8 py-2 px-4 flex relative max-w-xl justify-between"
+      >
+        <div id="info" class="w-1/2">
+          <span id="title" class="font-Poppins">{{ product.name }}</span>
+          <p class="text-xs w-4/5">
+            {{ product.description }}
+          </p>
+        </div>
+        <div class="flex flex-col text-center justify-center">
+          <span class="mr-8 font-Poppins">${{ product.price }}</span>
+        </div>
       </div>
-      <div class="flex flex-col text-center justify-center">
-        <span class="mr-8 font-Poppins">${{ product.price }}</span>
+      <div
+        *ngIf="this.product.flavors"
+        class="mt-2 flex lg:flex-row flex-col w-11/12 max-w-xl items-center justify-center"
+      >
+        <div
+          *ngFor="let f of this.product.flavors"
+          class="relative flex text-sm px-4 shadow-md rounded py-2 ml-4 mt-5 lg:mt-0 w-10/12 lg:w-auto justify-between"
+        >
+          <span *ngIf="!f.name">{{ f }}</span>
+          <span *ngIf="f.name">{{ f.name }}</span>
+          <span
+            *ngIf="f.quantity"
+            class="flex text-center justify-center text-white font-semibold rounded-full lg:absolute adjustQuantity w-6 bg-green-500"
+            >{{ f.quantity }}</span
+          >
+        </div>
       </div>
     </div>
   </div>
+
   <div
     class="flex-col flex justify-center items-center mt-12"
     *ngIf="products.length <= 0"

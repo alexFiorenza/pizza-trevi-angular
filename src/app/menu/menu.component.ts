@@ -35,6 +35,7 @@ export class MenuComponent implements OnInit {
   alertLaunched = false;
   counter: number = 0;
   maxSelection = false;
+  flavorsArray: any[] = [];
   @ViewChild('alertContainer') alert: ElementRef;
   @ViewChild('filters') filtersPanel: ElementRef;
   @ViewChild('maxprice') maxSpan: ElementRef;
@@ -51,15 +52,15 @@ export class MenuComponent implements OnInit {
       });
       this.iceCreamArray = this.products.filter(p => {
         return p.type === 'helado';
-      })
+      });
     });
   }
   alertMenu(product) {
     this.productSelected = product;
-    if (this.productSelected.type === 'pizza' || this.productSelected.type === 'calzon') {
+    if (this.productSelected.type === 'pizza' || this.productSelected.type === 'calzon'
+      || this.productSelected.type === 'empanada') {
       this.availableToBuy = true;
     }
-
     this.alertLaunched = true;
     window.scrollTo(0, 0);
     this.r.addClass(document.body, 'overflow-y-hidden');
@@ -67,15 +68,61 @@ export class MenuComponent implements OnInit {
       this.alert.nativeElement.classList.remove('hidden');
     }
   }
-  quantityIceCream(input) {
+  quantityEmpanadas(select, label) {
+
+    const selectValue = Number(select.options[select.selectedIndex].value);
+    if (selectValue === 12) {
+      this.availableToBuy = true;
+    } else {
+      this.availableToBuy = false
+    }
+    if (this.flavorsArray.length > 0) {
+      this.flavorsArray.filter(p => {
+        if (p.name === label.textContent) {
+          const index = this.flavorsArray.indexOf(p);
+          this.counter -= p.quantity;
+          this.flavorsArray.splice(index, 1);
+        }
+      });
+    }
+    if (selectValue === 0) {
+      return;
+    }
+
+    if (this.counter >= 12 || this.counter + selectValue > 12) {
+      this.maxSelection = true;
+      this.availableToBuy = false;
+      setTimeout(() => {
+        window.location.reload()
+      }, 500);
+      return;
+    }
+    this.counter += selectValue;
+    const obj = {
+      name: label.textContent,
+      quantity: selectValue
+    };
+    this.flavorsArray.push(obj);
+    if (this.counter === 12) {
+      this.availableToBuy = true;
+    }
+  }
+  quantityIceCream(input, label) {
+    const labelText = label.textContent;
     this.maxSelection = false;
     if (input.checked) {
+      this.flavorsArray.push(labelText);
       this.counter++;
     }
     if (!input.checked) {
+      const index = this.flavorsArray.indexOf(labelText);
+      this.flavorsArray.splice(index, 1);
       this.counter--;
     }
-
+    if (this.flavorsArray.length === 0) {
+      this.availableToBuy = false;
+      return;
+    }
     if ((this.counter <= 4 || this.counter > 0) && this.productSelected.type === '1kg') {
       if (this.counter >= 4) {
         this.maxSelection = true;
@@ -96,6 +143,14 @@ export class MenuComponent implements OnInit {
     }
   }
   addToCart(product) {
+    if (this.productSelected.type === 'docena') {
+      Object.assign(product, { flavors: this.flavorsArray });
+    }
+    if (this.productSelected.type === '1/2kg'
+      || this.productSelected.type === '1/4kg' ||
+      this.productSelected.type === '1kg') {
+      Object.assign(product, { flavors: this.flavorsArray });
+    }
     this.counter = 0;
     this.availableToBuy = false;
     this.maxSelection = false;
@@ -106,9 +161,14 @@ export class MenuComponent implements OnInit {
   }
   closeMenu() {
     const input: any = document.getElementsByClassName('iceCreamCheck');
+    const select: any = document.getElementsByClassName('selectEmpanadas');
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < input.length; i++) {
       input[i].checked = false;
+    }
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < select.length; i++) {
+      select[i].value = '0';
     }
     this.maxSelection = false;
     this.counter = 0;
@@ -116,7 +176,11 @@ export class MenuComponent implements OnInit {
     this.alert.nativeElement.classList.add('hidden');
     this.alertLaunched = false;
     this.r.removeClass(document.body, 'overflow-y-hidden');
-
+    if (this.productSelected.type === 'docena' || this.productSelected.type === '1/2kg' ||
+      this.productSelected.type === '1/4kg' ||
+      this.productSelected.type === '1kg') {
+      this.flavorsArray = [];
+    }
   }
   inputChange() {
     if (this.quantityProduct > 50) {
