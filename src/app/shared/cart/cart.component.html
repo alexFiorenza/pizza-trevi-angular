@@ -2,12 +2,44 @@
 
 <div class="mt-20">
   <div class="w-full flex flex-col items-center" *ngIf="products.length > 0">
-    <div class="w-full flex justify-end">
-      <button
-        class="px-2 py-1 bg-green-500 text-white font-semibold rounded-lg mt-4 mr-4 focus:outline-none"
-      >
-        Siguiente
-      </button>
+    <div class="flex w-full justify-center">
+      <div id="crumbs" class="mt-8 w-11/12 max-w-xl">
+        <div class="flex justify-around relative">
+          <div
+            class="step flex flex-col justify-center items-cente mr-4 rounded-full z-10"
+          >
+            <fa-icon
+              class="text-xl px-4 py-1 icon1 color-icon"
+              [icon]="faCartPlus"
+            ></fa-icon>
+            <div #firstStep class="fillBg"></div>
+          </div>
+          <div class="absolute line1 bg-gray-300">
+            <div class="line1Fill"></div>
+          </div>
+          <div class="absolute line2 bg-gray-300">
+            <div class="line2Fill"></div>
+          </div>
+          <div
+            class="step flex flex-col justify-center items-center mr-4 rounded-full z-10"
+          >
+            <fa-icon
+              class="text-xl px-4 py-1 icon2 color-icon"
+              [icon]="faMapMarker"
+            ></fa-icon>
+            <div #secondStep class="fillBg"></div>
+          </div>
+          <div
+            class="step flex flex-col justify-center items-center mr-4 rounded-full z-10"
+          >
+            <fa-icon
+              class="text-xl px-4 py-1 icon3 color-icon"
+              [icon]="faCreditCard"
+            ></fa-icon>
+            <div #thirdStep class="fillBg"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div
@@ -45,6 +77,27 @@
           >
         </div>
       </div>
+    </div>
+  </div>
+  <div
+    class="w-full flex items-center justify-center"
+    *ngIf="this.products.length > 0"
+  >
+    <div class="w-11/12 max-w-xl flex justify-between">
+      <button
+        (click)="changeStep(true)"
+        [ngClass]="{ 'opacity-0': this.steps < 1 || this.steps >= 3 }"
+        [disabled]="this.steps < 1 || this.steps >= 3"
+        class="px-2 py-1 text-gray-500 rounded-lg mt-4 mr-4 focus:outline-none"
+      >
+        Atras
+      </button>
+      <button
+        (click)="changeStep()"
+        class="px-2 py-1 bg-green-500 text-white font-semibold rounded-lg mt-4 mr-4 focus:outline-none"
+      >
+        Siguiente
+      </button>
     </div>
   </div>
 

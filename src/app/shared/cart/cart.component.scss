@@ -1,7 +1,97 @@
+$crumbs-bg: #f3f5fa;
+$text-color: #8093a7;
+$hightlight-color: #6be274;
 .adjustQuantity {
   right: -5px;
   top: -5px;
 }
 .changeBorderRadius {
   border-radius: 100px;
+}
+#crumbs {
+  .step {
+    background: $crumbs-bg;
+    position: relative;
+    .fillBg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: #6be274;
+      z-index: -1;
+      border-radius: 9999px;
+      transition: all 0.5s;
+      &Appear {
+        transform: scaleX(1);
+      }
+      &Disappear {
+        transform: scaleX(0);
+        height: 90%;
+        bottom: 3px;
+        left: 5px;
+      }
+    }
+    .color-icon {
+      color: #8093a7;
+    }
+    .changeColorIcon {
+      color: white;
+    }
+  }
+}
+
+.line1 {
+  height: 1.5px;
+  top: 20px;
+  z-index: 1;
+  left: 4.8rem;
+  width: 33%;
+  &Fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: #6be274;
+    z-index: -1;
+    border-radius: 9999px;
+    transition: all 0.5s;
+    &Appear {
+      transform: scaleX(1);
+    }
+    &Disappear {
+      transform: scaleX(0);
+    }
+  }
+}
+.line2 {
+  height: 1.5px;
+  top: 20px;
+  z-index: 1;
+  right: 5rem;
+  width: 33%;
+  &Fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: #6be274;
+    z-index: -1;
+    border-radius: 9999px;
+    transition: all 0.5s;
+    &Appear {
+      transform: scaleX(1);
+    }
+    &Disappear {
+      transform: scaleX(0);
+    }
+  }
 }

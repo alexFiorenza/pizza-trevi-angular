@@ -1,5 +1,4 @@
 import { CartService } from './../cart.service';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { UserService } from './../../users-panel/services/user.service';
 import {
   faBars, faPizzaSlice, faTimes, faHome,
