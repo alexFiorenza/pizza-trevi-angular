@@ -5,6 +5,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LocationComponent } from './cart/location/location.component';
+import { ProductsCartComponent } from './cart/products-cart/products-cart.component';
+import { CheckoutComponent } from './cart/checkout/checkout.component';
 
 
 @NgModule({
@@ -12,11 +15,14 @@ import { CommonModule } from '@angular/common';
     FooterComponent,
     HeaderComponent,
     CartComponent,
+    LocationComponent,
+    ProductsCartComponent,
+    CheckoutComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   exports: [
     FooterComponent,

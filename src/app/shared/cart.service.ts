@@ -7,7 +7,7 @@ import { Product } from '../interfaces/product';
 })
 export class CartService {
   private products = [];
-  private cart = new BehaviorSubject<Array<any>>([]);
+  private cart = new BehaviorSubject<any[]>([]);
   cart$ = this.cart.asObservable();
   constructor() { }
   addToCart(product) {
@@ -16,5 +16,8 @@ export class CartService {
   }
   getAllProducts() {
     return this.products;
+  }
+  deleteOneProduct(index) {
+    this.cart.getValue().splice(index, 1);
   }
 }

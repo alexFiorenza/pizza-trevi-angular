@@ -1,0 +1,31 @@
+<div class="w-screen flex justify-center">
+  <div class="w-full flex flex-col max-w-lg px-10">
+    <span class="font-semibold font-Poppins text-gray-700 mt-4 text-base"
+      >¿Estos datos son correctos?</span
+    >
+    <div class="shadow-lg px-8 py-4 mt-4">
+      <div class="flex flex-col mt-2">
+        <label class="font-semibold text-sm text-gray-700">Dirección:</label>
+        <p class="text-sm">
+          {{ userData.direction }} || {{ userData.extraInfo }}
+        </p>
+      </div>
+      <div class="flex flex-col mt-2">
+        <label class="font-semibold text-sm text-gray-700"
+          >Numero de contacto:</label
+        >
+        <p class="text-sm">{{ userData.phone }}</p>
+      </div>
+      <div class="flex flex-col mt-2">
+        <label class="font-semibold text-sm text-gray-700">Nombre:</label>
+        <p class="text-sm">{{ userData.name }}</p>
+      </div>
+    </div>
+    <div
+      routerLink="user/update"
+      class="text-xs text-blue-500 font-semibold font-Poppins flex w-full flex-row-reverse mt-2"
+    >
+      No lo son,quiero cambiarlos
+    </div>
+  </div>
+</div>

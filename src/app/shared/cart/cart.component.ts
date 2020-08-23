@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CartService } from './../cart.service';
 import { Component, OnInit, ElementRef, ViewChild, DoCheck } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
@@ -15,29 +16,16 @@ export class CartComponent implements OnInit, DoCheck {
   faMapMarker = faMapMarker;
   faCreditCard = faCreditCard;
   steps = 0;
+
   @ViewChild('firstStep') private firstStep: ElementRef;
   @ViewChild('secondStep') private secondStep: ElementRef;
   @ViewChild('thirdStep') private thirdStep: ElementRef;
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private route: Router) { }
   ngDoCheck() {
-
-
   }
   ngOnInit(): void {
-    // this.products = this.cartService.getAllProducts();
-    this.products = [
-      {
-        available: true,
-        description: "Pizza de panceta y cheddar ",
-        image: "cheddar-1597877846608.jpeg",
-        name: "Panceta y cheddar ",
-        price: 300,
-        top: false,
-        type: "pizza",
-        __v: 0,
-        _id: "5f3dae565a3fe29f7752ee87"
-      }
-    ];
+    this.products = this.cartService.getAllProducts();
+
   };
   addStyle(bg, icon) {
     bg.classList.remove('fillBgDisappear');
@@ -83,6 +71,8 @@ export class CartComponent implements OnInit, DoCheck {
           this.steps--;
           break;
       }
+      this.route.navigate(['cart/step', this.steps]);
+
       return;
     }
     switch (this.steps) {
@@ -93,6 +83,7 @@ export class CartComponent implements OnInit, DoCheck {
 
       case 1:
         this.addStyle(this.secondStep.nativeElement, '.icon2');
+        this.route.navigate(['/step', this.steps]);
         this.steps++;
         break;
       case 2:
@@ -100,6 +91,7 @@ export class CartComponent implements OnInit, DoCheck {
         this.steps++;
         break;
     }
+    this.route.navigate(['cart/step', this.steps]);
 
   }
 }

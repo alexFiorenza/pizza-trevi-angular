@@ -13,7 +13,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -24,7 +23,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MenuComponent,
     ProductsComponent,
     SearchPipe,
-
   ],
   imports: [
     BrowserModule,
@@ -35,7 +33,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AdminModule,
     APP_ROUTES,
     FormsModule,
-    NoopAnimationsModule
+
   ],
   exports: [
     AppComponent,
