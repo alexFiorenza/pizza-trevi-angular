@@ -1,0 +1,89 @@
+<app-header></app-header>
+<div class="relative">
+  <div class="lg:mt-32 z-50">
+    <div
+      class="mt-20 w-full flex shadow-md lg:hidden text-xl justify-between px-4 py-3"
+    >
+      <div
+        class="text-gray-900 focus:outline-none cursor-pointer"
+        routerLink="profile"
+        routerLinkActive="text-red-500"
+      >
+        <fa-icon [icon]="faUser"></fa-icon>
+      </div>
+      <div
+        class="text-gray-900 focus:outline-none cursor-pointer"
+        routerLink="update"
+        routerLinkActive="text-red-500"
+      >
+        <fa-icon [icon]="faUserEdit"></fa-icon>
+      </div>
+      <div
+        class="text-gray-900 focus:outline-none cursor-pointer"
+        routerLink="orders"
+        routerLinkActive="text-red-500"
+      >
+        <fa-icon [icon]="faReceipt"></fa-icon>
+      </div>
+      <div
+        class="text-gray-900 focus:outline-none cursor-pointer"
+        routerLink="history"
+        routerLinkActive="text-red-500"
+      >
+        <fa-icon [icon]="faHistory"></fa-icon>
+      </div>
+      <div class="text-gray-900 cursor-pointer">
+        <fa-icon [icon]="faUserMinus"></fa-icon>
+      </div>
+      <div class="text-gray-900 cursor-pointer">
+        <fa-icon [icon]="faSignOutAlt"></fa-icon>
+      </div>
+    </div>
+    <div class="w-full lg:w-11/12 flex justify-center mt-12 lg:mt-0">
+      <div class="sidebar">
+        <ul
+          #desktop
+          class="rounded-lg shadow-lg px-10 py-8 font-Poppins text-base hidden lg:block"
+        >
+          <li
+            class="mt-2 focus:outline-none cursor-pointer"
+            routerLink="profile"
+            routerLinkActive="font-semibold"
+          >
+            Mis datos
+          </li>
+          <li
+            class="mt-8 focus:outline-none cursor-pointer"
+            routerLink="update"
+            routerLinkActive="font-semibold"
+          >
+            Actualizar datos
+          </li>
+          <li
+            class="mt-8 focus:outline-none cursor-pointer"
+            routerLink="orders"
+            routerLinkActive="font-semibold"
+          >
+            Ordenes en curso
+          </li>
+          <li
+            class="mt-8 focus:outline-none cursor-pointer"
+            routerLink="history"
+            routerLinkActive="font-semibold"
+          >
+            Mi historial
+          </li>
+          <li class="mt-8 focus:outline-none cursor-pointer">
+            Eliminar cuenta
+          </li>
+          <li class="mt-8 focus:outline-none cursor-pointer">
+            Cerrar sesion
+          </li>
+        </ul>
+      </div>
+      <div class="lg:ml-4 w-full max-w-sm">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

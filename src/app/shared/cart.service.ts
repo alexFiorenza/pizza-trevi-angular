@@ -20,4 +20,9 @@ export class CartService {
   deleteOneProduct(index) {
     this.cart.getValue().splice(index, 1);
   }
+  deleteAllProducts() {
+    for (let i = 0; this.cart.getValue().length > 0; i++) {
+      this.cart.getValue().pop();
+    }
+  }
 }

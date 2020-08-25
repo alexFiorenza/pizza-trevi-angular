@@ -91,7 +91,14 @@ export class CartComponent implements OnInit, DoCheck {
         this.steps++;
         break;
     }
-    this.route.navigate(['cart/step', this.steps]);
+    if (this.steps < 3) {
+      this.route.navigate(['cart/step', this.steps]);
+    } else {
+      setTimeout(() => {
+        this.route.navigate(['user/orders']);
+        this.cartService.deleteAllProducts();
+      }, 500);
+    }
 
   }
 }

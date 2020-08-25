@@ -1,5 +1,6 @@
+import { DOCUMENT } from '@angular/common';
 import { UserService } from './../services/user.service';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject, Renderer2, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -8,20 +9,27 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('loading') private loadingScreen: ElementRef;
   public form: FormGroup;
   registerLoading = false;
   registerError = false;
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private route: Router) {
+  constructor(private formBuilder: FormBuilder,
+    private userService: UserService, private route: Router, @Inject(DOCUMENT) _document,
+    private r: Renderer2) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.maxLength(15), Validators.minLength(2), Validators.required]]
     });
-
   }
 
   ngOnInit(): void {
+    this.r.addClass(document.body, 'overflow-y-hidden');
+
+  }
+  ngOnDestroy() {
+    this.r.removeClass(document.body, 'overflow-y-hidden');
+
   }
   onSubmit($event) {
     this.loadingScreen.nativeElement.classList.remove('hidden');

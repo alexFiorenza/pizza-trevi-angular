@@ -32,7 +32,7 @@ export class UserService {
   }
   getUserData() {
     const userData = localStorage.getItem('dataUser');
-    const parsedData = JSON.parse(userData)
+    const parsedData = JSON.parse(userData);
     return parsedData;
   }
 }

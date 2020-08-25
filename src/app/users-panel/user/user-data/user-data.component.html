@@ -1,0 +1,43 @@
+<div class="border border-gray-200 px-4 py-4 shadow-md">
+  <h1 class="text-lg font-Poppins text-gray-900">Mis datos</h1>
+  <div #info class="w-11/12 mt-2">
+    <div class="flex flex-col">
+      <div class="flex justify-between py-3 font-Poppins">
+        <label class="textColor uppercase text-sm font-medium tracking-wide"
+          >Nombre</label
+        >
+        <span class="text-sm">{{ this.userData.name }}</span>
+      </div>
+      <div class="line"></div>
+      <div class="flex justify-between py-3 font-Poppins">
+        <label class="textColor uppercase text-sm font-medium tracking-wide"
+          >Email</label
+        >
+        <span class="text-sm">{{ this.userData.email }}</span>
+      </div>
+      <div class="line"></div>
+      <div class="flex justify-between py-3 font-Poppins">
+        <label class="textColor uppercase text-sm font-medium tracking-wide"
+          >Telefono</label
+        >
+        <span class="text-sm">{{ this.userData.phone }}</span>
+      </div>
+      <div class="line"></div>
+
+      <div class="flex justify-between py-3 font-Poppins">
+        <label class="textColor uppercase text-sm font-medium tracking-wide"
+          >Dirección</label
+        >
+        <span class="text-sm">{{ this.userData.direction }}</span>
+      </div>
+      <div class="line"></div>
+
+      <div class="flex justify-between py-3 font-Poppins">
+        <label class="textColor uppercase text-sm font-medium tracking-wide"
+          >Información extra</label
+        >
+        <span class="text-sm text-right">{{ this.userData.extraInfo }}</span>
+      </div>
+    </div>
+  </div>
+</div>

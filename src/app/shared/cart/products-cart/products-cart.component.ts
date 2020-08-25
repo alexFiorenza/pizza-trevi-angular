@@ -19,7 +19,6 @@ export class ProductsCartComponent implements OnInit {
   @ViewChild('flavors') private flavors: ElementRef;
   ngOnInit(): void {
     this.products = this.cartService.getAllProducts();
-
   }
   showFlavors() {
     let icon = document.querySelector('#showFlavors');

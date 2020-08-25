@@ -9,12 +9,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
+import { UserPanelComponent } from './user/user-panel/user-panel.component';
+import { UserUpdateComponent } from './user/user-update/user-update.component';
+import { UserOrdersComponent } from './user/user-orders/user-orders.component';
+import { UserDataComponent } from './user/user-data/user-data.component';
+
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserPanelComponent,
+    UserUpdateComponent,
+    UserOrdersComponent,
+    UserDataComponent,
   ],
   imports: [
     FontAwesomeModule,

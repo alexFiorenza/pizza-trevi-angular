@@ -1,3 +1,8 @@
+import { UserDataComponent } from './user/user-data/user-data.component';
+import { UserOrdersComponent } from './user/user-orders/user-orders.component';
+import { UserUpdateComponent } from './user/user-update/user-update.component';
+import { UserPanelComponent } from './user/user-panel/user-panel.component';
+
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,6 +15,29 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'user',
+    component: UserPanelComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'profile',
+        pathMatch: 'full'
+      },
+      {
+        path: 'profile',
+        component: UserDataComponent
+      },
+      {
+        path: 'update',
+        component: UserUpdateComponent
+      },
+      {
+        path: 'orders',
+        component: UserOrdersComponent
+      }
+    ]
   }
 ];
 
