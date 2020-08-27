@@ -1,3 +1,5 @@
+import { UserService } from './../../users-panel/services/user.service';
+import { SocketioService } from './../../sockets/socketio.service';
 import { Router } from '@angular/router';
 import { CartService } from './../cart.service';
 import { Component, OnInit, ElementRef, ViewChild, DoCheck } from '@angular/core';
@@ -11,7 +13,7 @@ import {
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit, DoCheck {
-  products = [];
+  productsReceived = [];
   faCartPlus = faCartPlus;
   faMapMarker = faMapMarker;
   faCreditCard = faCreditCard;
@@ -20,11 +22,12 @@ export class CartComponent implements OnInit, DoCheck {
   @ViewChild('firstStep') private firstStep: ElementRef;
   @ViewChild('secondStep') private secondStep: ElementRef;
   @ViewChild('thirdStep') private thirdStep: ElementRef;
-  constructor(private cartService: CartService, private route: Router) { }
+  constructor(private cartService: CartService, private route: Router,
+    private socket: SocketioService, private userService: UserService) { }
   ngDoCheck() {
   }
   ngOnInit(): void {
-    this.products = this.cartService.getAllProducts();
+    this.productsReceived = this.cartService.getAllProducts();
 
   };
   addStyle(bg, icon) {
@@ -95,8 +98,22 @@ export class CartComponent implements OnInit, DoCheck {
       this.route.navigate(['cart/step', this.steps]);
     } else {
       setTimeout(() => {
+        const total = this.cartService.getTotal();
+        const products = this.cartService.getAllProducts();
+        const order = {
+          total,
+          products,
+          instructions: 'not set yet',
+          status: 'active',
+          user: this.userService.getUserData()
+        };
+        this.socket.setUpSocketConnection();
+        this.socket.socket.emit('orderCreated', { order }, (arg: any) => {
+          if (arg.ok) {
+            this.cartService.deleteAllProducts();
+          }
+        });
         this.route.navigate(['user/orders']);
-        this.cartService.deleteAllProducts();
       }, 500);
     }
 

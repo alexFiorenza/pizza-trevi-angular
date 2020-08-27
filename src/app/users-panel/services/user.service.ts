@@ -1,4 +1,4 @@
-import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
@@ -27,6 +27,9 @@ export class UserService {
     localStorage.setItem('dataUser', JSON.stringify(dataToken));
     localStorage.setItem('token', JSON.stringify(token));
   }
+  reloadToken(token) {
+    return this._http.post(`${this.DevUrl}token`, token);
+  }
   getToken() {
     return localStorage.getItem('token');
   }
@@ -34,5 +37,11 @@ export class UserService {
     const userData = localStorage.getItem('dataUser');
     const parsedData = JSON.parse(userData);
     return parsedData;
+  }
+  updateUser(data): Observable<any> {
+    const token = this.getToken();
+    const user: Partial<User> = this.getUserData();
+    const headers = new HttpHeaders().set('Authorization', token);
+    return this._http.put(`${this.DevUrl}user/${user._id}`, data, { headers });
   }
 }

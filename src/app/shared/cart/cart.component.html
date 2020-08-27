@@ -1,7 +1,10 @@
 <app-header></app-header>
 
 <div class="mt-20">
-  <div class="w-full flex flex-col items-center" *ngIf="products.length > 0">
+  <div
+    class="w-full flex flex-col items-center"
+    *ngIf="productsReceived.length > 0"
+  >
     <div class="flex w-full justify-center">
       <div id="crumbs" class="mt-8 w-11/12 max-w-xl">
         <div class="flex justify-around relative">
@@ -45,7 +48,7 @@
   </div>
   <div
     class="w-full flex items-center justify-center"
-    *ngIf="this.products.length > 0"
+    *ngIf="this.productsReceived.length > 0"
   >
     <div class="w-11/12 max-w-xl flex justify-between">
       <button
@@ -67,7 +70,7 @@
 
   <div
     class="flex-col flex justify-center items-center"
-    *ngIf="products.length <= 0"
+    *ngIf="productsReceived.length <= 0"
   >
     <img class="w-56 mt-12" src="../../../assets/svgCook.svg" alt="" />
     <span class="text-gray-700 font-Poppins mt-4 text-sm">

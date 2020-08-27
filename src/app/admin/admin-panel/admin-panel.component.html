@@ -20,7 +20,10 @@
           [icon]="faPizzaSlice"
         ></fa-icon>
       </div>
-      <div class="text-white font-Poppins font-medium mr-2">
+      <div
+        class="text-white font-Poppins font-medium mr-2 cursor-pointer focus:outline-none"
+        routerLink="orders"
+      >
         Ordenes
         <fa-icon
           class="hidden md:inline-block px-2"
@@ -30,3 +33,4 @@
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

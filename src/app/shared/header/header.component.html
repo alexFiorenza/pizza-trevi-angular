@@ -68,7 +68,7 @@
         ></fa-icon>
         <fa-icon
           *ngIf="this.userData.role !== 'ADMIN' && this.receivedData"
-          routerLink="/profile"
+          routerLink="/user/profile"
           class="text-xl outline-none"
           [icon]="faUser"
         ></fa-icon>
@@ -179,7 +179,7 @@
         *ngIf="this.userData.role !== 'ADMIN' && this.receivedData"
         class="text-xl pl-2 outline-none"
         routerLinkActive="text-primary font-semibold"
-        routerLink="/login"
+        routerLink="/user/profile"
         >Ver perfil</span
       >
       <span

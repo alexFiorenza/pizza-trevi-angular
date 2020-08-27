@@ -1,3 +1,4 @@
+import { ADMIN_ROUTES } from './admin/admin-routing.module';
 import { SearchPipe } from './pipes/search.pipe';
 import { AdminModule } from './admin/admin.module';
 import { ProductsComponent } from './products/products.component';
@@ -32,8 +33,8 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     AdminModule,
     APP_ROUTES,
+    ADMIN_ROUTES,
     FormsModule,
-
   ],
   exports: [
     AppComponent,

@@ -15,7 +15,7 @@ export class CartService {
     this.cart.next(this.products);
   }
   getAllProducts() {
-    return this.products;
+    return this.cart.getValue();
   }
   deleteOneProduct(index) {
     this.cart.getValue().splice(index, 1);
@@ -24,5 +24,13 @@ export class CartService {
     for (let i = 0; this.cart.getValue().length > 0; i++) {
       this.cart.getValue().pop();
     }
+    this.cart.next([]);
+  }
+  getTotal() {
+    let total = 0;
+    this.cart.getValue().forEach(p => {
+      total += p.price;
+    });
+    return total;
   }
 }

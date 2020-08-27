@@ -1,11 +1,7 @@
 import { CheckoutComponent } from './shared/cart/checkout/checkout.component';
 import { ProductsCartComponent } from './shared/cart/products-cart/products-cart.component';
 import { LocationComponent } from './shared/cart/location/location.component';
-import { UpdateProductComponent } from './admin/update-product/update-product.component';
 import { CartComponent } from './shared/cart/cart.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { AddProductComponent } from './admin/add-product/add-product.component';
-import { ProductAdminComponent } from './admin/product-admin/product-admin.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -47,28 +43,7 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: 'panel',
-    children: [
-      {
-        path: '',
-        redirectTo: 'product',
-        pathMatch: 'full'
-      },
-      {
-        path: 'product',
-        component: ProductAdminComponent
-      },
-      {
-        path: 'product/add/:type',
-        component: AddProductComponent
-      },
-      {
-        path: 'product/update/:type/:id',
-        component: UpdateProductComponent
-      }
-    ]
-  },
+
 ];
 
 
