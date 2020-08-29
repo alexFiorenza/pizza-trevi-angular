@@ -1,1 +1,35 @@
-<p>orders works!</p>
+<div class="w-full flex justify-center">
+  <div class="w-10/12 max-w-2xl flex flex-col">
+    <div
+      class="w-full flex flex-col items-center mt-4"
+      *ngFor="let order of orders"
+    >
+      <div
+        class="px-4 py-4 rounded shadow-lg w-full borderOrder relative bigger cursor-pointer"
+      >
+        <div class="new-order absolute w-6 bg-green-400 rounded-full h-6"></div>
+        <div class="w-full flex items-center justify-between">
+          <span class="text-gray-700 text-lg font-Poppins font-medium">{{
+            this.order.user.name | uppercase
+          }}</span>
+          <div
+            *ngIf="this.order.status.toLowerCase() === 'pendiente'"
+            class="px-2 bg-yellow-500 text-xs font-Poppins font-semibold rounded py-1 mt-2 text-white"
+          >
+            {{ this.order.status | uppercase }}
+          </div>
+          <div
+            *ngIf="this.order.status.toLowerCase() === 'activo'"
+            class="px-2 bg-green-500 text-xs font-Poppins font-semibold rounded py-1 mt-2 text-white"
+          >
+            {{ this.order.status | uppercase }}
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-500 font-Poppins lowercase">
+          {{ this.order.date | date }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

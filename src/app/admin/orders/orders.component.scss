@@ -1,0 +1,25 @@
+.borderOrder {
+  border-bottom: 2px solid #cac6c6;
+}
+.new-order {
+  top: -5px;
+  right: -10px;
+  animation: bigger 1.5s infinite ease-in-out;
+}
+@keyframes bigger {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.bigger {
+  transition: 0.5s ease-in-out;
+}
+.bigger:hover {
+  transform: scale(1.05);
+}

@@ -100,12 +100,13 @@ export class CartComponent implements OnInit, DoCheck {
       setTimeout(() => {
         const total = this.cartService.getTotal();
         const products = this.cartService.getAllProducts();
+        const user = this.userService.getUserData();
         const order = {
           total,
           products,
           instructions: 'not set yet',
           status: 'active',
-          user: this.userService.getUserData()
+          user
         };
         this.socket.setUpSocketConnection();
         this.socket.socket.emit('orderCreated', { order }, (arg: any) => {
