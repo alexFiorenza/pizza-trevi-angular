@@ -11,6 +11,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { OrdersComponent } from './orders/orders.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { OrdersComponent } from './orders/orders.component';
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
     USER_ROUTES,
     ADMIN_ROUTES
   ],

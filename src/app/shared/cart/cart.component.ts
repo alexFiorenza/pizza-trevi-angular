@@ -105,7 +105,7 @@ export class CartComponent implements OnInit, DoCheck {
           total,
           products,
           instructions: 'not set yet',
-          status: 'active',
+          status: 'pendiente',
           user
         };
         this.socket.setUpSocketConnection();

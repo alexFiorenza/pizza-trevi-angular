@@ -10,7 +10,9 @@ export class SocketioService {
   constructor(private cartService: CartService) { }
   setUpSocketConnection() {
     this.socket = io(environment.url);
+
   }
-
-
+  emitAdminResponse(actualProduct) {
+    this.socket.emit('adminResponseOrder', actualProduct);
+  }
 }
