@@ -11,10 +11,6 @@ import { User } from 'src/app/interfaces/user';
 export class UserOrdersComponent implements OnInit {
   userData: Partial<User>;
   constructor(private socket: SocketioService, private user: UserService) {
-
-  }
-
-  ngOnInit(): void {
     this.userData = this.user.getUserData();
     this.socket.setUpSocketConnection();
     this.socket.socket.on('updatedOrder', (data) => {
@@ -22,6 +18,10 @@ export class UserOrdersComponent implements OnInit {
         console.log(data);
       }
     });
+  }
+
+  ngOnInit(): void {
+
   }
 
 }

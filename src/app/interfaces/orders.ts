@@ -8,4 +8,5 @@ export interface Orders {
     _id?: string;
     date: Date;
     user: User;
+    time?: number;
 }
