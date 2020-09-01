@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CartService } from './../cart.service';
 import { Component, OnInit, ElementRef, ViewChild, DoCheck } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
+import * as moment from 'moment';
+
 import {
   faCartPlus, faMapMarker, faCreditCard
 } from '@fortawesome/free-solid-svg-icons';
@@ -106,7 +108,8 @@ export class CartComponent implements OnInit, DoCheck {
           products,
           instructions: 'not set yet',
           status: 'pendiente',
-          user
+          user,
+          date: moment().format()
         };
         this.socket.setUpSocketConnection();
         this.socket.socket.emit('orderCreated', { order }, (arg: any) => {

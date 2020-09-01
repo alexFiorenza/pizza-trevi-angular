@@ -1,3 +1,17 @@
+<div
+  class="w-full flex flex-col items-center justify-center mt-20"
+  *ngIf="this.orders.length <= 0"
+>
+  <img
+    src="../../../assets/undraw_online_groceries_a02y.svg"
+    class="w-80"
+    alt=""
+  />
+  <h3 class="md:text-2xl text-gray-500 font-Poppins font-light mt-8 text-lg">
+    ¡Al parecer no se ha cargado ningun pedido!
+  </h3>
+</div>
+
 <div class="w-full flex justify-center">
   <div #alert class="absolute w-full h-screen top-0 hidden">
     <div class="bg-black z-40 opacity-50 h-full absolute w-full"></div>
@@ -89,7 +103,7 @@
           </button>
           <button
             *ngIf="this.actualProduct.status === 'activo'"
-            (click)="confirmOrder()"
+            (click)="completeOrder(actualProduct)"
             class="ml-3 px-2 py-2 bg-green-500 rounded font-semibold focus:outline-none"
           >
             Completado

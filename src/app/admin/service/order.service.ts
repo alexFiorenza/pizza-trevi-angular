@@ -13,6 +13,6 @@ export class OrderService {
     const token = this.userService.getToken();
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
       .set('Authorization', token);
-    return this._http.get(`${this.url}order`, { headers });
+    return this._http.get(`${this.url}orders/date`, { headers });
   }
 }

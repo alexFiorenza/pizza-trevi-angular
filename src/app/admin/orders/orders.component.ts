@@ -32,12 +32,19 @@ export class OrdersComponent implements OnInit {
     this.alertContainer.nativeElement.classList.remove('hidden');
     this.actualProduct = order;
   }
-
+  completeOrder(order) {
+    this.alertContainer.nativeElement.classList.add('hidden');
+    const i = this.orders.indexOf(order);
+    this.actualProduct.status = 'completado';
+    this.orders.splice(i, 1);
+    this.socket.emitAdminResponse(this.actualProduct);
+  }
   confirmOrder(confirm = true) {
     if (confirm) {
       // tslint:disable-next-line: radix
       Object.assign(this.actualProduct, { time: parseInt(this.delayTime) });
       this.actualProduct.status = 'activo';
+      this.alertContainer.nativeElement.classList.add('hidden');
       this.socket.emitAdminResponse(this.actualProduct);
     } else {
       this.actualProduct.status = 'rechazado';
