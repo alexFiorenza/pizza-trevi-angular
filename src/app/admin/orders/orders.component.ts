@@ -39,7 +39,7 @@ export class OrdersComponent implements OnInit {
     this.orders.splice(i, 1);
     this.socket.emitAdminResponse(this.actualProduct);
   }
-  confirmOrder(confirm = true) {
+  confirmOrder(confirm = true, order = null) {
     if (confirm) {
       // tslint:disable-next-line: radix
       Object.assign(this.actualProduct, { time: parseInt(this.delayTime) });
@@ -48,7 +48,11 @@ export class OrdersComponent implements OnInit {
       this.socket.emitAdminResponse(this.actualProduct);
     } else {
       this.actualProduct.status = 'rechazado';
+      this.alertContainer.nativeElement.classList.add('hidden');
+      const i = this.orders.indexOf(order);
+      this.orders.splice(i, 1);
       this.socket.emitAdminResponse(this.actualProduct);
+      window.location.reload();
     }
   }
 }

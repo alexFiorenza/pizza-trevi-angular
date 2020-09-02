@@ -1,3 +1,4 @@
+import { AdminVerifyGuard } from './../guards/admin-verify.guard';
 import { OrdersComponent } from './orders/orders.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
@@ -11,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'panel',
+    canActivate: [AdminVerifyGuard],
     component: AdminPanelComponent,
     children: [
       {

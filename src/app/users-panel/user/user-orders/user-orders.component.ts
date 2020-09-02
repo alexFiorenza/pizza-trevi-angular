@@ -1,3 +1,4 @@
+import { OrderService } from './../../../admin/service/order.service';
 import { UserService } from './../../services/user.service';
 import { SocketioService } from './../../../sockets/socketio.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,7 @@ import { User } from 'src/app/interfaces/user';
 })
 export class UserOrdersComponent implements OnInit {
   userData: Partial<User>;
-  constructor(private socket: SocketioService, private user: UserService) {
+  constructor(private socket: SocketioService, private user: UserService, private orders: OrderService) {
     this.userData = this.user.getUserData();
     this.socket.setUpSocketConnection();
     this.socket.socket.on('updatedOrder', (data) => {
