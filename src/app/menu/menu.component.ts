@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
   usedFilters = false;
   quantityProduct = 1;
   alertLaunched = false;
-  counter: number = 0;
+  counter = 0;
   maxSelection = false;
   flavorsArray: any[] = [];
   @ViewChild('alertContainer') alert: ElementRef;
@@ -154,9 +154,15 @@ export class MenuComponent implements OnInit {
     this.counter = 0;
     this.availableToBuy = false;
     this.maxSelection = false;
-    for (let i = 0; i < this.quantityProduct; i++) {
+    if (this.productSelected.type === 'pizza' || this.productSelected.type === 'calzon' || this.productSelected.type === 'empanada') {
+      for (let i = 0; i < this.quantityProduct; i++) {
+        this.cartService.addToCart(product);
+      }
+    } else {
       this.cartService.addToCart(product);
     }
+
+
     this.closeMenu();
   }
   closeMenu() {

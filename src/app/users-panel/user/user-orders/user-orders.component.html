@@ -1,4 +1,25 @@
-<div class="w-full lg:w-85 rounded-md shadow-lg">
+<div
+  #notOrders
+  *ngIf="this.actualOrders.length === 0"
+  class="w-full flex justify-center flex-col items-center"
+>
+  <img
+    class="mx-4 w-80"
+    src="../../../../assets/undraw_breakfast_psiw.svg"
+    alt=""
+  />
+  <span class="text-gray-500 font-Poppins font-light text-base mt-4 lg:text-lg"
+    >¡Al parecer no tenes ningun producto activo!</span
+  >
+  <button
+    class="px-2 py-2 text-white font-Poppins font-semibold bg-green-500 rounded mt-3 focus:outline-none"
+    routerLink="/menu"
+  >
+    Seguir comprando
+  </button>
+</div>
+
+<div class="w-full lg:w-85">
   <div
     class="w-full rounded-md shadow-lg px-3 py-2 flex flex-col"
     *ngFor="let order of actualOrders"
@@ -10,7 +31,8 @@
       <div
         [ngClass]="{
           'bg-yellow-500': order.status === 'pendiente',
-          'bg-green-500': order.status === 'activo'
+          'bg-green-500':
+            order.status === 'activo' || order.status === 'completado'
         }"
         class="text-white font-Poppins font-semibold text-sm rounded px-2 py-1 uppercase"
       >
@@ -24,7 +46,10 @@
         {{ this.order.user.extraInfo }}</span
       >
     </div>
-    <div class="font-Poppins flex mt-2 items-center" *ngIf="this.order.time">
+    <div
+      class="font-Poppins flex mt-2 items-center"
+      *ngIf="this.order.time && this.order.status === 'activo'"
+    >
       <label
         class="font-semibold text-sm text-white px-2 py-1 bg-red-500 uppercase mx-2"
         >Demora:

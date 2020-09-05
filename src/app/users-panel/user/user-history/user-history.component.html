@@ -1,0 +1,51 @@
+<div *ngIf="this.orders.length === 0">
+  <span class="text-gray-500 text-lg"
+    >¡Todavia no compraste nada o no tenemos registro de ello!</span
+  >
+</div>
+<div class="w-full lg:w-85">
+  <div *ngFor="let order of orders">
+    <div
+      class="w-full rounded-md shadow-lg px-3 py-2 flex flex-col mb-8"
+      *ngIf="this.order.status === 'completado'"
+    >
+      <div>
+        <div class="flex justify-between items-center">
+          <span class="text-gray-500 font-Poppins text-lg ml-2">
+            {{ order.date | date }}
+          </span>
+          <div
+            [ngClass]="{
+              'bg-green-500':
+                order.status === 'activo' || order.status === 'completado'
+            }"
+            class="text-white font-Poppins font-semibold text-sm rounded px-2 py-1 uppercase"
+          >
+            {{ order.status }}
+          </div>
+        </div>
+        <div class="font-Poppins flex text-sm mt-2">
+          <label class="font-semibold text-gray-800 mx-2">Dirección: </label>
+          <span class="text-gray-600"
+            >{{ this.order.user.direction }} ||
+            {{ this.order.user.extraInfo }}</span
+          >
+        </div>
+        <div class="font-Poppins flex flex-col text-sm mt-2">
+          <label class="font-semibold text-gray-800 mx-2 mb-1">Productos</label>
+          <div
+            class="w-10/12 py-1 font-Poppins font-semibold px-2 mx-2 bg-green-400 rounded text-white mb-2"
+            *ngFor="let product of order.products"
+          >
+            {{ product.name }}
+          </div>
+        </div>
+        <span
+          *ngIf="this.order.status === 'pendiente'"
+          class="text-sm mx-2 w-full text-red-500 font-Poppins"
+          >*Al parecer este pedido todavia no ha sido aprobado*</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,19 +19,12 @@
         class="text-red-500 mr-4 text-xl cursor-pointer"
       ></fa-icon>
       <span class="mr-8 font-Poppins">${{ product.price }}</span>
-      <fa-icon
-        id="showFlavors"
-        class="rotateTransition cursor-pointer"
-        (click)="showFlavors()"
-        *ngIf="this.product.flavors"
-        [icon]="faAngleDown"
-      ></fa-icon>
     </div>
   </div>
   <div
     *ngIf="this.product.flavors"
-    #flavors
-    class="mt-2 lg:flex-row flex-col w-11/12 max-w-xl items-center justify-center slide-in-top hidden"
+    #flavorsGroup
+    class="mt-2 lg:flex-row flex-col w-11/12 max-w-xl items-center justify-start slide-in-top flex"
   >
     <div
       *ngFor="let f of this.product.flavors"

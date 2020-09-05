@@ -1,3 +1,4 @@
+import { UserHistoryComponent } from './user/user-history/user-history.component';
 import { UserDataComponent } from './user/user-data/user-data.component';
 import { UserOrdersComponent } from './user/user-orders/user-orders.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'orders',
         component: UserOrdersComponent
+      },
+      {
+        path: 'history',
+        component: UserHistoryComponent
       }
     ]
   }

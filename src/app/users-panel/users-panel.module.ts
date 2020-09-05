@@ -13,6 +13,7 @@ import { UserPanelComponent } from './user/user-panel/user-panel.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { UserOrdersComponent } from './user/user-orders/user-orders.component';
 import { UserDataComponent } from './user/user-data/user-data.component';
+import { UserHistoryComponent } from './user/user-history/user-history.component';
 
 
 
@@ -24,6 +25,7 @@ import { UserDataComponent } from './user/user-data/user-data.component';
     UserUpdateComponent,
     UserOrdersComponent,
     UserDataComponent,
+    UserHistoryComponent,
   ],
   imports: [
     FontAwesomeModule,
