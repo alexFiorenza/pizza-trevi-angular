@@ -1,3 +1,4 @@
+import { CheckUserGuard } from './../guards/check-user.guard';
 import { UserHistoryComponent } from './user/user-history/user-history.component';
 import { UserDataComponent } from './user/user-data/user-data.component';
 import { UserOrdersComponent } from './user/user-orders/user-orders.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserPanelComponent,
+    canActivate: [CheckUserGuard],
     children: [
       {
         path: '',

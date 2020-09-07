@@ -138,7 +138,29 @@
   </div>
 </div>
 <app-header></app-header>
-
+<div
+  *ngIf="!this.products"
+  #loader
+  class="h-screen -mt-32 items-center w-full flex justify-center"
+>
+  <svg
+    class="spinner"
+    width="65px"
+    height="65px"
+    viewBox="0 0 66 66"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      class="path"
+      fill="none"
+      stroke-width="6"
+      stroke-linecap="round"
+      cx="33"
+      cy="33"
+      r="30"
+    ></circle>
+  </svg>
+</div>
 <div
   class="w-full flex items-center shadow-md mt-20 py-2 justify-between lg:hidden"
   *ngIf="this.products"
@@ -173,7 +195,7 @@
 <div class="w-full lg:flex lg:mt-20" *ngIf="this.products">
   <div
     #filters
-    class="mx-2 my-1 absolute w-full h-70 hidden lg:static lg:flex lg:w-2/6 justify-center z-30 slide-in-blurred-top"
+    class="lg:mx-2 my-1 absolute w-full h-70 hidden lg:static lg:flex lg:w-2/6 justify-center z-30 slide-in-blurred-top"
   >
     <div
       class="xl:w-5/12 bg-white shadow-xl w-10/12 flex flex-col px-5 py-5 my-4"

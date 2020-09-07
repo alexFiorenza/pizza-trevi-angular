@@ -218,7 +218,6 @@ export class MenuComponent implements OnInit {
     if (maxSpanClass && !LessSpanClass && tagName.textContent.toLowerCase() === 'menor precio') {
       const index = this.filtersArray.indexOf('mayor precio');
       this.filtersArray.splice(index, 1);
-      console.log(this.filtersArray);
       this.maxSpan.nativeElement.className = 'cursor-pointer';
       this.iconMax.nativeElement.className = 'text-gray-400 px-1 tagsText';
     }
@@ -229,6 +228,12 @@ export class MenuComponent implements OnInit {
       this.iconLess.nativeElement.className = 'text-gray-400 px-1 tagsText';
     }
     if (tagName.classList.contains('font-bold')) {
+      // if (
+      //   tagName.textContent.toLowerCase() === 'menor precio'
+      //   || tagName.textContent.toLowerCase() === 'mayor precio') {
+      //   window.location.reload();
+      //   return;
+      // }
       this.manageFilters(tagName.textContent);
       tagName.className = 'cursor-pointer';
       icon.className = 'text-gray-400 px-1 tagsText';
@@ -237,7 +242,6 @@ export class MenuComponent implements OnInit {
     icon.className += ' text-green-600';
     tagName.className += ' font-bold text-green-600';
     this.manageFilters(tagName.textContent);
-    this.productsFiltered = this.productsFiltered;
   }
   openFilters() {
     if (this.filtersPanel.nativeElement.classList.contains('block')) {
@@ -256,13 +260,18 @@ export class MenuComponent implements OnInit {
     filter = filter.toLowerCase();
 
     if (this.filtersArray.includes(filter)) {
+      if (filter === 'menor precio' || filter === 'mayor precio') {
+        if (this.filtersArray.includes(filter) && this.filtersArray.length === 1) {
+          this.productsFiltered = [];
+          return this.productsFiltered;
+        }
+      }
       const index = this.filtersArray.indexOf(filter);
       this.filtersArray.splice(index, 1);
       if (filter === 'helado') {
         this.productsFiltered = this.productsFiltered.filter(p => {
           return p.type !== '1kg' && p.type !== '1/2kg' && p.type !== '1/4kg';
         });
-        console.log(this.productsFiltered);
       }
       if (filter === 'empanada') {
         this.productsFiltered = this.productsFiltered.filter(p => {
@@ -271,7 +280,7 @@ export class MenuComponent implements OnInit {
       }
       this.productsFiltered = this.productsFiltered.filter(p => {
         return p.type !== filter;
-      })
+      });
       return this.productsFiltered;
     }
     if (filter === 'menor precio' || filter === ('mayor precio')) {
@@ -312,7 +321,7 @@ export class MenuComponent implements OnInit {
         default:
           tmpArray = this.products.filter(p => {
             return p.type === filterText;
-          })
+          });
           break;
       }
       tmpArray.forEach(p => {
@@ -339,7 +348,8 @@ export class MenuComponent implements OnInit {
       default:
         tmpArray = this.products.filter(p => {
           return p.type === filterText;
-        })
+        });
+        console.log(tmpArray);
         break;
     }
     tmpArray.forEach(p => {
@@ -354,6 +364,7 @@ export class MenuComponent implements OnInit {
     let tmpArray = [];
     if (filterText === 'menor precio') {
       if (this.productsFiltered.length === 0) {
+        console.log('enterede filter');
         tmpArray = this.products;
       } else {
         tmpArray = this.productsFiltered;

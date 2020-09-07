@@ -15,15 +15,17 @@ export class OrdersComponent implements OnInit {
   faTimesCircle = faTimesCircle;
   actualProduct: Orders;
   delayTime;
+  orderAudio: HTMLAudioElement;
   constructor(private socket: SocketioService, private orderService: OrderService) { }
   @ViewChild('alert') public alertContainer: ElementRef;
   ngOnInit(): void {
     this.orderService.getAllOrders().subscribe((data: any) => {
       this.orders = data.message;
-      console.log(this.orders);
     });
     this.socket.setUpSocketConnection();
     this.socket.socket.on('orderCreatedAdmin', (d: Orders) => {
+      this.orderAudio = new Audio('../../../assets/new-order-sound.mp3');
+      this.orderAudio.play();
       this.orders.push(d);
       console.log(this.orders);
     });
@@ -31,6 +33,7 @@ export class OrdersComponent implements OnInit {
   openAlert(order) {
     this.alertContainer.nativeElement.classList.remove('hidden');
     this.actualProduct = order;
+    this.orderAudio.pause();
   }
   completeOrder(order) {
     this.alertContainer.nativeElement.classList.add('hidden');

@@ -14,6 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from '@angular/forms';
+import { ContactComponent } from './contact/contact.component';
 
 
 
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     MenuComponent,
     ProductsComponent,
     SearchPipe,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

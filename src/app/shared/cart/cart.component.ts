@@ -115,9 +115,9 @@ export class CartComponent implements OnInit, DoCheck {
         this.socket.socket.emit('orderCreated', { order }, (arg: any) => {
           if (arg.ok) {
             this.cartService.deleteAllProducts();
+            this.route.navigate(['user/orders']);
           }
         });
-        this.route.navigate(['user/orders']);
       }, 500);
     }
 
