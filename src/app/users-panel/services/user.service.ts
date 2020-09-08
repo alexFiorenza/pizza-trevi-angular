@@ -5,6 +5,7 @@ import { User } from 'src/app/interfaces/user';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import * as jwt from 'jsonwebtoken';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +23,6 @@ export class UserService {
     return throwError(error);
   }
   saveToken(token) {
-    console.log('entered');
     const dataToken = this.jwt.decodeToken(token);
     localStorage.setItem('dataUser', JSON.stringify(dataToken));
     localStorage.setItem('token', JSON.stringify(token));
@@ -43,5 +43,8 @@ export class UserService {
     const user: Partial<User> = this.getUserData();
     const headers = new HttpHeaders().set('Authorization', token);
     return this._http.put(`${this.DevUrl}user/${user._id}`, data, { headers });
+  }
+  verifyToken(token) {
+    console.log(token);
   }
 }

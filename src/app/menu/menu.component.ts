@@ -1,3 +1,4 @@
+import { ActivatedRoute, Params } from '@angular/router';
 import { CartService } from './../shared/cart.service';
 import { ProductService } from './../admin/service/product.service';
 import { Component, OnInit, ViewChild, ElementRef, Inject, Renderer2 } from '@angular/core';
@@ -43,7 +44,7 @@ export class MenuComponent implements OnInit {
   @ViewChild('icon1') iconLess: ElementRef;
   @ViewChild('icon2') iconMax: ElementRef;
   constructor(private productService: ProductService, private cartService: CartService,
-    @Inject(DOCUMENT) document, private r: Renderer2) { }
+    @Inject(DOCUMENT) document, private r: Renderer2, private activatedRoute: ActivatedRoute) { }
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((data: any) => {
       this.products = data.message;
@@ -53,6 +54,11 @@ export class MenuComponent implements OnInit {
       this.iceCreamArray = this.products.filter(p => {
         return p.type === 'helado';
       });
+      const pizza = this.activatedRoute.snapshot.queryParamMap.get('pizza');
+      if (pizza !== null) {
+        this.filterProduct = pizza;
+        console.log(this.filterProduct);
+      }
     });
   }
   alertMenu(product) {

@@ -1,7 +1,7 @@
 import { UserService } from './../users-panel/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { hotestPizzas } from './hotestPizzas'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,12 +9,14 @@ import { hotestPizzas } from './hotestPizzas'
 })
 export class HomeComponent implements OnInit {
   hotestPizzas: Array<any>;
-  constructor() {
+  constructor(private route: Router, private userService: UserService) {
 
   }
 
   ngOnInit(): void {
     this.hotestPizzas = hotestPizzas;
-    console.log(this.hotestPizzas);
+  }
+  hotPizza(name) {
+    this.route.navigate(['menu'], { queryParams: { pizza: name } });
   }
 }

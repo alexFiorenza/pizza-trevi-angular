@@ -1,27 +1,27 @@
 const hotestPizzas = [
     {
         name: 'Jamon y morrones',
-        img: 'path to file'
+        img: '../../assets/pizza1.png'
     },
     {
-        name: 'Jamon y morrones',
-        img: 'path to file'
+        name: 'Calabresa',
+        img: '../../assets/pizza2.png'
     },
     {
-        name: 'Jamon y morrones',
-        img: 'path to file'
+        name: 'Iberica',
+        img: '../../assets/pizza3.png'
     },
     {
-        name: 'Jamon y morrones',
-        img: 'path to file'
+        name: 'Napolitana',
+        img: '../../assets/pizza4.png'
     },
     {
-        name: 'Jamon y morrones',
-        img: 'path to file'
+        name: 'Panceta y cheddar',
+        img: '../../assets/pizza5.png'
     },
     {
-        name: 'Jamon y morrones',
-        img: 'path to file'
+        name: 'Palmitos',
+        img: '../../assets/pizza6.png'
     },
 ];
 

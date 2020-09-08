@@ -62,60 +62,14 @@
     class="sm:flex w-10/12 mx-auto mt-4 justify-evenly lg:justify-center sm:w-11/12"
   >
     <div
+      *ngFor="let pizza of this.hotestPizzas"
       class="lg:mr-16 bigger w-full mb-8 lg:w-40 sm:w-32 mr-2 md:mr-4 lg:w-40rounded shadow-2xl h-48 flex flex-col justify-evenly items-center px-2 relative"
     >
-      <img class="w-24" src="../../assets/pizza1.png" alt="" />
+      <img class="w-24" [src]="pizza.img" alt="" />
 
-      <h4 class="text-gray-800 text-center">Jamon y morrones</h4>
+      <h4 class="text-gray-800 text-center">{{ pizza.name }}</h4>
       <button
-        class="w-10/12 px-2 py-1 text-white rounded sm:w-full bg-red-600 focus:outline-none"
-      >
-        Ordenar
-      </button>
-    </div>
-    <div
-      class="lg:mr-16 bigger w-full mb-8 lg:w-40 sm:w-32 mr-2 md:mr-4 lg:w-40rounded shadow-2xl h-48 flex flex-col justify-evenly items-center px-2 relative"
-    >
-      <img class="w-24" src="../../assets/pizza1.png" alt="" />
-
-      <h4 class="text-gray-800 text-center">Jamon y morrones</h4>
-      <button
-        class="w-10/12 px-2 py-1 text-white rounded sm:w-full bg-red-600 focus:outline-none"
-      >
-        Ordenar
-      </button>
-    </div>
-    <div
-      class="lg:mr-16 bigger w-full mb-8 lg:w-40 sm:w-32 mr-2 md:mr-4 lg:w-40rounded shadow-2xl h-48 flex flex-col justify-evenly items-center px-2 relative"
-    >
-      <img class="w-24" src="../../assets/pizza1.png" alt="" />
-
-      <h4 class="text-gray-800 text-center">Jamon y morrones</h4>
-      <button
-        class="w-10/12 px-2 py-1 text-white rounded sm:w-full bg-red-600 focus:outline-none"
-      >
-        Ordenar
-      </button>
-    </div>
-    <div
-      class="lg:mr-16 bigger w-full mb-8 lg:w-40 sm:w-32 mr-2 md:mr-4 lg:w-40rounded shadow-2xl h-48 flex flex-col justify-evenly items-center px-2 relative"
-    >
-      <img class="w-24" src="../../assets/pizza1.png" alt="" />
-
-      <h4 class="text-gray-800 text-center">Jamon y morrones</h4>
-      <button
-        class="w-10/12 px-2 py-1 text-white rounded sm:w-full bg-red-600 focus:outline-none"
-      >
-        Ordenar
-      </button>
-    </div>
-    <div
-      class="lg:mr-16 bigger w-full mb-8 lg:w-40 sm:w-32 mr-2 md:mr-4 lg:w-40rounded shadow-2xl h-48 flex flex-col justify-evenly items-center px-2 relative"
-    >
-      <img class="w-24" src="../../assets/pizza1.png" alt="" />
-
-      <h4 class="text-gray-800 text-center">Jamon y morrones</h4>
-      <button
+        (click)="hotPizza(pizza.name)"
         class="w-10/12 px-2 py-1 text-white rounded sm:w-full bg-red-600 focus:outline-none"
       >
         Ordenar
