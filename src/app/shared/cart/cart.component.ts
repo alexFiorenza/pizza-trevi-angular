@@ -19,7 +19,7 @@ export class CartComponent implements OnInit, DoCheck {
   faCartPlus = faCartPlus;
   faMapMarker = faMapMarker;
   faCreditCard = faCreditCard;
-  steps = 0;
+  public steps = 0;
 
   @ViewChild('firstStep') private firstStep: ElementRef;
   @ViewChild('secondStep') private secondStep: ElementRef;

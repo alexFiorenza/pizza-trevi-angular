@@ -7,7 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { UserPanelComponent } from './user/user-panel/user-panel.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
@@ -34,7 +34,8 @@ import { UserHistoryComponent } from './user/user-history/user-history.component
     SharedModule,
     ReactiveFormsModule,
     HttpClientModule,
-    JwtModule
+    JwtModule,
+    FormsModule
   ],
   exports: [
     LoginComponent,

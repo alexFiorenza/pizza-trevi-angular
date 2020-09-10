@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('loading') private loadingScreen: ElementRef;
   registerLoading = false;
   registerError = false;
+  repeteadPassword;
   faArrow = faArrowCircleRight;
   map: mapboxgl.map;
   form: FormGroup;
@@ -37,27 +38,35 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit(form) {
     const userData = this.form.value;
-    console.log(form);
-    this.loadingScreen.nativeElement.classList.remove('hidden');
-    this.loadingScreen.nativeElement.classList.add('block');
+    if (this.form.get('password') !== this.repeteadPassword) {
+      this.registerLoading = true;
+      this.registerError = true;
+      setTimeout(() => {
+        window.location.reload();
+      }, 1200);
+    } else {
+      this.loadingScreen.nativeElement.classList.remove('hidden');
+      this.loadingScreen.nativeElement.classList.add('block');
 
-    return this.userService.registerUser(userData).subscribe((data: any) => {
-      if (data.ok) {
-        this.registerLoading = true;
-        this.registerError = false;
-        setTimeout(() => {
-          return this.route.navigate(['login']);
-        }, 1200);
-      }
-    }, err => {
-      if (!err.error.ok) {
-        this.registerLoading = true;
-        this.registerError = true;
-        setTimeout(() => {
-          window.location.reload();
-        }, 1200);
-        console.log(new Error('An error in the request had occured'));
-      }
-    });
+      return this.userService.registerUser(userData).subscribe((data: any) => {
+        if (data.ok) {
+          this.registerLoading = true;
+          this.registerError = false;
+          setTimeout(() => {
+            return this.route.navigate(['login']);
+          }, 1200);
+        }
+      }, err => {
+        if (!err.error.ok) {
+          this.registerLoading = true;
+          this.registerError = true;
+          setTimeout(() => {
+            window.location.reload();
+          }, 1200);
+          console.log(new Error('An error in the request had occured'));
+        }
+      });
+    }
   }
+
 }

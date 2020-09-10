@@ -8,7 +8,10 @@
       >
         <span class="text-white text-xs font-bold">{{ $total | async }}</span>
       </div>
-      <fa-icon [icon]="faShoppingCart" class="text-3xl mt-2"></fa-icon>
+      <fa-icon
+        [icon]="faShoppingCart"
+        class="focus:outline-none text-3xl mt-2"
+      ></fa-icon>
     </div>
     <div class="pl-4">
       <img class="w-12" src="../../../assets/brand.png" alt="" />
@@ -57,7 +60,7 @@
         >
           <span class="text-white text-xs font-bold">{{ $total | async }}</span>
         </div>
-        <fa-icon [icon]="faShoppingCart" class="text-xl"></fa-icon>
+        <fa-icon [icon]="faShoppingCart" class="text-xl focus:outline-none"></fa-icon>
       </div>
       <div class="cursor-pointer text-white px-4">
         <fa-icon

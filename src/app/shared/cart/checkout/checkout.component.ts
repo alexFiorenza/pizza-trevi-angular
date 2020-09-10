@@ -1,3 +1,4 @@
+import { CartComponent } from './../cart.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cartComponent: CartComponent) { }
 
   ngOnInit(): void {
+    if (this.cartComponent.steps === 2) {
+      return;
+    } else {
+      window.location.reload();
+    }
   }
 
 }

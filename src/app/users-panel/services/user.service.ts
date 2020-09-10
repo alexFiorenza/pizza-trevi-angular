@@ -1,11 +1,10 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClientModule, HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import * as jwt from 'jsonwebtoken';
 @Injectable({
   providedIn: 'root'
 })
@@ -27,8 +26,8 @@ export class UserService {
     localStorage.setItem('dataUser', JSON.stringify(dataToken));
     localStorage.setItem('token', JSON.stringify(token));
   }
-  reloadToken(token) {
-    return this._http.post(`${this.DevUrl}token`, token);
+  reloadToken(data) {
+    return this._http.post(`${this.DevUrl}token`, data);
   }
   getToken() {
     return localStorage.getItem('token');
@@ -44,7 +43,12 @@ export class UserService {
     const headers = new HttpHeaders().set('Authorization', token);
     return this._http.put(`${this.DevUrl}user/${user._id}`, data, { headers });
   }
-  verifyToken(token) {
-    console.log(token);
+  isTokenExpired() {
+    const token = this.getToken();
+    if (token !== null) {
+      const tokenValidation = this.jwt.isTokenExpired(token);
+      return tokenValidation;
+    }
+    return false;
   }
 }

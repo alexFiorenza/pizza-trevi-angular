@@ -1,3 +1,4 @@
+import { CartComponent } from './../cart.component';
 import { UserService } from './../../../users-panel/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
@@ -9,11 +10,14 @@ import { User } from 'src/app/interfaces/user';
 })
 export class LocationComponent implements OnInit {
   userData: Partial<User>;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private cartComponent: CartComponent) { }
 
   ngOnInit(): void {
-    this.userData = this.userService.getUserData();
-    console.log(this.userData);
+    if (this.cartComponent.steps === 1) {
+      this.userData = this.userService.getUserData();
+    } else {
+      window.location.reload();
+    }
   }
 
 }

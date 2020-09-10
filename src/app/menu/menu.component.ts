@@ -9,6 +9,7 @@ import {
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { Product } from '../interfaces/product';
 import { DOCUMENT } from '@angular/common';
+import * as moment from 'moment';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class MenuComponent implements OnInit {
   alertLaunched = false;
   counter = 0;
   maxSelection = false;
+  betweenHour: boolean;
   flavorsArray: any[] = [];
   @ViewChild('alertContainer') alert: ElementRef;
   @ViewChild('filters') filtersPanel: ElementRef;
@@ -57,8 +59,12 @@ export class MenuComponent implements OnInit {
       const pizza = this.activatedRoute.snapshot.queryParamMap.get('pizza');
       if (pizza !== null) {
         this.filterProduct = pizza;
-        console.log(this.filterProduct);
       }
+      const format = 'HH:mm';
+      const now = moment();
+      const fromDate = moment('19:00', format);
+      const toDate = moment('23:59', format);
+      this.betweenHour = moment(now, format).isBetween(fromDate, toDate);
     });
   }
   alertMenu(product) {
@@ -94,12 +100,11 @@ export class MenuComponent implements OnInit {
     if (selectValue === 0) {
       return;
     }
-
     if (this.counter >= 12 || this.counter + selectValue > 12) {
       this.maxSelection = true;
       this.availableToBuy = false;
       setTimeout(() => {
-        window.location.reload()
+        window.location.reload();
       }, 500);
       return;
     }

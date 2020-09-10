@@ -203,6 +203,19 @@
             Escribí una contraseña valida
           </p>
         </div>
+        <div #password class="flex flex-col w-11/12 mb-8 xl:w-full">
+          <label
+            class="text-sm text-white font-Poppins font-semibold uppercase tracking-widest"
+            >Repeti la contraseña</label
+          >
+          <input
+            type="password"
+            [(ngModel)]="repeteadPassword"
+            placeholder="*********************"
+            class="inputField pr-2 py-2 bg-transparent focus:outline-none text-white text-xs"
+          />
+          <div class="w-full lineHeight pr-2"></div>
+        </div>
         <div
           [formGroup]="form"
           #directions

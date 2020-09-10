@@ -1,3 +1,4 @@
+import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './shared/cart/checkout/checkout.component';
 import { ProductsCartComponent } from './shared/cart/products-cart/products-cart.component';
 import { LocationComponent } from './shared/cart/location/location.component';
@@ -20,6 +21,11 @@ const routes: Routes = [
     path: 'menu',
     component: MenuComponent
   },
+  {
+    path: 'contact',
+    component: ContactComponent
+  },
+
   {
     path: 'cart',
     component: CartComponent,
