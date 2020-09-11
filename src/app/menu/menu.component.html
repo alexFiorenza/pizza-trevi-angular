@@ -14,7 +14,7 @@
         ¡Solo podes comprar hasta 12 empanadas!
       </div>
       <div class="flex flex-col w-full font-Poppins">
-        <span class="text-red-500 font-Poppins"
+        <span *ngIf="!this.betweenHour" class="text-red-500 font-Poppins"
           >*Actualmente el local esta cerrado*</span
         >
         <div class="flex w-full justify-between">

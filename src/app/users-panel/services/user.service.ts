@@ -30,7 +30,13 @@ export class UserService {
     return this._http.post(`${this.DevUrl}token`, data);
   }
   getToken() {
-    return localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    if (token !== null) {
+      return token.replace(/['"]+/g, '');
+    } else {
+      return null;
+    }
+
   }
   getUserData() {
     const userData = localStorage.getItem('dataUser');
@@ -48,7 +54,8 @@ export class UserService {
     if (token !== null) {
       const tokenValidation = this.jwt.isTokenExpired(token);
       return tokenValidation;
+    } else {
+      return false;
     }
-    return false;
   }
 }

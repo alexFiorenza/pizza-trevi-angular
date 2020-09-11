@@ -1,7 +1,7 @@
 import { UserService } from './../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowCircleRight, faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 
 
 import * as mapboxgl from 'mapbox-gl';
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('loading') private loadingScreen: ElementRef;
   registerLoading = false;
   registerError = false;
-  repeteadPassword;
+  faLongArrowLeft = faLongArrowAltLeft;
   faArrow = faArrowCircleRight;
   map: mapboxgl.map;
   form: FormGroup;
@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
       phone: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.minLength(8), Validators.required]],
+      repeteadPassword: ['', [Validators.required]],
       direction: ['', Validators.required],
       extraInfo: ['', Validators.required]
     });
@@ -38,7 +39,7 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit(form) {
     const userData = this.form.value;
-    if (this.form.get('password') !== this.repeteadPassword) {
+    if (this.form.get('password') !== this.form.get('repeteadPassword')) {
       this.registerLoading = true;
       this.registerError = true;
       setTimeout(() => {

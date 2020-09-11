@@ -1,4 +1,27 @@
 <app-header></app-header>
+<div class="w-full flex justify-center">
+  <div
+    class="absolute w-full max-w-sm bg-gray-100 top-0 z-50 rounded-md px-2 mt-4 slide-in-top"
+  >
+    <div>
+      <h3 class="mb-1 text-gray-800 font-Poppins">
+        Estas a punto de <strong class="text-red-500">cerrar sesion</strong>
+      </h3>
+      <div class="h-px bg-black"></div>
+      <span class="font-Poppins text-gray-800"
+        >¿Estas seguro que queres seguir?</span
+      >
+    </div>
+    <div class="flex justify-end px-2 text-white font-Poppins mt-12 mb-4">
+      <button class="px-2 py-1 bg-red-500 rounded-sm font-semibold">
+        Cancelar
+      </button>
+      <button class="ml-8 px-2 bg-green-500 py-1 rounded-sm font-semibold">
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>
 <div class="relative">
   <div class="lg:mt-32 z-50">
     <div
@@ -76,7 +99,12 @@
           <li class="mt-8 focus:outline-none cursor-pointer">
             Eliminar cuenta
           </li>
-          <li class="mt-8 focus:outline-none cursor-pointer">Cerrar sesion</li>
+          <li
+            (click)="openAlert()"
+            class="mt-8 focus:outline-none cursor-pointer"
+          >
+            Cerrar sesion
+          </li>
         </ul>
       </div>
       <div class="lg:ml-4 w-full max-w-sm lg:flex lg:justify-start">
@@ -85,3 +113,20 @@
     </div>
   </div>
 </div>
+<style>
+  .slide-in-top {
+    animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  @keyframes slide-in-top {
+    0% {
+      -webkit-transform: translateY(-1000px);
+      transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>

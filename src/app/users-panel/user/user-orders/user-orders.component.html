@@ -32,7 +32,8 @@
         [ngClass]="{
           'bg-yellow-500': order.status === 'pendiente',
           'bg-green-500':
-            order.status === 'activo' || order.status === 'completado'
+            order.status === 'activo' || order.status === 'completado',
+          'bg-red-500': order.status === 'rechazado'
         }"
         class="text-white font-Poppins font-semibold text-sm rounded px-2 py-1 uppercase"
       >

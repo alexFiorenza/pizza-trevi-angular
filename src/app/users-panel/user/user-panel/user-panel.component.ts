@@ -16,5 +16,12 @@ export class UserPanelComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  signOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('dataUser');
+    window.location.reload();
+  }
+  openAlert() {
 
+  }
 }
