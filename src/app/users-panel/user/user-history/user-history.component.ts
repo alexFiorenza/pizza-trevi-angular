@@ -11,6 +11,7 @@ import { User } from 'src/app/interfaces/user';
 })
 export class UserHistoryComponent implements OnInit {
   orders: Array<Orders> = [];
+  updatingData = true;
   constructor(private orderService: OrderService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -18,6 +19,7 @@ export class UserHistoryComponent implements OnInit {
 
     this.orderService.getHistoryUser(userData._id).subscribe((data: any) => {
       this.orders = data.message;
+      this.updatingData = false;
     })
   }
 

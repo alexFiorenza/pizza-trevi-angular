@@ -1,6 +1,6 @@
-<div class="w-full flex justify-center">
+<div class="w-full flex flex-col items-center justify-center">
   <div
-    class="w-10/12 mt-4 max-wlxl lg:max-w-lg flex items-center flex-col bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 lg:px-3 py-3 shadow-md puff-in-center"
+    class="w-10/12 mt-4 max-w-xl lg:max-w-lg flex items-center flex-col bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 lg:px-3 py-3 shadow-md puff-in-center"
   >
     <div class="flex">
       <div>
@@ -27,5 +27,15 @@
         </ul>
       </div>
     </div>
+  </div>
+  <div class="w-10/12 max-w-xl lg:max-w-lg puff-in-center mt-4">
+    <span class="font-Poppins uppercase text-gray-800 font-semibold"
+      >Instrucciones:
+    </span>
+    <textarea
+      [(ngModel)]="instructions"
+      class="textarea w-full bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-2 py-2 shadow-md"
+      placeholder="Este campo es opcional "
+    ></textarea>
   </div>
 </div>

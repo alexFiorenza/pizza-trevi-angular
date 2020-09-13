@@ -56,16 +56,15 @@ export class MenuComponent implements OnInit {
       this.iceCreamArray = this.products.filter(p => {
         return p.type === 'helado';
       });
-      const pizza = this.activatedRoute.snapshot.queryParamMap.get('pizza');
-      if (pizza !== null) {
-        this.filterProduct = pizza;
+      const filter = this.activatedRoute.snapshot.queryParamMap.get('filter');
+      if (filter !== null) {
+        this.filterProduct = filter;
       }
       const format = 'HH:mm';
       const now = moment();
       const fromDate = moment('19:00', format);
       const toDate = moment('23:59', format);
       this.betweenHour = moment(now, format).isBetween(fromDate, toDate);
-      console.log(this.betweenHour);
     });
   }
   alertMenu(product) {

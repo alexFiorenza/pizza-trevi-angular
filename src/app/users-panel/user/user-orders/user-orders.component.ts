@@ -13,6 +13,7 @@ import { Orders } from 'src/app/interfaces/orders';
 export class UserOrdersComponent implements OnInit {
   userData: Partial<User>;
   actualOrders: Array<Orders> = [];
+  updatingData = true;
   constructor(private socket: SocketioService, private user: UserService, private orders: OrderService) {
 
   }
@@ -21,6 +22,7 @@ export class UserOrdersComponent implements OnInit {
     this.userData = this.user.getUserData();
     this.orders.getInProgressOrder(this.userData._id).subscribe((p: any) => {
       this.actualOrders = p.message;
+      this.updatingData = false;
       this.socket.setUpSocketConnection();
       this.socket.socket.on('updatedOrder', (data) => {
         if (data.user._id === this.userData._id) {

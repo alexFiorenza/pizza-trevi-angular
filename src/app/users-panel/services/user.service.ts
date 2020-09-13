@@ -38,6 +38,14 @@ export class UserService {
     }
 
   }
+  deleteUser() {
+    const token = this.getToken();
+    const user = this.getUserData();
+    const id = user._id;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+      .set('Authorization', token);
+    return this._http.delete(`${this.DevUrl}user/${id}`, { headers });
+  }
   getUserData() {
     const userData = localStorage.getItem('dataUser');
     const parsedData = JSON.parse(userData);

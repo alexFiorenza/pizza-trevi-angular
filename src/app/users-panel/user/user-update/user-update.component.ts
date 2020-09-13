@@ -13,6 +13,7 @@ export class UserUpdateComponent implements OnInit {
   form: FormGroup;
   userData: Partial<User>;
   availableToUpdate = false;
+  updatingData = false;
   constructor(private formBuilder: FormBuilder, private userService: UserService, private route: Router) {
     this.userData = this.userService.getUserData();
     this.form = this.formBuilder.group({
@@ -31,6 +32,7 @@ export class UserUpdateComponent implements OnInit {
 
   }
   onSubmit() {
+    this.updatingData = true;
     this.userService.updateUser(this.form.value).subscribe((r: any) => {
       if (r.ok) {
         this.userService.reloadToken(r.message).subscribe((res: any) => {

@@ -67,7 +67,7 @@
         <div>
           <select
             *ngIf="actualProduct.status === 'pendiente'"
-            class="px-2 py-1 mt-4"
+            class="px-2 py-1 my-2"
             [(ngModel)]="delayTime"
           >
             <option value="20">20 minutos</option>
@@ -81,6 +81,10 @@
             "
             >Demora: {{ this.actualProduct.time }} minutos</span
           >
+        </div>
+        <div class="flex flex-col">
+          <span class="text-gray-900 uppercase">instrucciones: </span>
+          <p class="text-gray-600">{{ this.actualProduct.instructions }}</p>
         </div>
         <div class="line w-full mt-4 mb-2"></div>
         <div class="w-full text-2xl font-Poppins">

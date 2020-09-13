@@ -8,6 +8,7 @@ import { Product } from '../interfaces/product';
 export class CartService {
   private products = [];
   private cart = new BehaviorSubject<any[]>([]);
+  instructions: string;
   cart$ = this.cart.asObservable();
   constructor() { }
   addToCart(product) {
@@ -32,5 +33,11 @@ export class CartService {
       total += p.price;
     });
     return total;
+  }
+  storeInstructions(instructions) {
+    this.instructions = instructions;
+  }
+  returnInstructions() {
+    return this.instructions;
   }
 }

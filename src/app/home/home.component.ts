@@ -26,6 +26,9 @@ export class HomeComponent implements OnInit {
     this.hotestPizzas = hotestPizzas;
   }
   public hotPizza(name) {
-    this.route.navigate(['menu'], { queryParams: { pizza: name } });
+    this.route.navigate(['menu'], { queryParams: { filter: name } });
+  }
+  redirectIceCream() {
+    this.route.navigate(['menu'], { queryParams: { filter: 'helado' } })
   }
 }

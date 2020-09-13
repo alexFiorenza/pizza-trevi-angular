@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -23,6 +24,7 @@ import { CheckoutComponent } from './cart/checkout/checkout.component';
     CommonModule,
     RouterModule,
     FontAwesomeModule,
+    FormsModule
   ],
   exports: [
     FooterComponent,

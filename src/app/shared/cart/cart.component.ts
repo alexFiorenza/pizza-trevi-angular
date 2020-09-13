@@ -19,6 +19,7 @@ export class CartComponent implements OnInit, DoCheck {
   faCartPlus = faCartPlus;
   faMapMarker = faMapMarker;
   faCreditCard = faCreditCard;
+  loadingScreen = false;
   public steps = 0;
 
   @ViewChild('firstStep') private firstStep: ElementRef;
@@ -103,6 +104,7 @@ export class CartComponent implements OnInit, DoCheck {
         const total = this.cartService.getTotal();
         const products = this.cartService.getAllProducts();
         const user = this.userService.getUserData();
+        const instructions = this.cartService.returnInstructions();
         const order = {
           total,
           products,
@@ -111,7 +113,11 @@ export class CartComponent implements OnInit, DoCheck {
           user,
           date: moment().format()
         };
+        if (instructions !== undefined) {
+          Object.assign(order, { instructions });
+        }
         this.socket.setUpSocketConnection();
+        this.loadingScreen = true;
         this.socket.socket.emit('orderCreated', { order }, (arg: any) => {
           if (arg.ok) {
             this.cartService.deleteAllProducts();
