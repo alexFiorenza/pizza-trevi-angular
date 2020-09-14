@@ -1,6 +1,6 @@
 import { CartService } from './../../cart.service';
 import { CartComponent } from './../cart.component';
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-checkout',
@@ -9,10 +9,14 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit, DoCheck {
   instructions;
+  extraMoney;
+  total;
   constructor(private cartComponent: CartComponent, private cartService: CartService) { }
 
   ngOnInit(): void {
     if (this.cartComponent.steps === 2) {
+      this.total = this.cartService.getTotal();
+      this.extraMoney = this.total;
       return;
     } else {
       window.location.reload();
@@ -20,5 +24,11 @@ export class CheckoutComponent implements OnInit, DoCheck {
   }
   ngDoCheck() {
     this.cartService.storeInstructions(this.instructions);
+    this.cartService.setExtraMoney(this.extraMoney);
+    if (this.extraMoney < this.total) {
+      this.extraMoney = this.total;
+    }
   }
+
+
 }

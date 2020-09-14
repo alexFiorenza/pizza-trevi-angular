@@ -37,5 +37,12 @@
       class="textarea w-full bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-2 py-2 shadow-md"
       placeholder="Este campo es opcional "
     ></textarea>
+    <div class="flex font-Poppins justify-start w-full">
+      <span class="uppercase text-gray-800">Abono con:</span>
+      <div class="mx-2">
+        <small>$</small>
+        <input type="number" class="w-16" [(ngModel)]="extraMoney" />
+      </div>
+    </div>
   </div>
 </div>

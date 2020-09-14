@@ -145,6 +145,27 @@
     </div>
   </div>
 </div>
+<!--Succeded cart-->
+<div class="absolute w-full h-screen top-0 hidden" #cartSucceded>
+  <div class="absolute z-50 flex justify-center w-full mt-8">
+    <div
+      class="relative max-w-xl w-11/12 md:w-5/12 bg-green-400 rounded-sm px-4 py-5 slide-in-top flex flex-col lg:flex-row items-center"
+    >
+      <div class="flex items-center">
+        <fa-icon [icon]="faCheck" class="text-white text-lg"></fa-icon>
+        <span class="font-Poppins text-white font-normal text-base ml-4">
+          El producto fue agregado al carrito
+        </span>
+      </div>
+
+      <span
+        routerLink="/cart/step/0"
+        class="font-Poppins text-white font-light ml-2 underline focus:outline-none cursor-pointer"
+        >Ver productos</span
+      >
+    </div>
+  </div>
+</div>
 <app-header></app-header>
 <div
   *ngIf="!this.products"

@@ -49,7 +49,7 @@
             *ngFor="let p of this.actualProduct.products"
             class="bg-gray-200 rounded-lg px-2 py-2 my-3"
           >
-            <span class="text-gray-700">{{ p.name }}</span>
+            <span class="text-gray-700"> {{ p.name }}</span>
             <p *ngIf="!this.p.flavors">{{ p.description }}</p>
             <div
               *ngIf="this.p.flavors"
@@ -60,7 +60,22 @@
               >
                 Sabores:
               </p>
-              <p class="text-xs">{{ this.p.flavors }}</p>
+              <p class="text-xs" *ngIf="!this.p.flavors[0].name">
+                {{ this.p.flavors }}
+              </p>
+              <div
+                *ngIf="this.p.flavors.length > 0 && this.p.flavors[0].name"
+                class="flex"
+              >
+                <div
+                  *ngFor="let e of this.p.flavors; let i = index"
+                  class="flex ml-2"
+                >
+                  <span>{{ e.quantity }}</span>
+                  <span class="ml-1">{{ e.name }}</span>
+                  <span *ngIf="this.p.flavors.length - 1 != i">,</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -82,14 +97,19 @@
             >Demora: {{ this.actualProduct.time }} minutos</span
           >
         </div>
-        <div class="flex flex-col">
+        <div class="flex" *ngIf="this.actualProduct.instructions">
           <span class="text-gray-900 uppercase">instrucciones: </span>
           <p class="text-gray-600">{{ this.actualProduct.instructions }}</p>
         </div>
+
         <div class="line w-full mt-4 mb-2"></div>
         <div class="w-full text-2xl font-Poppins">
           <span class="font-bold text-gray-800">Total: </span>
           <span> ${{ actualProduct.total }}</span>
+        </div>
+        <div class="flex mb-2">
+          <span class="text-gray-900 uppercase">Paga con: </span>
+          <p class="text-gray-600 ml-1">${{ this.actualProduct.extraMoney }}</p>
         </div>
         <div class="w-full flex justify-end font-Poppins text-white">
           <button
@@ -101,6 +121,8 @@
           </button>
           <button
             *ngIf="this.actualProduct.status === 'pendiente'"
+            [ngClass]="{ 'opacity-25': this.delayTime <= 0 }"
+            [disabled]="this.delayTime <= 0"
             (click)="confirmOrder()"
             class="ml-3 px-2 py-2 bg-green-500 rounded font-semibold focus:outline-none"
           >

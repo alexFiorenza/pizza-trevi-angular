@@ -10,6 +10,7 @@ export class CartService {
   private cart = new BehaviorSubject<any[]>([]);
   instructions: string;
   cart$ = this.cart.asObservable();
+  extraMoney: number;
   constructor() { }
   addToCart(product) {
     this.products = [...this.products, product];
@@ -39,5 +40,11 @@ export class CartService {
   }
   returnInstructions() {
     return this.instructions;
+  }
+  setExtraMoney(money: number) {
+    this.extraMoney = money;
+  }
+  getExtraMoney() {
+    return this.extraMoney;
   }
 }

@@ -82,7 +82,9 @@
   <div *ngFor="let order of orders">
     <div
       class="w-full rounded-md shadow-lg px-3 py-2 flex flex-col mb-8"
-      *ngIf="this.order.status === 'completado'"
+      *ngIf="
+        this.order.status === 'completado' || this.order.status === 'rechazado'
+      "
     >
       <div>
         <div class="flex justify-between items-center">
@@ -92,7 +94,8 @@
           <div
             [ngClass]="{
               'bg-green-500':
-                order.status === 'activo' || order.status === 'completado'
+                order.status === 'activo' || order.status === 'completado',
+              'bg-red-400': order.status === 'rechazado'
             }"
             class="text-white font-Poppins font-semibold text-sm rounded px-2 py-1 uppercase"
           >

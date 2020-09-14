@@ -16,7 +16,6 @@ export class UserHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     const userData: User = this.userService.getUserData();
-
     this.orderService.getHistoryUser(userData._id).subscribe((data: any) => {
       this.orders = data.message;
       this.updatingData = false;

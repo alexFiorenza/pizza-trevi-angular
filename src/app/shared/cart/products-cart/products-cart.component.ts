@@ -15,9 +15,11 @@ export class ProductsCartComponent implements OnInit {
   faAngleDown = faAngleDown;
   faAngleUp = faAngleUp;
   faMinusSquare = faMinusSquare;
+  totalPrice;
   constructor(private cartService: CartService) { }
   ngOnInit(): void {
     this.products = this.cartService.getAllProducts();
+    this.totalPrice = this.cartService.getTotal();
   }
   deleteProduct(index) {
     this.cartService.deleteOneProduct(index);

@@ -26,7 +26,6 @@ export class UserOrdersComponent implements OnInit {
       this.socket.setUpSocketConnection();
       this.socket.socket.on('updatedOrder', (data) => {
         if (data.user._id === this.userData._id) {
-          console.log(data);
           this.actualOrders.forEach(p => {
             if (p._id == data._id) {
               p.status = data.status;

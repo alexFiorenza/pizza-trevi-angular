@@ -120,6 +120,19 @@
       </div>
     </div>
     <router-outlet></router-outlet>
+    <div
+      class="flex flex-col lg:flex-row items-center mt-2"
+      *ngIf="!this.isUserLogedIn"
+    >
+      <span class="text-red-500 font-Poppins font-medium"
+        >*Al parecer no tenes una cuenta creada*</span
+      >
+      <strong
+        routerLink="/register"
+        class="text-blue-500 focus:outline-none font-Poppins font-light cursor-pointer"
+        >Registrate aqui</strong
+      >
+    </div>
   </div>
   <div
     class="w-full flex items-center justify-center"
@@ -135,8 +148,8 @@
         Atras
       </button>
       <button
-        [ngClass]="{ 'opacity-25': this.loadingScreen }"
-        [disabled]="this.loadingScreen"
+        [ngClass]="{ 'opacity-25': this.loadingScreen || !this.isUserLogedIn }"
+        [disabled]="this.loadingScreen || !this.isUserLogedIn"
         (click)="changeStep()"
         class="px-2 py-1 bg-green-500 text-white font-semibold rounded-lg mt-4 mr-4 focus:outline-none"
       >

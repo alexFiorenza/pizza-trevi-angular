@@ -21,7 +21,7 @@ export class CartComponent implements OnInit, DoCheck {
   faCreditCard = faCreditCard;
   loadingScreen = false;
   public steps = 0;
-
+  isUserLogedIn = false;
   @ViewChild('firstStep') private firstStep: ElementRef;
   @ViewChild('secondStep') private secondStep: ElementRef;
   @ViewChild('thirdStep') private thirdStep: ElementRef;
@@ -31,7 +31,10 @@ export class CartComponent implements OnInit, DoCheck {
   }
   ngOnInit(): void {
     this.productsReceived = this.cartService.getAllProducts();
-
+    const token = this.userService.getToken();
+    if (token !== null) {
+      this.isUserLogedIn = true;
+    }
   };
   addStyle(bg, icon) {
     bg.classList.remove('fillBgDisappear');
@@ -105,13 +108,16 @@ export class CartComponent implements OnInit, DoCheck {
         const products = this.cartService.getAllProducts();
         const user = this.userService.getUserData();
         const instructions = this.cartService.returnInstructions();
+        console.log(instructions);
+
+        const extraMoney = this.cartService.getExtraMoney();
         const order = {
           total,
           products,
-          instructions: 'not set yet',
           status: 'pendiente',
           user,
-          date: moment().format()
+          date: moment().format(),
+          extraMoney
         };
         if (instructions !== undefined) {
           Object.assign(order, { instructions });

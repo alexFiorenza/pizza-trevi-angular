@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
     const token = this.userService.getToken();
     if (istokenExpired && token !== null) {
       const userData = this.userService.getUserData();
-      console.log('entered if');
       this.userService.reloadToken(userData).subscribe((r: any) => {
         this.userService.saveToken(r.token);
       });

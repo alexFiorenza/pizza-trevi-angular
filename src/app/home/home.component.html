@@ -11,11 +11,11 @@
     </h1>
 
     <p
-      class="xl:text-xl w-5/6 md:text-lg text-sm mt-40 xl:w-2/5 absolute md:mt-48 z-20 text-white md:w-1/2 text-center block"
+      class="max-w-lg xl:text-xl w-5/6 md:text-lg text-sm mt-40 xl:w-2/5 absolute md:mt-48 z-20 text-white md:w-1/2 text-center block"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium ut
-      ante ac convallis. Nunc magna massa, dignissim a hendrerit eu, laoreet et
-      libero.
+      Página oficial de Pizza in Trevi Lomas. Acá podras encontrar más
+      información acerca de nosotros, nuestros horarios, menús y sitios en los
+      que nos encontramos
     </p>
   </div>
   <div
@@ -59,7 +59,7 @@
   </div>
 </div>
 <div class="w-full md:h-64 h-auto bg-gray-100">
-  <h1 class="text-xl text-center darkRed">Las mas vendidas</h1>
+  <h1 class="text-xl text-center darkRed">Las más vendidas</h1>
   <div
     id="cards"
     class="sm:flex w-10/12 mx-auto mt-4 justify-evenly lg:justify-center sm:w-11/12"
@@ -81,24 +81,25 @@
   </div>
 </div>
 <div class="w-full">
-  <div class="w-full flex justify-center">
-    <h1
-      class="max-w-xl text-center w-8/12 sm:w-5/12 md:w-4/12 mt-12 text-3xl sm:text-4xl lg:text-5xl z-20 text-white font-Poppins font-medium absolute"
+  <div
+    class="w-full flex flex-col h-32 lg:h-64 items-center justify-center absolute"
+  >
+    <h3
+      class="max-w-lg w-1/2 sm:w-1/3 z-50 font-Poppins font-medium text-xl lg:text-4xl text-center text-white"
     >
-      Gran variedad de helados
-    </h1>
-    <a
+      Nuestra variedad de helados
+    </h3>
+    <span
       (click)="redirectIceCream()"
-      class="focus:outline-none cursor-pointer absolute text-white z-20 underline text-lg md:text-2xl mt-32 sm:mt-40 lg:mt-48 xl:mt-56"
-      >Ver más</a
+      class="z-50 text-white focus:outline-none cursor-pointer underline text-xl"
+      >Ver más</span
     >
   </div>
-  <div
-    class="bg-cover bg-center changeHeight grayScale"
-    style="
-      background-image: url(https://images.unsplash.com/photo-1560801530-34efebfecba8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80);
-    "
-  ></div>
+  <img
+    class="changeHeight object-cover w-full grayScale"
+    src="https://images.unsplash.com/photo-1560801530-34efebfecba8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+    alt=""
+  />
 </div>
 <div class="w-full mapHeight">
   <iframe

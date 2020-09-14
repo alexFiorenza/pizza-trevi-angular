@@ -1,4 +1,27 @@
-<div #container class="mt-12">
+<div
+  *ngIf="!this.products"
+  #loader
+  class="h-screen items-center w-full flex justify-center absolute"
+>
+  <svg
+    class="spinner"
+    width="65px"
+    height="65px"
+    viewBox="0 0 66 66"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      class="path"
+      fill="none"
+      stroke-width="6"
+      stroke-linecap="round"
+      cx="33"
+      cy="33"
+      r="30"
+    ></circle>
+  </svg>
+</div>
+<div #container class="mt-12" *ngIf="this.products">
   <div class="flex w-full lg:w-3/5 lg:mx-auto flex-col lg:max-w-4xl">
     <div class="flex justify-between items-center">
       <h2 class="text-gray-800 font-semibold font-Poppins text-2xl px-2">
@@ -21,6 +44,7 @@
         *ngIf="this.product.type === 'pizza'"
       >
         <div
+          [ngClass]="{ 'not-available': !this.product.available }"
           class="flex mx-auto w-11/12 lg:w-3/4 bg-white rounded-lg shadow-md px-4 py-5 xl:mx-auto mb-4"
         >
           <div id="info" class="flex items-center w-full justify-between">

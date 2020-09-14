@@ -1,5 +1,5 @@
 import { ProductService } from './../service/product.service';
-import { Component, OnInit, AfterContentInit, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faMinusCircle, faEdit, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -9,27 +9,20 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './product-admin.component.html',
   styleUrls: ['./product-admin.component.scss']
 })
-export class ProductAdminComponent implements OnInit, AfterContentInit {
+export class ProductAdminComponent implements OnInit {
   faMinusCircle = faMinusCircle;
   faEdit = faEdit;
   faPlusSquare = faPlusSquare;
   products: any[];
   flavorsProducts: any;
   constructor(private route: Router, private productService: ProductService) {
-
   }
-  ngAfterContentInit() {
 
-
-  }
   ngOnInit(): void {
     this.getAllProducts();
-
   }
   addProduct(type: string) {
     this.route.navigate([`/panel/product/add/${type}`]);
-
-
   }
   getAllProducts() {
     this.productService.getAllProducts().subscribe((p: any) => {

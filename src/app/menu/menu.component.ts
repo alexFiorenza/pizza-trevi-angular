@@ -4,7 +4,7 @@ import { ProductService } from './../admin/service/product.service';
 import { Component, OnInit, ViewChild, ElementRef, Inject, Renderer2 } from '@angular/core';
 import {
   faAngleDown, faSearch, faTimesCircle,
-  faCircle, faAngleUp, faPlusSquare, faMinusSquare, faPlus
+  faCircle, faAngleUp, faPlusSquare, faMinusSquare, faPlus, faCheck
 } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { Product } from '../interfaces/product';
@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit {
   faAngleDownIcon = faAngleDown;
   faSearch = faSearch;
   faCircle = faCircle;
+  faCheck = faCheck;
   faTimesCircle = faTimesCircle;
   faPlusSquare = faPlusSquare;
   faMinusSquare = faMinusSquare;
@@ -40,6 +41,7 @@ export class MenuComponent implements OnInit {
   betweenHour: boolean;
   flavorsArray: any[] = [];
   @ViewChild('alertContainer') alert: ElementRef;
+  @ViewChild('cartSucceded') cartSucceded: ElementRef;
   @ViewChild('filters') filtersPanel: ElementRef;
   @ViewChild('maxprice') maxSpan: ElementRef;
   @ViewChild('lessprice') lessSpan: ElementRef;
@@ -62,8 +64,8 @@ export class MenuComponent implements OnInit {
       }
       const format = 'HH:mm';
       const now = moment();
-      const fromDate = moment('19:00', format);
-      const toDate = moment('23:59', format);
+      const fromDate = moment('17:00', format);
+      const toDate = moment('23:30', format);
       this.betweenHour = moment(now, format).isBetween(fromDate, toDate);
     });
   }
@@ -80,6 +82,7 @@ export class MenuComponent implements OnInit {
       this.alert.nativeElement.classList.remove('hidden');
     }
   }
+
   quantityEmpanadas(select, label) {
 
     const selectValue = Number(select.options[select.selectedIndex].value);
@@ -172,9 +175,12 @@ export class MenuComponent implements OnInit {
     } else {
       this.cartService.addToCart(product);
     }
-
-
     this.closeMenu();
+    this.cartSucceded.nativeElement.classList.remove('hidden');
+
+    setTimeout(() => {
+      this.cartSucceded.nativeElement.classList.add('hidden');
+    }, 3000);
   }
   closeMenu() {
     const input: any = document.getElementsByClassName('iceCreamCheck');

@@ -9,4 +9,5 @@ export interface Orders {
     date: Date;
     user: User;
     time?: number;
+    extraMoney?: number;
 }

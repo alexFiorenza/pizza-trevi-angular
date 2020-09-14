@@ -14,7 +14,7 @@ export class OrdersComponent implements OnInit {
   public orders: Array<Orders> = [];
   faTimesCircle = faTimesCircle;
   actualProduct: Orders;
-  delayTime;
+  delayTime = 0;
   orderAudio: HTMLAudioElement;
   constructor(private socket: SocketioService, private orderService: OrderService) { }
   @ViewChild('alert') public alertContainer: ElementRef;
@@ -27,13 +27,16 @@ export class OrdersComponent implements OnInit {
       this.orderAudio = new Audio('../../../assets/new-order-sound.mp3');
       this.orderAudio.play();
       this.orders.push(d);
-      console.log(this.orders);
     });
   }
   openAlert(order) {
     this.alertContainer.nativeElement.classList.remove('hidden');
     this.actualProduct = order;
-    this.orderAudio.pause();
+    console.log(this.actualProduct)
+    if (this.orderAudio) {
+      this.orderAudio.pause();
+
+    }
   }
   completeOrder(order) {
     this.alertContainer.nativeElement.classList.add('hidden');
@@ -45,7 +48,7 @@ export class OrdersComponent implements OnInit {
   confirmOrder(confirm = true, order = null) {
     if (confirm) {
       // tslint:disable-next-line: radix
-      Object.assign(this.actualProduct, { time: parseInt(this.delayTime) });
+      Object.assign(this.actualProduct, { time: this.delayTime });
       this.actualProduct.status = 'activo';
       this.alertContainer.nativeElement.classList.add('hidden');
       this.socket.emitAdminResponse(this.actualProduct);

@@ -14,7 +14,12 @@
       ></fa-icon>
     </div>
     <div class="pl-4">
-      <img class="w-12" src="../../../assets/brand.png" alt="" />
+      <img
+        routerLink="/home"
+        class="focus:outline-none w-12 cursor-pointer"
+        src="../../../assets/brand.png"
+        alt=""
+      />
     </div>
     <div class="text-white md:hidden cursor-pointer h-8">
       <input
@@ -45,7 +50,7 @@
         routerLinkActive="text-primary font-semibold"
         routerLink="/menu"
       >
-        Menu
+        Menú
       </li>
       <li
         class="px-4 focus:outline-none cursor-pointer font-Poppins font-light text-lg"
@@ -60,7 +65,10 @@
         >
           <span class="text-white text-xs font-bold">{{ $total | async }}</span>
         </div>
-        <fa-icon [icon]="faShoppingCart" class="text-xl focus:outline-none"></fa-icon>
+        <fa-icon
+          [icon]="faShoppingCart"
+          class="text-xl focus:outline-none"
+        ></fa-icon>
       </div>
       <div class="cursor-pointer text-white px-4">
         <fa-icon
@@ -144,7 +152,7 @@
           routerLinkActive="text-primary font-semibold"
           routerLink="/menu"
         >
-          Menu
+          Menú
         </li>
         <li
           class="outline-none"
@@ -176,7 +184,7 @@
         class="text-xl pl-2 outline-none"
         routerLinkActive="text-primary font-semibold"
         routerLink="/login"
-        >Iniciar sesion</span
+        >Iniciar sesión</span
       >
       <span
         *ngIf="this.userData.role !== 'ADMIN' && this.receivedData"
