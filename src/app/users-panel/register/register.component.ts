@@ -39,12 +39,15 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit(form) {
     const userData = this.form.value;
-    if (this.form.get('password') !== this.form.get('repeteadPassword')) {
+
+    if (this.form.get('password').value !== this.form.get('repeteadPassword').value) {
+      this.loadingScreen.nativeElement.classList.remove('hidden');
+      this.loadingScreen.nativeElement.classList.add('block');
       this.registerLoading = true;
       this.registerError = true;
       setTimeout(() => {
         window.location.reload();
-      }, 1200);
+      }, 1000);
     } else {
       this.loadingScreen.nativeElement.classList.remove('hidden');
       this.loadingScreen.nativeElement.classList.add('block');

@@ -9,14 +9,14 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-  private DevUrl = environment.api;
+  private api = environment.api;
   constructor(private _http: HttpClient) { }
   private jwt = new JwtHelperService();
   logInUser(body: Partial<User>): Observable<any> {
-    return this._http.post(`${this.DevUrl}login`, body).pipe(catchError(this.errorHandler));
+    return this._http.post(`${this.api}login`, body).pipe(catchError(this.errorHandler));
   }
   registerUser(body: User) {
-    return this._http.post(`${this.DevUrl}register`, body).pipe(catchError(this.errorHandler));
+    return this._http.post(`${this.api}register`, body).pipe(catchError(this.errorHandler));
   }
   errorHandler(error: HttpErrorResponse) {
     return throwError(error);
@@ -27,7 +27,7 @@ export class UserService {
     localStorage.setItem('token', JSON.stringify(token));
   }
   reloadToken(data) {
-    return this._http.post(`${this.DevUrl}token`, data);
+    return this._http.post(`${this.api}token`, data);
   }
   getToken() {
     const token = localStorage.getItem('token');
@@ -44,7 +44,7 @@ export class UserService {
     const id = user._id;
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
       .set('Authorization', token);
-    return this._http.delete(`${this.DevUrl}user/${id}`, { headers });
+    return this._http.delete(`${this.api}user/${id}`, { headers });
   }
   getUserData() {
     const userData = localStorage.getItem('dataUser');
@@ -55,7 +55,7 @@ export class UserService {
     const token = this.getToken();
     const user: Partial<User> = this.getUserData();
     const headers = new HttpHeaders().set('Authorization', token);
-    return this._http.put(`${this.DevUrl}user/${user._id}`, data, { headers });
+    return this._http.put(`${this.api}user/${user._id}`, data, { headers });
   }
   isTokenExpired() {
     const token = this.getToken();
