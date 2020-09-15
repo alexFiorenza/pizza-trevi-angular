@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/pizza-in-trevi",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
