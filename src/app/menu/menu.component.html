@@ -33,7 +33,10 @@
       <p class="text-xs w-10/12 text-gray-700 font-sans mt-2">
         {{ productSelected.description }}
       </p>
-      <div class="w-10/12 h-40" *ngIf="this.productSelected.type === 'docena'">
+      <div
+        class="w-10/12 h-56 flex flex-col flex-wrap"
+        *ngIf="this.productSelected.type === 'docena'"
+      >
         <div class="w-1/2" *ngFor="let e of this.empanadasArray">
           <div class="flex mt-2" *ngIf="e.available">
             <select
@@ -60,7 +63,7 @@
         </div>
       </div>
       <div
-        class="w-10/12 h-70"
+        class="w-10/12 h-70 flex flex-col flex-wrap"
         *ngIf="
           this.productSelected.type === '1kg' ||
           this.productSelected.type === '1/2kg' ||
