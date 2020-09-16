@@ -195,7 +195,9 @@
   *ngIf="this.products"
 >
   <div class="flex items-center w-8/12 lg:mt-0">
-    <h3 class="font-Poppins font-semibold px-2 text-lg text-gray-700">
+    <h3
+      class="font-Poppins font-semibold text-sm px-2 md:text-lg text-gray-700"
+    >
       Filtros
     </h3>
     <div class="pr-2">
@@ -206,7 +208,7 @@
       ></fa-icon>
     </div>
     <div class="border border-gray-700 mt h-5"></div>
-    <div class="font-Poppins font-medium px-2 resultText">
+    <div class="font-Poppins font-medium px-2 resultText text-center">
       <span class="text-xs w-2/12">{{ this.products.length }} resultados</span>
     </div>
   </div>

@@ -76,19 +76,19 @@
     />
   </div>
   <img
-    class="w-full h-full object-cover grayScale absolute lg:hidden"
+    class="w-full h-full object-cover grayScale fixed lg:hidden"
     src="../../../assets/pizza-wallpaper.jpg"
     alt=""
   />
   <div
-    class="h-screen w-11/12 mx-auto flex flex-col items-center justify-center lg:w-1/2 z-30"
+    class="h-screen w-11/12 mx-auto my-4 flex flex-col items-center justify-center lg:w-1/2 z-30"
   >
     <div
-      class="mt-20 lg:m-0 justify-center lg:justify-start w-full h-auto lg:rounded-none rounded-lg bg-gray-900 lg:h-screen flex flex-col items-center overflow-hidden"
+      class="lg:m-0 justify-center lg:justify-start w-full h-auto lg:rounded-none rounded-lg bg-gray-900 lg:h-screen flex flex-col items-center"
     >
       <div
         routerLink="/home"
-        class="cursor-pointer flex focus:outline-none items-center absolute adjustBackHome bg-gray-900 rounded text-white px-4"
+        class="cursor-pointer flex focus:outline-none items-center lg:absolute adjustBackHome bg-gray-900 rounded text-white px-4"
       >
         <fa-icon class="text-3xl" [icon]="faLongArrowLeft"></fa-icon>
         <span class="mx-4 font-Poppins font-semibold">Regresar al inicio</span>

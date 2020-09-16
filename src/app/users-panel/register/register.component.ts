@@ -1,6 +1,7 @@
+import { DOCUMENT } from '@angular/common';
 import { UserService } from './../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, Inject } from '@angular/core';
 import { faArrowCircleRight, faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -22,7 +23,8 @@ export class RegisterComponent implements OnInit {
   faArrow = faArrowCircleRight;
   map: mapboxgl.map;
   form: FormGroup;
-  constructor(private formBuilder: FormBuilder, private route: Router, private userService: UserService) {
+  constructor(private formBuilder: FormBuilder, private route: Router, private userService: UserService, private r: Renderer2
+    , @Inject(DOCUMENT) private _document) {
     this.form = this.formBuilder.group({
       name: ['', [Validators.maxLength(30), Validators.minLength(2), Validators.required]],
       phone: ['', [Validators.required]],
