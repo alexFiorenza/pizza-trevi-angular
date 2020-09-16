@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:3000/api/',
-  url: 'http://localhost:3000/',
+  api: 'http://192.168.0.13:3000/api/',
+  url: 'http://192.168.0.13:3000/',
   mapboxKey: 'pk.eyJ1IjoiYWxleC1maW9yZW56YSIsImEiOiJja2RldjRnZncyMHZ4MnVwZGo1cXVtMTB3In0.ORzOXG-3PxCZzJj48iZtUg'
 };
 

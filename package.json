@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "prestart": "ngtw build",
-    "start": "ng serve & ngtw watch",
+    "start": "ng serve --host 192.168.0.13 & ngtw watch",
     "build": "ng build && ng build",
     "test": "ng test",
     "lint": "ng lint",

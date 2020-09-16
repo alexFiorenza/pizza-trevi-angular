@@ -40,8 +40,8 @@
         <div class="w-1/2" *ngFor="let e of this.empanadasArray">
           <div class="flex mt-2" *ngIf="e.available">
             <select
+              (change)="quantityEmpanadas(select, label)"
               class="selectEmpanadas"
-              (click)="quantityEmpanadas(select, label)"
               #select
             >
               <option value="0">0</option>

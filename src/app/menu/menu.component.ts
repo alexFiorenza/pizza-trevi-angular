@@ -84,7 +84,6 @@ export class MenuComponent implements OnInit {
   }
 
   quantityEmpanadas(select, label) {
-
     const selectValue = Number(select.options[select.selectedIndex].value);
     if (selectValue === 12) {
       this.availableToBuy = true;
