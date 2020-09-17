@@ -15,6 +15,7 @@ export class AddProductComponent implements OnInit {
   paramsType;
   image;
   dataToSend;
+  updatingData = false;
   // tslint:disable-next-line: max-line-length
   constructor(private router: Router, private formBuilder: FormBuilder, private productService: ProductService, private route: ActivatedRoute) {
   }
@@ -38,6 +39,7 @@ export class AddProductComponent implements OnInit {
   }
   onSubmit() {
     this.dataToSend = this.form.value;
+    this.updatingData = true;
     Object.assign(this.dataToSend, { image: this.image });
     this.productService.uploadProduct(this.dataToSend).subscribe(data => {
       this.router.navigate(['/panel/product']);

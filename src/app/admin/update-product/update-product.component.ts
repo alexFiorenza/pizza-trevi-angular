@@ -15,6 +15,7 @@ export class UpdateProductComponent implements OnInit {
   productData;
   image;
   dataToSend;
+  updatingData = false;
   constructor(private formBuilder: FormBuilder, private productService: ProductService,
     private route: ActivatedRoute, private router: Router) { }
 

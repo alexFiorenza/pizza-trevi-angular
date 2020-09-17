@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { faUser, faUserEdit, faReceipt, faHistory, faUserMinus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -15,8 +16,8 @@ export class UserPanelComponent implements OnInit {
   faSignOutAlt = faSignOutAlt;
   deletingUser;
   @ViewChild('alertContainer') private alert: ElementRef;
-  @ViewChild('deleteAccount') private deleteAlert: ElementRef;
-  constructor(private userService: UserService) { }
+  @ViewChild('deleteAccountAlert') private deleteAlert: ElementRef;
+  constructor(private userService: UserService, private route: Router) { }
   ngOnInit(): void {
     this.deletingUser = false;
   }
@@ -46,7 +47,8 @@ export class UserPanelComponent implements OnInit {
     this.deletingUser = true;
     this.userService.deleteUser().subscribe((r: any) => {
       if (r.ok) {
-        window.location.reload();
+        this.route.navigate(['/home']);
+        this.signOut();
       }
     });
   }

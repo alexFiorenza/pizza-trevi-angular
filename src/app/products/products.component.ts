@@ -30,7 +30,6 @@ export class ProductsComponent implements OnInit, DoCheck {
 
   }
   addToCart(product, productContainer) {
-
     if (productContainer.classList.contains('not-available')) {
       return;
     }
