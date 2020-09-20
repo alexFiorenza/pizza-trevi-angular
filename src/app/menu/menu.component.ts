@@ -1,3 +1,4 @@
+import { SeoService } from './../SEO/seo.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CartService } from './../shared/cart.service';
 import { ProductService } from './../admin/service/product.service';
@@ -10,6 +11,7 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { Product } from '../interfaces/product';
 import { DOCUMENT } from '@angular/common';
 import * as moment from 'moment';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -48,8 +50,17 @@ export class MenuComponent implements OnInit {
   @ViewChild('icon1') iconLess: ElementRef;
   @ViewChild('icon2') iconMax: ElementRef;
   constructor(private productService: ProductService, private cartService: CartService,
-    @Inject(DOCUMENT) document, private r: Renderer2, private activatedRoute: ActivatedRoute) { }
+    // tslint:disable-next-line: align
+    @Inject(DOCUMENT) document, private r: Renderer2, private activatedRoute: ActivatedRoute,
+    // tslint:disable-next-line: align
+    private title: Title, private seo: SeoService) { }
   ngOnInit(): void {
+    const t = 'Nuestro Menú';
+    this.title.setTitle(t);
+    this.seo.generateTags({
+      description: 'Conoce nuestra variedad de pizzas, empanadas y helados. Pedí como quieras y cuando quieras',
+      slug: 'menu'
+    });
     this.productService.getAllProducts().subscribe((data: any) => {
       this.products = data.message;
       this.empanadasArray = this.products.filter(p => {

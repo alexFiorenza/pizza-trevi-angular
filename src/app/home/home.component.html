@@ -2,28 +2,30 @@
 <div #alertContainer class="h-screen w-screen absolute z-50 hidden">
   <div class="w-full h-screen bg-black opacity-25"></div>
 </div>
-<div class="w-full">
+<div class="w-full mt-20">
   <div class="w-full flex justify-center">
-    <h1
-      class="mt-24 md:mt-32 text-3xl md:text-5xl z-20 text-white font-Poppins font-bold uppercase absolute"
+    <div
+      class="w-full flex flex-col h-32 lg:h-64 items-center justify-center absolute"
     >
-      Pizza in Trevi
-    </h1>
-
-    <p
-      class="max-w-lg xl:text-xl w-5/6 md:text-lg text-sm mt-40 xl:w-2/5 absolute md:mt-48 z-20 text-white md:w-1/2 text-center block"
-    >
-      Página oficial de Pizza in Trevi Lomas. Acá podras encontrar más
-      información acerca de nosotros, nuestros horarios, menús y sitios en los
-      que nos encontramos
-    </p>
+      <h3
+        class="max-w-lg w-full z-20 font-Poppins font-bold text-2xl lg:text-4xl text-center text-white uppercase"
+      >
+        Pizza in Trevi
+      </h3>
+      <span
+        class="z-20 text-white max-w-lg xl:text-xl w-5/6 md:text-lg text-sm xl:w-2/5 md:w-1/2 text-center block"
+      >
+        Página oficial de Pizza in Trevi Lomas. Acá podras encontrar más
+        información acerca de nosotros, nuestros horarios, menús y sitios en los
+        que nos encontramos</span
+      >
+    </div>
   </div>
-  <div
-    class="bg-cover changeHeight bg-center grayScale mt-20"
-    style="
-      background-image: url(https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80);
-    "
-  ></div>
+  <img
+    class="changeHeight object-cover w-full grayScale"
+    src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+    alt=""
+  />
 </div>
 <div class="w-full bg-black h-40">
   <div
@@ -102,14 +104,6 @@
   />
 </div>
 <div class="w-full mapHeight">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13111.034341715167!2d-58.4226055!3d-34.7616737!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc6f7123b777083cc!2sPizza%20in%20Trevi%20Lomas!5e0!3m2!1sen!2sar!4v1595871416137!5m2!1sen!2sar"
-    frameborder="0"
-    style="border: 0"
-    allowfullscreen="true"
-    aria-hidden="false"
-    tabindex="0"
-    class="w-full h-full"
-  ></iframe>
+  <div id="map" class="w-full h-full"></div>
 </div>
 <app-footer></app-footer>

@@ -1,3 +1,4 @@
+import { SeoService } from './../../SEO/seo.service';
 import { DOCUMENT } from '@angular/common';
 import { UserService } from './../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,6 +8,7 @@ import { faArrowCircleRight, faLongArrowAltLeft } from '@fortawesome/free-solid-
 
 import * as mapboxgl from 'mapbox-gl';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +26,7 @@ export class RegisterComponent implements OnInit {
   map: mapboxgl.map;
   form: FormGroup;
   constructor(private formBuilder: FormBuilder, private route: Router, private userService: UserService, private r: Renderer2
-    , @Inject(DOCUMENT) private _document) {
+    , @Inject(DOCUMENT) private _document, private title: Title, private seo: SeoService) {
     this.form = this.formBuilder.group({
       name: ['', [Validators.maxLength(30), Validators.minLength(2), Validators.required]],
       phone: ['', [Validators.required]],
@@ -37,7 +39,9 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    const t = 'Regístrate en Pizza in Trevi';
+    this.title.setTitle(t);
+    this.seo.generateTags({ description: 'Creá una cuenta para poder disfrutar los beneficios de comprar en Pizza in Trevi' });
   }
   onSubmit(form) {
     const userData = this.form.value;

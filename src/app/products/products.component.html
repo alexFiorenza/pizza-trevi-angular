@@ -10,11 +10,11 @@
   >
     <img
       *ngIf="product.image"
-      class="w-4/12 rounded rounded-l-lg object-cover h-40"
+      class="w-4/12 rounded rounded-l-lg object-cover adjustHeight"
       [src]="product.image"
       alt=""
     />
-    <div id="info" class="flex flex-col items-start w-8/12">
+    <div id="info" class="flex flex-col items-start w-9/12">
       <div class="lg:flex lg:items-end">
         <h2 class="font-Poppins font-medium text-gray-700 text-lg px-2 pt-3">
           {{ product.name }}
@@ -36,7 +36,9 @@
       >
         {{ product.description }}
       </p>
-      <div class="w-full mx-2 mb-2 flex items-center lg:pb-3">
+      <div
+        class="w-full mx-2 mb-2 flex flex-col items-start xs:flex-row xs:items-center lg:pb-3"
+      >
         <span
           class="cursor-default rounded-sm px-2 py-1 bg-green-500 text-white font-Poppins font-semibold focus:outline-none"
         >
@@ -45,7 +47,7 @@
         </span>
         <div
           *ngIf="product.top"
-          class="text-white font-Poppins font-semibold bg-red-500 px-2 py- rounded-sm mx-2"
+          class="text-white font-Poppins font-semibold bg-red-500 py-1 px-2 my-2 xs:my-0 rounded-sm xs:mx-2"
         >
           <span>Más vendida</span>
         </div>

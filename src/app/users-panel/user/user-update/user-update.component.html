@@ -75,10 +75,10 @@
 </div>
 
 <div
-  class="w-full flex justify-center lg:w-auto"
+  class="w-11/12 flex justify-center lg:80"
   [ngClass]="{ 'opacity-50': this.updatingData }"
 >
-  <div class="border border-gray-200 px-2 lg:px-4 lg:py-4 shadow-md">
+  <div class="border border-gray-200 px-2 lg:px-4 lg:py-4 shadow-md w-full">
     <h1 class="text-lg font-Poppins text-gray-900">Actualizar datos</h1>
     <div #info class="w-full lg:w-11/12 mt-2">
       <form [formGroup]="form" class="flex flex-col" (ngSubmit)="onSubmit()">

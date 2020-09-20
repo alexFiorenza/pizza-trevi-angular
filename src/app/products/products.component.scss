@@ -9,11 +9,14 @@
 }
 .not-available {
   filter: grayscale(90%);
-  opacity: 70%;
+  opacity: 0.5;
   cursor: default;
 }
 .positionCart {
   top: 0;
   right: 0;
   z-index: 20;
+}
+.adjustHeight {
+  max-height: 250px;
 }
