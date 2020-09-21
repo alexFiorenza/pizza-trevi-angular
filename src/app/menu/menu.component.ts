@@ -75,7 +75,7 @@ export class MenuComponent implements OnInit {
       }
       const format = 'HH:mm';
       const now = moment();
-      const fromDate = moment('17:00', format);
+      const fromDate = moment('19:30', format);
       const toDate = moment('23:30', format);
       this.betweenHour = moment(now, format).isBetween(fromDate, toDate);
     });
