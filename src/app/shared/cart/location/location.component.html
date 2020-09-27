@@ -5,10 +5,12 @@
         class="md:w-auto w-full mr-4 font-semibold font-Poppins text-gray-700 mt-4 text-base"
         >¿Estos datos son correctos?</span
       >
-      <span
-        class="text-xs font-normal font-Poppins text-green-500 md:mt-4 focus:outline-none"
+      <a
+        target="_blank"
+        href="https://www.google.com/maps/d/edit?mid=1em65EAcrJfT2PsrHUlczMMTRSTEVuVQ6&usp=sharing"
+        class="text-xs font-normal font-Poppins text-green-500 md:mt-4 focus:outline-none cursor-pointer"
         >Verificar area de cobertura
-      </span>
+      </a>
     </div>
 
     <div class="shadow-lg px-8 py-4 mt-4">
@@ -33,7 +35,10 @@
       routerLink="user/update"
       class="text-xs font-semibold font-Poppins flex w-full justify-between mt-2"
     >
-      <span class="text-blue-500 focus:outline-none" routerLink="/user/update">
+      <span
+        class="text-blue-500 focus:outline-none cursor-pointer"
+        routerLink="/user/update"
+      >
         No lo son, quiero cambiarlos.
       </span>
     </div>

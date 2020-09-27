@@ -1,6 +1,6 @@
 const hotestPizzas = [
     {
-        name: 'Jamon y morrones',
+        name: 'Jamón y morrones',
         img: '../../assets/pizza1.png'
     },
     {

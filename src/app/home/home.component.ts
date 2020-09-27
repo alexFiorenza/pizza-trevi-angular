@@ -5,6 +5,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { hotestPizzas } from './hotestPizzas';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { faMoneyBillWave, faUser, faMotorcycle } from '@fortawesome/free-solid-svg-icons';
 import * as mapboxgl from 'mapbox-gl';
 @Component({
   selector: 'app-home',
@@ -14,7 +15,9 @@ import * as mapboxgl from 'mapbox-gl';
 export class HomeComponent implements OnInit {
   public hotestPizzas: Array<any>;
   map: mapboxgl.Map;
-
+  faMoneyBillWave = faMoneyBillWave;
+  faUser = faUser;
+  faMotorcycle = faMotorcycle;
   constructor(private route: Router, private userService: UserService, private title: Title, private seo: SeoService
   ) {
   }

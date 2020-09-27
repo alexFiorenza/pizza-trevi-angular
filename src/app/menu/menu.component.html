@@ -212,7 +212,12 @@
     </div>
     <div class="border border-gray-700 mt h-5"></div>
     <div class="font-Poppins font-medium px-2 resultText text-center">
-      <span class="text-xs w-2/12">{{ this.products.length }} resultados</span>
+      <span class="text-xs w-2/12" *ngIf="this.productsFiltered.length <= 0"
+        >{{ this.products.length }} resultados</span
+      >
+      <span class="text-xs w-2/12" *ngIf="this.productsFiltered.length > 0"
+        >{{ this.productsFiltered.length }} resultados</span
+      >
     </div>
   </div>
   <div class="flex items-center justify-evenly">
@@ -237,8 +242,15 @@
       <span class="font-Poppins font-semibold text-xl text-gray-800"
         >Filtros</span
       >
-      <span class="text-xs resultText font-Poppins font-medium"
+      <span
+        class="text-xs resultText font-Poppins font-medium"
+        *ngIf="this.productsFiltered.length <= 0"
         >{{ this.products.length }} resultados</span
+      >
+      <span
+        class="text-xs resultText font-Poppins font-medium"
+        *ngIf="this.productsFiltered.length > 0"
+        >{{ this.productsFiltered.length }} resultados</span
       >
 
       <ul class="text-sm">

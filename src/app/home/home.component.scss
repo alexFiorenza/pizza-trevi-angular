@@ -1,14 +1,14 @@
 .changeHeight {
-  height: 200px;
+  height: 80vh;
 }
 @media screen and (min-width: 768px) {
   .changeHeight {
-    height: 300px;
+    height: 600px;
   }
 }
 @media screen and (min-width: 1280px) {
   .changeHeight {
-    height: 450px;
+    height: 700px;
   }
 }
 .grayScale {
@@ -30,4 +30,13 @@
 }
 .mapHeight {
   height: 300px;
+}
+.changeIceCreamHeight {
+  height: 200px;
+}
+
+@media screen and (min-width: 1280px) {
+  .changeIceCreamHeight {
+    height: 250px;
+  }
 }
