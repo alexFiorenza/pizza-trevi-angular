@@ -81,6 +81,11 @@ export class MenuComponent implements OnInit {
     });
   }
   alertMenu(product) {
+    if (this.cartSucceded.nativeElement.classList.contains('hidden')) {
+    } else {
+      this.cartSucceded.nativeElement.classList.add('hidden');
+    }
+
     this.productSelected = product;
     if (this.productSelected.type === 'pizza' || this.productSelected.type === 'calzon'
       || this.productSelected.type === 'empanada') {
@@ -178,6 +183,7 @@ export class MenuComponent implements OnInit {
     this.counter = 0;
     this.availableToBuy = false;
     this.maxSelection = false;
+    this.quantityProduct = 1;
     if (this.productSelected.type === 'pizza' || this.productSelected.type === 'calzon' || this.productSelected.type === 'empanada') {
       for (let i = 0; i < this.quantityProduct; i++) {
         this.cartService.addToCart(product);
@@ -187,7 +193,6 @@ export class MenuComponent implements OnInit {
     }
     this.closeMenu();
     this.cartSucceded.nativeElement.classList.remove('hidden');
-
     setTimeout(() => {
       this.cartSucceded.nativeElement.classList.add('hidden');
     }, 3000);

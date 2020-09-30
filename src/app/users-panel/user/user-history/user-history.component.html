@@ -1,5 +1,10 @@
-<div *ngIf="this.orders.length === 0 && !this.updatingData">
-  <span class="text-gray-500 text-lg"
+<span
+  *ngIf="this.orders.length > 0"
+  class="px-2 mb-4 lg:hidden font-semibold font-Poppins text-gray-700"
+  >Historial de pedidos:</span
+>
+<div class="mt-8" *ngIf="this.orders.length === 0 && !this.updatingData">
+  <span class="text-gray-500 text-base text-center"
     >¡Todavia no compraste nada o no tenemos registro de ello!</span
   >
 </div>

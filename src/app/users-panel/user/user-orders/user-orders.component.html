@@ -1,3 +1,8 @@
+<span
+  *ngIf="this.actualOrders.length > 0"
+  class="px-2 mb-4 lg:hidden font-semibold font-Poppins text-gray-700"
+  >Pedidos en curso :</span
+>
 <div
   #notOrders
   *ngIf="this.actualOrders.length === 0 && !this.updatingData"
@@ -11,12 +16,21 @@
   <span class="text-gray-500 font-Poppins font-light text-base mt-4 lg:text-lg"
     >¡Al parecer no tenes ningún producto activo!</span
   >
+
   <button
     class="px-2 py-2 text-white font-Poppins font-semibold bg-green-500 rounded mt-3 focus:outline-none"
     routerLink="/menu"
   >
     Seguir comprando
   </button>
+  <span class="text-gray-500 font-Poppins font-light text-sm mt-4 lg:text-base"
+    >Comproba si tu pedido fue rechazado en el
+    <span
+      class="text-green-600 font-semibold focus:outline-none cursor-pointer"
+      routerLink="/user/history"
+      >historial</span
+    >
+  </span>
 </div>
 <div
   class="w-80 -mt-16 h-full flex justify-center items-center absolute z-50"

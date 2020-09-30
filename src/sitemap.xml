@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
+<url>
+  <loc>https://pizzaintrevi.com/</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+<url>
+  <loc>https://pizzaintrevi.com/#/menu</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+<url>
+  <loc>https://pizzaintrevi.com/#/login</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+<url>
+  <loc>https://pizzaintrevi.com/#/register</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+<url>
+  <loc>https://pizzaintrevi.com/#/contact</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+<url>
+  <loc>https://pizzaintrevi.com/#/cart/step/0</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+<url>
+  <loc>https://pizzaintrevi.com/#/menu?filter=Jam%C3%B3n%20y%20morrones</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+<url>
+  <loc>https://pizzaintrevi.com/#/menu?filter=Calabresa</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+<url>
+  <loc>https://pizzaintrevi.com/#/menu?filter=Iberica</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+<url>
+  <loc>https://pizzaintrevi.com/#/menu?filter=Panceta%20y%20cheddar</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+<url>
+  <loc>https://pizzaintrevi.com/#/menu?filter=Palmitos</loc>
+  <lastmod>2020-09-30</lastmod>
+</url>
+</urlset>
