@@ -183,7 +183,8 @@ export class MenuComponent implements OnInit {
     this.counter = 0;
     this.availableToBuy = false;
     this.maxSelection = false;
-    this.quantityProduct = 1;
+
+
     if (this.productSelected.type === 'pizza' || this.productSelected.type === 'calzon' || this.productSelected.type === 'empanada') {
       for (let i = 0; i < this.quantityProduct; i++) {
         this.cartService.addToCart(product);
